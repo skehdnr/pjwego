@@ -13,5 +13,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Lazy
 public class Reply {
-		private String reseq, rcomments,uid,artseq;
+		private String reply_seq, board_comment,userid,art_seq;
 }

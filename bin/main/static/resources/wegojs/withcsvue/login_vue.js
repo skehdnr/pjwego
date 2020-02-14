@@ -40,10 +40,10 @@ login_vue = {
 				<a id="findid_btn" href="#">아이디 찾기 |</a><a id="findpwd_btn" href="#">| 비밀번호 찾기</a></div>
               </div>
               <div>
-            <span><input type="image" id="naverlogin" name="button" src="/web/resources/wegoimg/naver.png" style="height: 50px;width: 50px; "></span>
-            <span><input type="image" id="fblogin" name="button" src="/web/resources/wegoimg/fb.png" style="height: 50px;width: 50px; "></span>
-            <span><input type="image" id="googlelogin" name="button" src="/web/resources/wegoimg/google.png" style="height: 50px;width: 50px; "></span>
-           	<span><input type="image" id="kakaologin" name="button" src="/web/resources/wegoimg/kakao.png" style="height: 50px;width: 50px; "></span>
+            <span><input type="image" id="naverlogin" name="button" src="/resources/wegoimg/naver.png" style="height: 50px;width: 50px; "></span>
+            <span><input type="image" id="fblogin" name="button" src="/resources/wegoimg/fb.png" style="height: 50px;width: 50px; "></span>
+            <span><input type="image" id="googlelogin" name="button" src="/resources/wegoimg/google.png" style="height: 50px;width: 50px; "></span>
+           	<span><input type="image" id="kakaologin" name="button" src="/resources/wegoimg/kakao.png" style="height: 50px;width: 50px; "></span>
             </div>
             </section>
             <!-- /. FOOD ENDS-->

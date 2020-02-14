@@ -41,7 +41,7 @@ deleteinfo =(()=>{
 				}
 			})
 		$('#gogomain_btn').click(()=>{
-			let data ={uid:$(`#uid`).val(),pwd:$(`#pwd`).val()}
+			let data ={userid:$(`#uid`).val(),passwd :$(`#pwd`).val()}
 			$.ajax({
 				url:'/user/'+$('#uid').val()+'/remove',
 				type:'DELETE',

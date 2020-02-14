@@ -4,10 +4,10 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace = "com.wego.web.mapper.TourismMapper">
     <select id="selectTourismList" parameterType="com.wego.web.tourism.Tourism" resultType="com.wego.web.tourism.Tourism">
-		SELECT * FROM TOURISM
+		select * from tourism
 	</select>
 	<select id="selectTourism" resultType = "hashmap">
-		SELECT TSEQ, TOURNAME, TOURADDR, LATITUDE, LONGITUDE, TOURINFO, TEL, TOURIMG
-		FROM TOURISM
+		select tour_seq, tour_name, tour_addr,tour_area, latitude, longitude, tour_info, tel, tourimg
+		from tourism
 	</select>
 </mapper>

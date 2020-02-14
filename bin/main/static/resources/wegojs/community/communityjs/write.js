@@ -75,7 +75,7 @@ write = (()=>{
 
 						//formData.append('uploadFile',file)
 						$.ajax({
-							url: `/community/fileupload/${sessionStorage.getItem('UID')}`,
+							url: `/community/fileupload/${sessionStorage.getItem('userid')}`,
 							data: formData,
 							type: `POST`,
 							contentType: false,

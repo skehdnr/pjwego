@@ -5,26 +5,26 @@
   <mapper namespace="com.wego.web.mapper.UserMapper">
    
    <select id="existId" resultType="int">
-		SELECT COUNT(*)
-		FROM USERS
-		WHERE UID LIKE #{uid};
+		select count(*)
+		from users
+		where userid like #{userid};
 	</select>
    <select id="selectByIdPw" resultType="com.wego.web.user.User" >
-    SELECT *
-    FROM USERS
-    WHERE UID LIKE #{uid}
-    AND PWD LIKE #{pwd}
+    select *
+    from users
+    where userid like #{userid}
+    and passwd like #{passwd}
    </select>
    
 	<insert id="insertUser" parameterType="com.wego.web.user.User">
-       INSERT INTO USERS (UID, PWD, UNAME, NICKNAME, BIRTH, TEL) VALUES (
-           #{uid}, #{pwd}, #{uname}, #{nickname}, #{birth}, #{tel}
+       insert into users (userid, passwd, username, nickname, birth, tel) values (
+           #{userid}, #{passwd}, #{username}, #{nickname}, #{birth}, #{tel}
        )
    </insert>
    <delete id="removeUser" parameterType="com.wego.web.user.User">
-   		DELETE FROM USERS
-   		WHERE UID LIKE #{uid}
-   		AND PWD LIKE #{pwd};
+   		delete from users
+   		where userid like #{userid}
+   		and passwd like #{passwd};
    </delete>
    
    <select id="createUser" parameterType="hashMap">
@@ -39,16 +39,16 @@
 	</select>
 	
 	<select id="selectFindId" parameterType="String" resultType="com.wego.web.user.User">
-		SELECT UID 
-		FROM USERS
-		WHERE UNAME LIKE #{uname}
-		AND TEL LIKE #{tel}
+		select userid 
+		from users
+		where username like #{username}
+		and tel like #{tel}
 	</select>
 	<select id="selectfindPwd" parameterType="String" resultType="com.wego.web.user.User">
-		SELECT PWD 
-		FROM USERS
-		WHERE UID LIKE #{uid}
-		AND TEL LIKE #{tel}
+		select passwd 
+		from users
+		where userid like #{userid}
+		and tel like #{tel}
 	</select>
    
 </mapper>

@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Lazy
 public class TourismLike {
-		private String likeno,heartseq, uid,likecheck;
+		private String likeno,heartseq, userid,likecheck;
 		
 		
 }

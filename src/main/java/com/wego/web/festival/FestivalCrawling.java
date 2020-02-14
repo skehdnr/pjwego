@@ -39,9 +39,9 @@ public class FestivalCrawling {
 			map.put("title", title.get(i).text());
 			map.put("festivalimg", festivalimg.get(i).select("img").attr("src"));
 			map.put("date", date.get(i).text());
-			festival.setFtitle(title.get(i).text());
-			festival.setFimg(festivalimg.get(i).select("img").attr("src"));
-			festival.setFdate(date.get(i).text());
+			festival.setFestival_title(title.get(i).text());
+			festival.setFestival_img(festivalimg.get(i).select("img").attr("src"));
+			festival.setFestival_date(date.get(i).text());
 			festivalMapper.insertFestival(festival);
 			System.out.println("****"+festivalimg.get(i).text());
 			inventory.add(map);

@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Lazy
 public class Community {
-		private int artseq;
-		private String uid, img, title, content;
+		private int art_seq,tour_seq,festival_seq;
+		private String userid, art_img, title, content;
 		
 }

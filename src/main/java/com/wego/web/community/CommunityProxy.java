@@ -22,8 +22,8 @@ public class CommunityProxy {
                  "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8", "9",
                  "0");
       Collections.shuffle(uidText);
-      String uid = uidText.get(0)+uidText.get(1)+uidText.get(2)+uidText.get(3)+uidText.get(4)+uidText.get(5);
-      return uid;
+      String userid = uidText.get(0)+uidText.get(1)+uidText.get(2)+uidText.get(3)+uidText.get(4)+uidText.get(5);
+      return userid;
   }
     
     List<String> content = Arrays.asList("");

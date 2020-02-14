@@ -3,7 +3,6 @@ mainVue = {
 	main_body: x => {
 		return `<div id="mainbody"><body>
     <!-- banner part start-->
-    <section class="breadcrumb breadcrumb_bg">
 
                     <div class="container" style="width:100%;">
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -11,7 +10,7 @@ mainVue = {
     <div class="carousel-inner">
 
       <div class="item active">
-        <img src="/web/resources/img/banner_bg.png" alt="Seoul" style="width:100%;">
+        <img src="/resources/img/banner_bg.png" alt="Seoul" style="width:100%;">
         <div class="carousel-caption">
           <h3>Seoul</h3>
           <p>Seoul is always so much fun!</p>
@@ -19,7 +18,7 @@ mainVue = {
       </div>
 
       <div class="item">
-        <img src="/web/resources/img/banner_bg2.png" alt="63 square seoul" style="width:100%;">
+        <img src="/resources/img/banner_bg2.png" alt="63 square seoul" style="width:100%;">
         <div class="carousel-caption">
           <h3>63 Square Seoul</h3>
           <p>Thank you, 63Square!</p>
@@ -27,7 +26,7 @@ mainVue = {
       </div>
     
       <div class="item">
-        <img src="/web/resources/img/banner_bg3.png" alt="Changdeokgung" style="width:100%;">
+        <img src="/resources/img/banner_bg3.png" alt="Changdeokgung" style="width:100%;">
         <div class="carousel-caption">
           <h3>Changdeokgung</h3>
           <p>Changdeokgung World Heritage Site!</p>
@@ -57,7 +56,6 @@ mainVue = {
   </div>
 </div>
 
-    </section>
     <!-- banner part start-->
     <!-- booking part start-->
     <section class="booking_part">

@@ -24,37 +24,37 @@
 	</select>
 	
 		<select id="communitylist" parameterType="int" resultType="com.wego.web.community.Community"> 
-		SELECT *
-		FROM COMMUNITY
-		ORDER BY ARTSEQ;
+		select *
+		from board
+		order by art_seq;
 		
 	</select>
 	<select id="allcommunitylist"  resultType="com.wego.web.community.Community">
-		SELECT * FROM COMMUNITY ORDER BY ARTSEQ DESC;
+		select * from board order by art_seq desc;
 	</select>
     
     <insert id="insertCommunity" parameterType="com.wego.web.community.Community">
-    	INSERT INTO COMMUNITY(ARTSEQ,UID,IMG,TITLE,CONTENT) VALUES
-			(#{artseq},#{uid},#{img},#{title},#{content})
+    	insert into board(art_seq, userid, art_img, title, content) values
+			(#{art_seq}, #{userid}, #{art_img}, #{title}, #{content})
     </insert>
     <select id="countCommunity" resultType="int">
-    	SELECT COUNT(*) FROM COMMUNITY 
+    	select count(*) from board 
     </select>
     <insert id="insertReply" parameterType="com.wego.web.community.Reply">
-    	INSERT INTO REPLY 
-		(RESEQ,RCOMMENTS,UID,ARTSEQ) VALUES (#{reseq},#{recomments},#{uid},#{artseq}) 
+    	insert into reply 
+		(reply_seq,board_comment,userid,art_seq) values (#{reply_seq},#{board_comment},#{userid},#{art_seq}) 
     </insert>
     
    <select id="getreply" parameterType="int" resultType="com.wego.web.community.Reply">
-		SELECT * FROM COMMENT WHERE ARTSEQ LIKE #{artseq} 
+		select * from board_comment where art_seq like #{art_seq} 
 	</select>
 	
 	<select id="selectbyuid" parameterType="com.wego.web.community.Community" resultType="string">
-		SELECT MAX(ARTSEQ) FROM COMMUNITY WHERE UID LIKE #{uid} 
+		select max(art_seq) from board where userid like #{userid} 
 	</select>
 	
 	<insert id="insertIMG" parameterType="com.wego.web.community.Community">
-    	UPDATE COMMUNITY SET IMG = #{img} WHERE ARTSEQ LIKE #{artseq}
+    	update board set art_img = #{art_img} where art_seq like #{art_seq}
     </insert>
     
 </mapper>

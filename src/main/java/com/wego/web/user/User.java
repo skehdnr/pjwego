@@ -13,5 +13,5 @@ import lombok.NoArgsConstructor;
 @Lazy
 @NoArgsConstructor
 public class User {
-	private String uid,pwd,uname,nickname,birth,tel;
+	private String userid,passwd,username ,nickname,birth,tel;
 }

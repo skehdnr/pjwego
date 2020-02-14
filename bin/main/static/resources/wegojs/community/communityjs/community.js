@@ -33,7 +33,7 @@ community = (()=>{
 	let setContentView=()=>{
 		$(`#mainbody`).empty()
 		$(main_vue.community()).appendTo(`#mainbody`)
-		if (sessionStorage.getItem(`UID`) != null){
+		if (sessionStorage.getItem(`userid`) != null){
 			$(`<div style="padding-bottom: 20px;" >
 		              <button id = "gowrite" class="button rounded-0 primary-bg text-white w-100 btn_1" >Write</button>
 		             </div>`).appendTo(`#writebtnspace`)
@@ -59,33 +59,33 @@ community = (()=>{
 			$.each(d.community, (i,j)=>{
 				$(`<div class="col-md-4 col-sm-6 portfolio-item">
 				          <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
-				            <div id="id${j.artseq}" class="portfolio-hover">
+				            <div id="id${j.art_seq}" class="portfolio-hover">
 				              <div class="portfolio-hover-content">
 				                <i class="fas fa-plus fa-3x"></i>
 				              </div>
 				            </div>
-				            <img style="width:100%;"class="img-fluid" src="${j.img}" alt="">
+				            <img style="width:100%;"class="img-fluid" src="${j.art_img}" alt="">
 				          </a>
 				          <div class="portfolio-caption">
 				            <h4>${j.title}</h4>
 				          </div>
 				        </div>`).appendTo(`#communitybody`)
-				        $(`#id`+j.artseq).click(e=>{
+				        $(`#id`+j.art_seq).click(e=>{
 				        	e.preventDefault()
 				        	$(`html`).scrollTop(0)
 				        	$(`#communitybody`).empty()
 				        	$(detail_vue.detail(j)).appendTo(`#communitybody`)
 				        	
-				        	$(`<p class="item-intro text-muted">작성자 : ${j.uid} 님</p>`).appendTo(`#writerid`)
-				        	if(sessionStorage.getItem(`UID`) != null){
+				        	$(`<p class="item-intro text-muted">작성자 : ${j.userid} 님</p>`).appendTo(`#writerid`)
+				        	if(sessionStorage.getItem(`userid`) != null){
 				        		$(`<a id = "replybtn"href="#" class="genric-btn primary small" style="width:100%">댓글달기</a>`)
 	                            .appendTo(`#replybtnspace`)
 				        	}
 				        	$(`#replybtn`).click(e => {
 		                        e.preventDefault()
-		                        reply(j.artseq)
+		                        reply(j.art_seq)
 		                    })
-		                    if (sessionStorage.getItem('UID') != null) {
+		                    if (sessionStorage.getItem('userid') != null) {
 		                    $('#likebtn').on("click", function (e) {
                             $(this).find(">img").attr("src", function (index, attr) {
                                 if (attr.match('beforeheart')) {
@@ -107,7 +107,7 @@ community = (()=>{
 		let json = {
 				reply : $(`#writereply`).val(),
 				artseq:x,
-				uid : sessionStorage.getItem(`UID`)
+				uid : sessionStorage.getItem(`userid`)
 		} 
 		$.ajax({
 			url : `/community/${x}/reply/`,
@@ -145,7 +145,7 @@ community = (()=>{
                             <i class="fas fa-plus fa-3x"></i>
                         </div>
                         </div>
-                        <img style="width:100%;"class="img-fluid" src="${j.img}" alt="">
+                        <img style="width:100%;"class="img-fluid" src="${j.art_img}" alt="">
                     </a>
                     <div class="portfolio-caption">
                         <h4>${j.title}</h4>
@@ -158,7 +158,7 @@ community = (()=>{
                         $(`<div style="display: block; padding-right: 17px; width: 70%; text-align: center; border: solid #d4d4d4;">
                             <h2 class="text-uppercase">${j.title}</h2>
                         <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                        <img class="img-fluid d-block mx-auto" src=${j.img} alt="">
+                        <img class="img-fluid d-block mx-auto" src=${j.art_img} alt="">
                         <p>${j.content}</p>           
                         <div style=" padding-left: 10px;">
                             <input type="text" style="width:100%" />

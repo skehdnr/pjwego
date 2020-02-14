@@ -66,7 +66,7 @@ userjoin=(()=>{
 		
 		$('#userjoin_btn').click(e=>{
 			e.preventDefault()
-		let data = {uid:$(`#uid`).val(),pwd:$(`#pwd`).val(),uname:$(`#uname`).val(),
+		let data = {userid:$(`#uid`).val(),passwd:$(`#pwd`).val(),username:$(`#uname`).val(),
 					nickname:$(`#nickname`).val(),birth:$(`#birth`).val(),
 					tel:($(`#tel1`).val()+$(`#tel2`).val()+$(`#tel3`).val())}
             $.ajax({

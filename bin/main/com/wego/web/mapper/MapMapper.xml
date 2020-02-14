@@ -7,7 +7,7 @@
 		${CREATE_MAP}
 	</select> 
  <insert id="insertMap" parameterType="com.wego.web.map.Maps">
-    	INSERT INTO MAP(PLACE,LATITUDE) VALUES
+    	insert into map(place,latitude) values
 			(#{place},#{latitude})
  </insert>
 </mapper>

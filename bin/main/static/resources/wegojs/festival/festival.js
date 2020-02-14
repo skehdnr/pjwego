@@ -16,7 +16,8 @@ festival = (()=>{
 			$.when(
 				$.getScript(mainVuejs),
 				$.getScript(routerjs),
-				$.getScript(festivalvuejs)
+				$.getScript(festivalvuejs),
+				$.getScript(festivalDetailjs)
 			).done(()=>{
 				setContentView()
 				festivalList()
@@ -46,17 +47,17 @@ festival = (()=>{
 			$.each(f, (i,j)=>{
 				$(`<div class="col-lg-6 col-md-6">  
     						<div class="single_place"> 
-    							<img src="${j.fimg}" alt="" style="min-inline-size:-webkit-fill-available">  
+    							<img src="${j.festival_img}" alt="" style="min-inline-size:-webkit-fill-available">  
     							<div class="hover_Text d-flex align-items-end justify-content-between"> 
     								<div class="hover_text_iner"> 
-    								 <a id="id${j.feseq}" href="#" class="place_btn"><img src="${j.fimg}" alt=""></a> <h3>${j.ftitle}</h3> 
-    								 <p>${j.fdate}</p>  
+    								 <a id="id${j.festival_seq}" href="#" class="place_btn"><img src="${j.festival_img}" alt=""></a> <h3>${j.festival_title}</h3> 
+    								 <p>${j.festival_date}</p>  
     								 <div class="place_review"></div></div> 
     								 	</div></div></div>`)
     								 	.appendTo(`#festivalList`)
-    								 	$(`#id`+j.feseq).click(e=>{
+    								 	$(`#id`+j.festival_seq).click(e=>{
     								 		e.preventDefault()
-    								 		festivalDetail.festival_list({feseq:j.feseq})
+    								 		festivalDetail.festival_list({festival_seq:j.festival_seq})
     								 	})
 			})
 		})

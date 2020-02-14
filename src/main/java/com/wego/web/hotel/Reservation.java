@@ -2,6 +2,7 @@ package com.wego.web.hotel;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +11,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Lazy
 public class Reservation {
-	private String indate, outdate, uid, rseq,  hseq;
-	private int price;
+	private String checkin_date, checkout_date, userid, room_seq,  hotel_seq;
+	private int payment;
 }

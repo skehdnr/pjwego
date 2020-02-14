@@ -7,6 +7,6 @@ import org.springframework.stereotype.Component;
 @Component
 public interface FestivalService {
 	public List<Festival> findFestivalList(Festival festival);
-	public Festival findFestivalInfo(int feseq);
+	public Festival findFestivalInfo(int festival_seq);
 
 }

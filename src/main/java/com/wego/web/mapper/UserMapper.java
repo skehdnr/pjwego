@@ -10,7 +10,7 @@ import com.wego.web.user.User;
 public interface UserMapper {
 	public void insertUser(User user);
 	public User selectByIdPw(User user);
-	public int existId(String uid);
+	public int existId(String userid);
 	public void createUser(HashMap<String, String>paramMap);
 	public void dropUser(HashMap<String, String>paramMap);
 	public void removeUser(User user);

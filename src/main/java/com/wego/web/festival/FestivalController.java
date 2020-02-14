@@ -45,11 +45,11 @@ public class FestivalController {
 		return map;
 	}
 	
-	@GetMapping("/finfo/{feseq}")
-	public Map<String,Object> festivalinfo(@PathVariable int feseq){
+	@GetMapping("/finfo/{festival_seq}")
+	public Map<String,Object> festivalinfo(@PathVariable int festival_seq){
 		HashMap<String, Object> map = new HashMap<>();
-		festival.setFeseq(String.valueOf(feseq));
-		Festival festival = festivalservice.findFestivalInfo(feseq);
+		festival.setFestival_seq(String.valueOf(festival_seq));
+		Festival festival = festivalservice.findFestivalInfo(festival_seq);
 		map.put("festival",festival);
 		return map;
 	}

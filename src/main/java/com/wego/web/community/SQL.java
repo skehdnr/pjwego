@@ -9,39 +9,39 @@ public enum SQL {
 
 
 		case CREATE_COMMUNITY:
-			result = "CREATE TABLE COMMUNITY"
-					+ "(ARTSEQ INT(10) PRIMARY KEY AUTO_INCREMENT,"
-					+ "UID VARCHAR(20),"
-					+ "IMG VARCHAR(500),"
-					+ "TITLE VARCHAR(100),"
-					+ "CONTENT VARCHAR(500),"
-					+ "FOREIGN KEY (UID) REFERENCES USERS(UID))";
+			result = "create table community"
+					+ "(artseq int(10) primary key auto_increment,"
+					+ "uid varchar(20),"
+					+ "img varchar(500),"
+					+ "title varchar(100),"
+					+ "content varchar(500),"
+					+ "foreign key (uid) references users(uid))";
 			break;
 		case CREATE_LIKE:
-			result = "CREATE TABLE LIKETO"
-					+ "(LIKESEQ INT(10) PRIMARY KEY AUTO_INCREMENT,"
-					+ "ARTSEQ INT(10) NOT NULL,"
-					+ "UID VARCHAR(30),"
-					+ "LIKECHECK VARCHAR(10),"
-					+ "FOREIGN KEY (ARTSEQ) REFERENCES COMMUNITY(ARTSEQ),"
-					+ "FOREIGN KEY (UID) REFERENCES USERS(UID))";
+			result = "create table liketo"
+					+ "(likeseq int(10) primary key auto_increment,"
+					+ "artseq int(10) not null,"
+					+ "uid varchar(30),"
+					+ "likecheck varchar(10),"
+					+ "foreign key (artseq) references community(artseq),"
+					+ "foreign key (uid) references users(uid))";
 			break;
 		case CREATE_REPLY:
-			result = "CREATE TABLE REPLY"
-					+ "(RESEQ INT(10) PRIMARY KEY AUTO_INCREMENT,"
-					+ "RCOMMENTS VARCHAR(500) , "
-					+ "UID VARCHAR(20),  "
-					+ "ARTSEQ INT(10),"
-					+ "FOREIGN KEY (ARTSEQ) REFERENCES COMMUNITY(ARTSEQ),"
-					+ "FOREIGN KEY (UID) REFERENCES USERS(UID))";
+			result = "create table reply"
+					+ "(reseq int(10) primary key auto_increment,"
+					+ "rcomments varchar(500) , "
+					+ "uid varchar(20),  "
+					+ "artseq int(10),"
+					+ "foreign key (artseq) references community(artseq),"
+					+ "foreign key (uid) references users(uid))";
 			break;
 
 		case DROP_COMMUNITY:
-			result = "DROP TABLE COMMUNITY";
+			result = "drop table community";
 			break;
 
 		case TRUNCATE_COMMUNITY:
-			result = "TRUNCATE TABLE COMMUNITY";
+			result = "truncate table community";
 			break;
 		default:
 			break;

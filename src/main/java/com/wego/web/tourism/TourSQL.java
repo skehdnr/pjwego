@@ -8,23 +8,23 @@ public enum TourSQL {
 		switch (this) {
 
 		case CREATE_TOURISM:
-			result = "CREATE TABLE TOURISM"
-			+ "(TSEQ INT(30) PRIMARY KEY AUTO_INCREMENT,"
-			+ "TOURNAME VARCHAR(30), "
-			+ "TOURADDR VARCHAR(30), "
-			+ "LATITUDE VARCHAR(30),"
-			+ "LONGITUDE VARCHAR(30),"
-			+ "TOURINFO VARCHAR(1000),"
-			+ "TEL VARCHAR(30),"
-			+ "TOURIMG VARCHAR(500))";
+			result = "create table tourism"
+			+ "(tseq int(30) primary key auto_increment,"
+			+ "tourname varchar(30), "
+			+ "touraddr varchar(30), "
+			+ "latitude varchar(30),"
+			+ "longitude varchar(30),"
+			+ "tourinfo varchar(1000),"
+			+ "tel varchar(30),"
+			+ "tourimg varchar(500))";
 			break;
 		
 		case DROP_TOURISM:	
-			result = "drop table TOURISM";
+			result = "drop table tourism";
 			break;
 
 		case TRUNCATE_TOURISM:
-			result = "TRUNCATE TABLE TOURISM";
+			result = "truncate table tourism";
 			break;
 		
 		}

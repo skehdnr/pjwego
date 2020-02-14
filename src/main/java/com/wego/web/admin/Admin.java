@@ -13,5 +13,6 @@ import lombok.NoArgsConstructor;
 @Lazy
 @NoArgsConstructor
 public class Admin {
-	private String aid,apwd,tel,addr;
+	private String admin_id,admin_pwd ,tel,admin_addr ;
+	private int hotel_seq ,tour_seq, festival_seq;
 }

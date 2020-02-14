@@ -103,7 +103,7 @@ public class UserController {
 	public Map<String, Object> findId(@PathVariable String uname, @PathVariable String tel) {
 		
 		Map<String, Object> map = new HashMap<>();
-		user.setUname(uname);
+		user.setUsername(uname);
 		user.setTel(tel);
 		map.put("user", userService.findFindId(user));
 		System.out.println("유저1" + map.get("user"));
@@ -112,7 +112,7 @@ public class UserController {
 	@PostMapping("/{uid}/findpwd/{tel}")
 	public Map<String, Object> findPwd(@PathVariable String uid, @PathVariable String tel) {
 		Map<String, Object> map = new HashMap<>();
-		user.setUid(uid);
+		user.setUserid(uid);
 		user.setTel(tel);
 		System.out.println("유저 리스트 컨트롤러111"+uid);
 		System.out.println("유저 리스트 컨트롤러222"+tel);

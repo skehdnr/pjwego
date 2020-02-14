@@ -3,6 +3,7 @@ package com.wego.web.hotel;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,13 +12,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Lazy
 public class Room {
-	private String rseq,roomimg,roomtype, hseq, rating;
+	private String room_seq,room_img,room_type, hotel_seq;
 	private int price;
-	public Room(String roomtype,  
-			String roomimg, int price, String hseq) {
-		this.roomtype=roomtype;
-		this.roomimg=roomimg;
+	public Room(String room_type,  
+			String room_img, int price, String hotel_seq) {
+		this.room_type=room_type;
+		this.room_img=room_img;
 		this.price=price;
-		this.hseq=hseq;
+		this.hotel_seq=hotel_seq;
 	}
 }

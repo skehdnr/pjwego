@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Lazy
 public class Like {
-		private String likeno,artseq, uid,likecheck;
+		private String likeno,art_seq, userid,likecheck;
 		
 		
 }

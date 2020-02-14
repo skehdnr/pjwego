@@ -54,8 +54,8 @@ public class AdminController {
 		return map;
 	}
 	
-	@PostMapping("/{aid}")
-	public Map<?,?> adminlogin(@PathVariable String aid, @RequestBody Admin param){
+	@PostMapping("/{admin_id}")
+	public Map<?,?> adminlogin(@PathVariable String admin_id, @RequestBody Admin param){
 		Function<Admin, Admin>f = t -> adminMapper.adminLogin(param);
 		map.clear();
 		map.put("msg", "SUCCESS");
@@ -76,11 +76,11 @@ public class AdminController {
 		excelService.getWorkbook("");
 	}
 	@GetMapping("/chartlead")
-	public Map<?, ?> chartlead (@PathVariable String tarea,@RequestBody Tourism param){
-		printer.accept("차트컨트롤러 들어옴"+tarea);
+	public Map<?, ?> chartlead (@PathVariable String tour_area,@RequestBody Tourism param){
+		printer.accept("차트컨트롤러 들어옴"+tour_area);
 		Function<Tourism,Tourism> f = t -> adminMapper.cartlead(tourism);
 		map.clear();
-		map.put("tarea",f.apply(param));
+		map.put("tour_area",f.apply(param));
 		return map;
 	}
 	

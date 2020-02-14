@@ -24,10 +24,10 @@ public interface CommunityMapper {
 	public List<Community> allcommunitylist();
 	public int countCommunity();
 	public void insertReply(Reply c);
-	public List<Reply> getreply(int artseq);
+	public List<Reply> getreply(int art_seq);
 	public int selectbyuid(Community r);
 	public void insertIMG(Community r);
-	public int likecount(String artseq);
+	public int likecount(String art_seq);
 	public String liked(Like l);
 
 }

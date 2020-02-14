@@ -10,12 +10,12 @@ public enum SQL {
 			switch(this){
 				
 				case CREATE_MAP:
-					result="CREATE TABLE MAP"
-					+"(PLACE VARCHAR(30) PRIMARY KEY,"
-					+"LATITUDE VARCHAR(100))";
+					result="create table map"
+					+"(place varchar(30) primary key,"
+					+"latitude varchar(100))";
 					break;
 				case DROP_MAP:
-					result="DROP TABLE MAP";
+					result="drop table map";
 					break;
 					
 					

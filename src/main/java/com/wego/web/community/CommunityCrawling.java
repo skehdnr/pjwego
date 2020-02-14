@@ -44,10 +44,10 @@ public class CommunityCrawling extends Proxy{
 				map.put("title", title.get(i).text());
 				map.put("content", content.get(i).text());
 				map.put("img", img.get(i).select("img").attr("src"));
-				community.setImg(img.get(i).select("img").attr("src"));
+				community.setArt_img(img.get(i).select("img").attr("src"));
 				community.setTitle(title.get(i).text());
 				community.setContent(content.get(i).text());
-				community.setUid(communityProxy.makeUserid());
+				community.setUserid(communityProxy.makeUserid());
 				communityMapper.insertCommunity(community);
 				printer.accept("커뮤니티 크롤링프록시"+communityProxy.makeUserid());
 				inventory.add(map);

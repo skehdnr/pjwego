@@ -49,11 +49,11 @@ mypage=(()=>{
 	}
 	let gomypage =()=>{
 		let x = {
-			uid : sessionStorage.getItem('UID'),
-			uname : sessionStorage.getItem('UNAME'),
-			nickname : sessionStorage.getItem('NICKNAME'),
-			birth : sessionStorage.getItem('BIRTH'),
-			tel : sessionStorage.getItem('TEL')
+			userid : sessionStorage.getItem('userid'),
+			username : sessionStorage.getItem('username'),
+			nickname : sessionStorage.getItem('nickname'),
+			birth : sessionStorage.getItem('birth'),
+			tel : sessionStorage.getItem('tel')
 		}
 		$(`#mainbody`).html(mypage_vue.mypage_body(x))
 	} 

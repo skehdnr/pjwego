@@ -26,10 +26,10 @@ public interface HotelMapper {
 	public List<Room> selectRoomList(Room room);
 	public List<Comments> selectCommentsList(Comments comments);
 	public List<Reservation> selectReservationList(Reservation reservation);
-	public double ratingcount(String hseq);
-	public Hotel selectOnHotelByHseq(int hseq);
-	public Comments selectCommentsByRating(int hseq);
+	public double ratingcount(String hotel_seq);
+	public Hotel selectOnHotelByHseq(int hotel_seq);
+	public Comments selectCommentsByRating(int hotel_seq);
 	public List<Hotel> selectSearchList();
 	public List<Hotel> selectLocationList(Hotel hotel);
-	public Hotel selectMapByHseq(int hseq);
+	public Hotel selectMapByHseq(int hotel_seq);
 }

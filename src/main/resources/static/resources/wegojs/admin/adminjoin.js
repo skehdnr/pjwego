@@ -51,9 +51,9 @@ adminjoin=(()=>{
 			})
 		$('#adminjoin_btn').click(e=>{
 			e.preventDefault() 
-		let data = {aid:$(`#aid`).val(),apwd:$(`#apwd`).val(),
+		let data = {admin_id:$(`#aid`).val(),admin_pwd:$(`#apwd`).val(),
 					tel:($(`#tel1`).val()+$(`#tel2`).val()+$(`#tel3`).val()),
-					addr:($(`#sample6_address`).val()+$(`#sample6_detailAddress`).val())}
+					admin_addr:($(`#sample6_address`).val()+$(`#sample6_detailAddress`).val())}
 		
 			$.ajax({
 	    	url : '/admin/',

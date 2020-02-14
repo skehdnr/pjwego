@@ -139,7 +139,7 @@ hotelPayVue = {
 					<p>보안 코드*</p>
 					<input type="tel" id="payment-details-cvv" name="payments.submittedPayments[0].securityCode" value="" autocomplete="cc-csc" data-error-title="보안 코드" maxlength="4" placeholder="000">
 
-		<button id="check_module"><img src="/web/resources/wegoimg/hotel/payment_icon_yellow_medium.png" alt=""></button>
+		<button id="check_module"><img src="/resources/wegoimg/hotel/payment_icon_yellow_medium.png" alt=""></button>
 		
 				</div>
 				<div id="main3">

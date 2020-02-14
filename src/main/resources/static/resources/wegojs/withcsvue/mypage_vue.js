@@ -25,7 +25,7 @@ mypage_vue = {
 						<label for="userId" class="col-sm-2 form-control-label">아이디</label>
 						<div class="col-sm-5">
 							<input type="text" id="uid" class="form-control" name="userName" value="" readonly="readonly"
-							placeholder="${x.uid}">
+							placeholder="${x.userid}">
 						</div>
 					</div>
 

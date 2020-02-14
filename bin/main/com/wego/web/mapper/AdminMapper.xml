@@ -9,20 +9,20 @@
    </select>
    
    <insert id="insertAdmin" parameterType="com.wego.web.admin.Admin">
-       INSERT INTO ADMIN (AID, APWD, TEL,ADDR) VALUES (
-           				#{aid}, #{apwd}, #{tel}, #{addr})
+       insert into admin (admin_id, admin_pwd, tel,admin_addr) values (
+           				#{admin_id}, #{admin_pwd}, #{tel}, #{admin_addr})
    </insert>
    
     <select id="adminLogin" resultType="com.wego.web.admin.Admin">
-		SELECT *
-	    FROM ADMIN
-	    WHERE AID LIKE #{aid}
-	    AND APWD LIKE #{apwd}
+		select *
+	    from admin
+	    where admin_id like #{admin_id}
+	    and admin_pwd like #{admin_pwd}
 	</select>
 	
 	<select id="cartlead" resultType="com.wego.web.tourism.Tourism" parameterType="com.wego.web.tourism.Tourism">
-	SELECT TAREA, COUNT(*)
-	FROM TOURISM
-	GROUP BY TAREA
+	select tarea, count(*)
+	from tourism
+	group by tarea
 	</select>
 </mapper>

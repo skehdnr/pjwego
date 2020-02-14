@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Lazy
 public class Tourism {
-	private String tseq, tourName, tourAddr, tarea, latitude, longitude, tourinfo, tel, tourImg;
+	private String tour_seq, tour_name, tour_addr,  tour_area, latitude, longitude, tour_info, tel, tourimg;
 	
 }

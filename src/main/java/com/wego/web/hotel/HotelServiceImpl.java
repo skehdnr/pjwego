@@ -11,9 +11,9 @@ public class HotelServiceImpl implements HotelService{
 	@Autowired HotelMapper hotelMapper;
 	
 	@Override
-	public Hotel findOnHotelByHseq(int hseq) {
+	public Hotel findOnHotelByHseq(int hotel_seq) {
 		
-		return hotelMapper.selectOnHotelByHseq(hseq);
+		return hotelMapper.selectOnHotelByHseq(hotel_seq);
 	}
 
 	@Override
@@ -41,9 +41,9 @@ public class HotelServiceImpl implements HotelService{
 	}
 
 	@Override
-	public Comments findOnCommentsByRating(int hseq) {
+	public Comments findOnCommentsByRating(int room_seq) {
 		// TODO Auto-generated method stub
-		return hotelMapper.selectCommentsByRating(hseq);
+		return hotelMapper.selectCommentsByRating(room_seq);
 	}
 
 	@Override
@@ -54,15 +54,15 @@ public class HotelServiceImpl implements HotelService{
 
 	@Override
 	public List<Hotel> findLocationList(Hotel hotel) {
-		System.out.println("넘어온 지역"+hotel.getHarea());
+		System.out.println("넘어온 지역"+hotel.getHotel_area());
 		System.out.println("????????"+hotelMapper.selectLocationList(hotel));
 		return hotelMapper.selectLocationList(hotel);
 	}
 
 	@Override
-	public Hotel findMapByHseq(int hseq) {
+	public Hotel findMapByHseq(int hotel_seq) {
 		// TODO Auto-generated method stub
-		return hotelMapper.selectMapByHseq(hseq);
+		return hotelMapper.selectMapByHseq(hotel_seq);
 	}
 
 

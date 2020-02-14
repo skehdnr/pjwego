@@ -10,28 +10,30 @@ function Session() {
 	}
 }
 function Users(s){
-	sessionStorage.setItem('UNAME', s.uname);
-	sessionStorage.setItem('NICKNAME', s.nickname);
-	sessionStorage.setItem('UID', s.uid);
-	sessionStorage.setItem('PWD', s.pwd);
-	sessionStorage.setItem('TEL', s.tel);
-	sessionStorage.setItem('BIRTH', s.birth);
+	sessionStorage.setItem('username', s.username);
+	sessionStorage.setItem('nickname', s.nickname);
+	sessionStorage.setItem('userid', s.userid);
+	sessionStorage.setItem('passwd', s.passwd);
+	sessionStorage.setItem('tel', s.tel);
+	sessionStorage.setItem('birth', s.birth);
    return{
-		uname : () =>{return sessionStorage.getItem('UNAME');},
-		uid : () =>{return sessionStorage.getItem('UID');},
-		pwd : () =>{return sessionStorage.getItem('PWD');},
-		nickname : () =>{return sessionStorage.getItem('NICKNAME');},
-		tel : () =>{return sessionStorage.getItem('TEL');},
-		birth : () =>{return sessionStorage.getItem('BIRTH');}
+		username : () =>{return sessionStorage.getItem('username');},
+		userid : () =>{return sessionStorage.getItem('userid');},
+		passwd : () =>{return sessionStorage.getItem('passwd');},
+		nickname : () =>{return sessionStorage.getItem('nickname');},
+		tel : () =>{return sessionStorage.getItem('tel');},
+		birth : () =>{return sessionStorage.getItem('birth');}
    }
 }
  function Admin(t){
-	sessionStorage.setItem('AID',t.aid);
-	sessionStorage.setItem('APWD',t.apwd);
-	sessionStorage.setItem('TEL',t.tel);
+	sessionStorage.setItem('admin_id',t.admin_id);
+	sessionStorage.setItem('admin_pwd',t.admin_pwd);
+	sessionStorage.setItem('tel',t.tel);
+	sessionStorage.setItem('admin_addr',t.admin_addr);
 	return{
-		aid : ()=>{return sessionStorage.getItem('AID');},
-		apwd : ()=>{return sessionStorage.getItem('APWD');},
-		tel : ()=>{return sessionStorage.getItem('TEL');}
+		admin_id : ()=>{return sessionStorage.getItem('admin_id');},
+		admin_pwd : ()=>{return sessionStorage.getItem('admin_pwd');},
+		tel : ()=>{return sessionStorage.getItem('tel');},
+		admin_addr : ()=>{return sessionStorage.getItem('admin_addr');}
 	}
 }

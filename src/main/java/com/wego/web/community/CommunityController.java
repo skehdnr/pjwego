@@ -77,21 +77,21 @@ public class CommunityController {
 		return map;
 	}
 	
-	@GetMapping("/reply/{artseq}")
-	public Map<?,?>reply(@PathVariable int artseq){
+	@GetMapping("/reply/{art_seq}")
+	public Map<?,?>reply(@PathVariable int art_seq){
 		System.out.println("코멘트 읽기 컨트롤러");
 		HashMap<String,List<Reply>> map = new HashMap<>();		
-		map.put("reply", communityMapper.getreply(artseq));
+		map.put("reply", communityMapper.getreply(art_seq));
 		return map;
 	}
 	
 	
-	@GetMapping("/likeimg/{artseq}/{UID}")
-	public Map<?,?>likeimg(@PathVariable String artseq,@PathVariable String uid){
+	@GetMapping("/likeimg/{artseq}/{userid}")
+	public Map<?,?>likeimg(@PathVariable String art_seq,@PathVariable String userid){
 		System.out.println("이미지컨트롤러");
 		HashMap<String,String> map = new HashMap<>();
-		like.setArtseq(artseq);
-		like.setUid(uid);
+		like.setArt_seq(art_seq);
+		like.setUserid(userid);
 		map.put("likecheck", communityMapper.liked(like));
 		return map;
 	}
@@ -111,25 +111,25 @@ public class CommunityController {
 		return map;
 	}
 	
-	@PostMapping("/fileupload/{UID}")
-    public void fileupload(MultipartFile [] uploadFile,@PathVariable String uid) {
+	@PostMapping("/fileupload/{userid}")
+    public void fileupload(MultipartFile [] uploadFile,@PathVariable String userid) {
 		System.out.println("파일 업로드");
 		fileProxy.fileupload(uploadFile);
-		community.setUid(uid);
-		community.setArtseq(communityMapper.selectbyuid(community));
-		community.setImg(uploadFile.toString());
+		community.setUserid(userid);
+		community.setArt_seq(communityMapper.selectbyuid(community));
+		community.setArt_img(uploadFile.toString());
 		communityMapper.insertIMG(community);
 		
     }
 	
 	
 	@PostMapping("/{artseq}/reply")
-	public Map<?,?> reply(@RequestBody Reply param,@PathVariable String artseq){
+	public Map<?,?> reply(@RequestBody Reply param,@PathVariable String art_seq){
 		HashMap<String,String> map = new HashMap<>();
-		System.out.println("코멘트 컨트롤러"+artseq);
+		System.out.println("코멘트 컨트롤러"+art_seq);
 		Consumer<Reply> c = s->communityMapper.insertReply(param);
 		c.accept(param);
-		map.put("reply", param.getRcomments());
+		map.put("reply", param.getBoard_comment());
 		return map;
 	
 	}

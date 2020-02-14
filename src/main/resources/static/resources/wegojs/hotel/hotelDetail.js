@@ -63,13 +63,13 @@ hotelDetail = (()=>{
 	    		$('#mainbody').html(hotelDetailVue.hDetail_body(x))
 	    		 $('html').scrollTop(0);
 	    		
-	    		$.getJSON('/hotel/roomlist/'+x.hseq, d=>{	
+	    		$.getJSON('/hotel/roomlist/'+x.hotel_seq, d=>{	
 	    			let hotel = d.hotel
 	    			let room = d.room
 	    			let c = d.comments
 	    			let e = parseInt(c.rating)
 	    			let m = d.hotelMap
-	    			alert(x.hseq)
+	    			alert(x.hotel_seq)
 	    			/*alert (m.latitude)
 	    			alert (m.longitude)
 	    			let res = m.latitude +','+ m.longitude
@@ -89,11 +89,11 @@ hotelDetail = (()=>{
 			        */
 	    			
 	    			$(	` <div class="main_1 main_common1" style="background-repeat: no-repeat; background-attachment: fixed; background-size: 100% 100%; display:inline-table;  float: left; width: 700px; height: 300px; border: 1px solid #bcbcbc; >
-	    					          <p class="content"><img style="height: inherit; width:inherit;" id="img" src="${hotel.hotelimg}"/></p>
+	    					          <p class="content"><img style="height: inherit; width:inherit;" id="img" src="${hotel.hotel_img}"/></p>
 	    					        </div>
 	    					          <div class="main_2 main_common2"  style= display:inline-table; float: left; width: 430px; height: 300px;  border: 1px solid #bcbcbc; >
-	    					            <div class="content3"><h2 style="font-weightbolder">${hotel.hotelname}</h2></div>
-	    					            <div class="content3"><h2 style="font-weightbolder">${hotel.haddr}</br></h2><h4>[Tel: ${hotel.tel}]</h4></div>
+	    					            <div class="content3"><h2 style="font-weightbolder">${hotel.hotel_name}</h2></div>
+	    					            <div class="content3"><h2 style="font-weightbolder">${hotel.hotel_addr}</br></h2><h4>[Tel: ${hotel.tel}]</h4></div>
 	    					          <div class="content3"><input id="map" type="button" class="btn btn-primary" value="지도"/></div>
 	    					          </div>`).appendTo('#main1')
 	    			
@@ -125,11 +125,11 @@ $('#map').click(e=>{
 	})						
 
 	    					         
-	    				   $(`<div class="detail_head"><h2 style=" text-align: center;">${hotel.hotelname}</h2></div><div style="text-align-last: right">  <h4 id="star">총 평점 : [ ${c.rating} ] </h4> </div>
-    		    			<div class="detail_hotelinfo"><h3 style=" text-align: center;">${hotel.hotelinfo}</h3></div>`)
+	    				   $(`<div class="detail_head"><h2 style=" text-align: center;">${hotel.hotel_name}</h2></div><div style="text-align-last: right">  <h4 id="star">총 평점 : [ ${c.rating} ] </h4> </div>
+    		    			<div class="detail_hotelinfo"><h3 style=" text-align: center;">${hotel.hotel_info}</h3></div>`)
     		    			.appendTo('#main4')
     		    			for(let t=1; t<=e/2; t++){
-    		    				$(`<img style="width: 30px;height: 30px;" src="/web/resources/wegoimg/hotel/star.png">`).appendTo('#star')
+    		    				$(`<img style="width: 30px;height: 30px;" src="/resources/wegoimg/hotel/star.png">`).appendTo('#star')
     		    			}
 	    					$(`<ul class="hotelnavi">
 								  <li><a id="room" href="#home">객실</a></li>
@@ -144,11 +144,11 @@ $('#map').click(e=>{
 	    					console.log(j)
 	    					
 		    					$(`<div class="content2" id="home">
-	    									 <div id="inner" class="inner" style="background-image: url(${j.roomimg});"></div>
+	    									 <div id="inner" class="inner" style="background-image: url(${j.room_img});"></div>
 	    									<div class="inner2">
-	    									<h2 id="roomtype">${j.roomtype}</h2>
-	    									<div id="Hotelhseq" value="${j.hseq}"><h2>호텔번호 : ${j.hseq}</h2></div>
-	    									<div id="Hotelrseq" value="${j.rseq}"><h2>객실번호 : ${j.rseq}</h2></div>
+	    									<h2 id="roomtype">${j.room_type}</h2>
+	    									<div id="Hotelhseq" value="${j.hotel_seq}"><h2>호텔번호 : ${j.hotel_seq}</h2></div>
+	    									<div id="Hotelrseq" value="${j.room_seq}"><h2>객실번호 : ${j.room_seq}</h2></div>
 	    									<h2 id="Hotelprice" value="${j.price}">${j.price}원1</h2>	
 	    									 <button id="hPaygo" type="button" class="genric-btn primary radius" style="inline-size:-webkit-fill-available; font-size: x-large;"> 예약</button>
 	    									 </div>
@@ -157,7 +157,7 @@ $('#map').click(e=>{
 	    			$('#hPaygo').click(e=>{
 	    			e.preventDefault()
 	    			
-	    			if(sessionStorage.getItem('UID') != null){
+	    			if(sessionStorage.getItem('userid') != null){
 	    				hotelPay.booking()
 	    			}else{
 	    				alert("로그인을 해주세요")
@@ -173,11 +173,11 @@ $('#map').click(e=>{
     						$.each(room, (i,j)=>{
 	    					console.log(j)
 		    				$(`<div class="content2" id="home">
-	    						<div id="inner" class="inner" style="background-image: url(${j.roomimg});"></div>
+	    						<div id="inner" class="inner" style="background-image: url(${j.room_img});"></div>
 	    						<div class="inner2">
-	    						<h2 id="roomtype">${j.roomtype}</h2>
-	    						<div id="Hotelhseq1" value="${j.hseq}"><h2>호텔번호 : ${j.hseq}</h2></div>
-	    						<div id="Hotelrseq1" value="${j.rseq}"><h2>객실번호 : ${j.rseq}</h2></div>
+	    						<h2 id="roomtype">${j.room_type}</h2>
+	    						<div id="Hotelhseq1" value="${j.hotel_seq}"><h2>호텔번호 : ${j.hotel_seq}</h2></div>
+	    						<div id="Hotelrseq1" value="${j.room_seq}"><h2>객실번호 : ${j.room_seq}</h2></div>
 	    						<h2 id="Hotelprice1">${j.price}원</h2>	
 	    						<div id="btn"></div>
 	    						</div>
@@ -185,8 +185,8 @@ $('#map').click(e=>{
     						$('<button class="hPaygo1" type="button"  > 예약</button>')
     						.click(e=>{
     							e.preventDefault()
-    							alert('>>>> '+ $('#roomtype').text())
-    							if(sessionStorage.getItem('UID') != null){
+    							alert('>>>> '+ $('#room_type').text())
+    							if(sessionStorage.getItem('userid') != null){
     			    				hotelPay.booking()
     			    			}else{
     			    				alert("로그인을 해주세요")
@@ -206,13 +206,14 @@ $('#map').click(e=>{
     				})
 	    			$('#about').click(e=>{
 	    				e.preventDefault()
-    					$('#main3').empty()
-    					$.getJSON('/hotel/comments/'+x.hseq,d=>{
-    			
+							$('#main3').empty()
+							
+    					$.getJSON('/hotel/comments/'+x.room_seq,d=>{
+    			alert(x.room_seq)
     						let comments = d.comments
     						$.each(comments, (i,j)=>{
     							console.log(j)
-    		    				$(`<div id="detail_comments"><h3>${j.hcomments}</h3><h4 style="text-align-last: right"> ----${j.uid}, 평점 : [${j.rating}]</h4></div>`).appendTo('#main3')
+    		    				$(`<div id="detail_comments"><h3>${j.user_comment}</h3><h4 style="text-align-last: right"> ----${j.userid}, 평점 : [${j.rating}]</h4></div>`).appendTo('#main3')
     		    				
     						})
     						 

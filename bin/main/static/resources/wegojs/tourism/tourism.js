@@ -72,10 +72,10 @@ let tourList =()=>{
 		$.each(t, (i,j) =>{
 
 			$(`<div class="content2" id="home">
-					 <div id="inner" class="inner" style="background-image: url(${j.tourImg});"></div>
+					 <div id="inner" class="inner" style="background-image: url(${j.tourimg});"></div>
 					<div class="inner2">
-					<h1 id="tourName">${j.tourName}</h1>
-					<div id="tourinfo" value=""><h4>${j.tourAddr}</h4></div>
+					<h1 id="tourName">${j.tour_name}</h1>
+					<div id="tourinfo" value=""><h4>${j.tour_addr}</h4></div>
 					<div id="tourTag" value=""><h5>${j.tel}</h5></div>				 
 					 </div>`).appendTo('#tourList')
 		})

@@ -11,6 +11,6 @@ import com.wego.web.festival.FestivalBook;
 public interface FestivalMapper {
 	public void insertFestival(Festival festival);
 	public List<Festival> selectFestivalList(Festival festival);
-	public Festival selectFestivalInfo(int feseq);
+	public Festival selectFestivalInfo(int festival_seq);
 	public void insertFestivalBook(FestivalBook festivalbook);
 }

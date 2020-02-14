@@ -64,7 +64,7 @@ login=(()=>{
 			$.ajax({
 		          url : '/user/'+$('#uid').val(),
 		          type : 'POST',
-		          data : JSON.stringify({uid : $('#uid').val(), pwd : $('#pwd').val()}),
+		          data : JSON.stringify({userid : $('#uid').val(), passwd : $('#pwd').val()}),
 		          dataType : 'json',
 		          contentType : 'application/json',
 		          success: d =>{
@@ -98,7 +98,7 @@ login=(()=>{
 				$.ajax({
 		          url : '/admin/'+$('#aid').val(),
 		          type : 'POST',
-		          data : JSON.stringify({aid : $('#aid').val(), apwd : $('#apwd').val()}),
+		          data : JSON.stringify({admin_id : $('#aid').val(), admin_pwd : $('#apwd').val()}),
 		          dataType : 'json',
 		          contentType : 'application/json',
 		          success: d =>{

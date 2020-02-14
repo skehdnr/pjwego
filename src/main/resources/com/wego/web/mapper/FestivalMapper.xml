@@ -5,23 +5,23 @@
   <mapper namespace="com.wego.web.mapper.FestivalMapper">
   
   <insert id="insertFestival" parameterType="com.wego.web.festival.Festival">
-  INSERT INTO FESTIVAL(FTITLE,FIMG,FDATE,FINFO)VALUES
-  				(#{ftitle},#{fimg},#{fdate},#{finfo})
+  insert into festival(festival_title,festival_img,festival_date,festival_info)values
+  				(#{festival_title},#{festival_img},#{festival_date},#{festival_info})
   </insert>
   
      <select id="selectFestivalList" resultType="com.wego.web.festival.Festival" parameterType="com.wego.web.festival.Festival" >
-	SELECT * FROM FESTIVAL
+	select * from festival
 	</select>
 	
 	<select id="selectFestivalInfo" resultType="com.wego.web.festival.Festival" parameterType="int">
-	SELECT *
-	FROM FESTIVAL
-	WHERE FESEQ LIKE #{feseq}
+	select *
+	from festival
+	where festival_seq like #{festival_seq}
 	</select>
 	
 	<insert id="insertFestivalBook" parameterType="com.wego.web.festival.FestivalBook">
-	INSERT INTO FESTIVALBOOK (UID,TEL,FDATE,FPER)VALUES
-					(#{uid},#{tel},#{fdate},#{fper})
+	insert into festivalbook (userid,tel,visit_date,person)values
+					(#{userid},#{tel},#{visit_date},#{person})
 	</insert>
 	  
   </mapper>

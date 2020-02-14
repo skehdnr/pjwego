@@ -37,7 +37,7 @@ findinfo=(()=>{
 			alert("떠라떠라")
 			 $.getJSON('/user/'+$('#uname').val()+'/findid/'+$('#tel').val(),d=>{
 				 let s = d.user
-      		   alert("찾으시는 아이디는  [ "+s.uid+ " ] 입니다.")
+      		   alert("찾으시는 아이디는  [ "+s.userid+ " ] 입니다.")
 				 login.onCreate()
 				
 			 })
@@ -78,7 +78,7 @@ findinfo=(()=>{
 	            	   contentType : 'application/json',
 	            	   success : d=>{
 	            		   let s = d.user
-	            		   alert("찾으시는 비밀번호는  [ "+s.pwd + " ]입니다.")
+	            		   alert("찾으시는 비밀번호는  [ "+s.passwd + " ]입니다.")
 	            		   login.onCreate()
 	            	   },
 	            	   error : e => {

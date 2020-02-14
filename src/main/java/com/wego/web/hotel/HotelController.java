@@ -1,6 +1,8 @@
 package com.wego.web.hotel;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 
@@ -13,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.wego.web.community.Community;
 import com.wego.web.mapper.HotelMapper;
+import com.wego.web.user.User;
 import com.wego.web.util.Printer;
 
 @Lazy
@@ -152,17 +156,17 @@ public class HotelController {
 		System.out.println("호텔리스트=====" + map.get("hotel"));
 		return map;
 	}
-	@GetMapping("/roomlist/{hseq}")
-	public Map<String, Object> roomList(@PathVariable int hseq) {
-		System.out.println("룸리스트 컨트롤러"+hseq);
+	@GetMapping("/roomlist/{hotel_seq}")
+	public Map<String, Object> roomList(@PathVariable int hotel_seq) {
+		System.out.println("룸리스트 컨트롤러"+hotel_seq);
 		Map<String, Object> map = new HashMap<>();		
-		room.setHseq(String.valueOf(hseq));
+		room.setHotel_seq(String.valueOf(hotel_seq));
 		map.put("room", hotelService.findRoomList(room));
 		System.out.println("룸리스트" + map.get("room"));
-		Hotel hotel = hotelService.findOnHotelByHseq(hseq);
-		System.out.println(hseq+"-----------------");
-		Comments comments = hotelService.findOnCommentsByRating(hseq);
-		Hotel hotelMap = hotelService.findMapByHseq(hseq);
+		Hotel hotel = hotelService.findOnHotelByHseq(hotel_seq);
+		System.out.println(hotel_seq+"-----------------");
+		Comments comments = hotelService.findOnCommentsByRating(hotel_seq);
+		Hotel hotelMap = hotelService.findMapByHseq(hotel_seq);
 		//map.put("comments", hotelService.findCommentsList(comments));
 		
 		System.out.println(comments + "------------2222222222");
@@ -173,38 +177,38 @@ public class HotelController {
 		map.put("comments", comments);
 		return map;
 	}
-	@GetMapping("/comments/{hseq}")
-	public Map<String, Object> commentsList(@PathVariable int hseq) {
-		System.out.println("코맨츠 리스트 컨트롤러"+hseq);
+	@GetMapping("/comments/{room_seq}")
+	public Map<String, Object> commentsList(@PathVariable int room_seq) {
+		System.out.println("코맨츠 리스트 컨트롤러"+room_seq);
 		Map<String, Object> map = new HashMap<>();
-		comments.setHseq(String.valueOf(hseq));
+		comments.setRoom_seq(String.valueOf(room_seq));
 		map.put("comments", hotelService.findCommentsList(comments));
 		System.out.println("코맨츠" + map.get("comments"));
 		return map;
 	}
-	@GetMapping("/search/{harea}")
-	public Hotel[] search(@PathVariable String harea){
+	@GetMapping("/search/{hotel_area}")
+	public Hotel[] search(@PathVariable String hotel_area){
 		return hotelMapper.selectSearchList().stream().toArray(Hotel[]::new);
 	}
-	@GetMapping("/location/{harea}")  
-	public Map<String, Object> location(@PathVariable String harea){	
+	@GetMapping("/location/{hotel_area}")  
+	public Map<String, Object> location(@PathVariable String hotel_area){	
 		Map<String, Object> map = new HashMap<>();	
-		hotel.setHarea(harea);
+		hotel.setHotel_area(hotel_area);
 		map.put("hotel", hotelService.findLocationList(hotel));
 		System.out.println("111111"+hotel);
-		System.out.println("2222222"+harea);
+		System.out.println("2222222"+hotel_area);
 		return map;
 	}
-	@GetMapping("/hotelMap/{hseq}")
-	public Map<String, Object> hotelMap(@PathVariable int hseq) {
-		System.out.println("룸리스트 컨트롤러"+hseq);
+	@GetMapping("/hotelMap/{hotel_seq}")
+	public Map<String, Object> hotelMap(@PathVariable int hotel_seq) {
+		System.out.println("룸리스트 컨트롤러"+hotel_seq);
 		Map<String, Object> map = new HashMap<>();		
-		hotel.setHseq(String.valueOf(hseq));
+		hotel.setHotel_seq(String.valueOf(hotel_seq));
 		map.put("room", hotelService.findRoomList(room));
 		System.out.println("룸리스트" + map.get("room"));
-		Hotel hotel = hotelService.findOnHotelByHseq(hseq);
-		System.out.println(hseq+"-----------------");
-		Comments comments = hotelService.findOnCommentsByRating(hseq);
+		Hotel hotel = hotelService.findOnHotelByHseq(hotel_seq);
+		System.out.println(hotel_seq+"-----------------");
+		Comments comments = hotelService.findOnCommentsByRating(hotel_seq);
 		
 		//map.put("comments", hotelService.findCommentsList(comments));
 		
