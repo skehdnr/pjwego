@@ -5,8 +5,8 @@ app = (() => {
 	let js;
 	let mainHomejs;
 	let run = () => {
-		$.getScript(x +'/resources/wegojs/cmm/router.js', () => {
-			$.extend(new Session(x));
+		$.getScript('/resources/wegojs/cmm/router.js', () => {
+			$.extend(new Session());
 			onCreate();
 		})
 	}

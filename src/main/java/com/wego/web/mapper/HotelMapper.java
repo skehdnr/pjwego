@@ -5,12 +5,10 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.wego.web.community.Community;
 import com.wego.web.hotel.Comments;
 import com.wego.web.hotel.Hotel;
 import com.wego.web.hotel.Reservation;
 import com.wego.web.hotel.Room;
-import com.wego.web.user.User;
 
 @Repository
 public interface HotelMapper {

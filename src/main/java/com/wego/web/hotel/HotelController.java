@@ -1,8 +1,6 @@
 package com.wego.web.hotel;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 
@@ -15,9 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.wego.web.community.Community;
 import com.wego.web.mapper.HotelMapper;
-import com.wego.web.user.User;
 import com.wego.web.util.Printer;
 
 @Lazy

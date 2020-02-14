@@ -2,7 +2,6 @@ package com.wego.web.festival;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;

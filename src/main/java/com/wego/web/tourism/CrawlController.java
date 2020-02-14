@@ -12,9 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.wego.web.proxy.Box;
 import com.wego.web.proxy.CrawlingProxy;
-import com.wego.web.proxy.Inventory;
 import com.wego.web.proxy.PageProxy;
-import com.wego.web.proxy.Proxy;
 @RestController
 @RequestMapping("/crawls")
 public class CrawlController {

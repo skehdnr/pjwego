@@ -2,11 +2,9 @@ package com.wego.web.community;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.stream.Stream;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;

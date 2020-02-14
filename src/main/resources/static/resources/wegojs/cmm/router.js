@@ -1,8 +1,8 @@
 "use strict";
 function Session() {
-	sessionStorage.setItem('js', x + '/resources/wegojs');
-	sessionStorage.setItem('css', x + '/resource/wegocss');
-	sessionStorage.setItem('img', x + '/resources/wegoimg');
+	sessionStorage.setItem('js', '/resources/wegojs');
+	sessionStorage.setItem('css', '/resource/wegocss');
+	sessionStorage.setItem('img', '/resources/wegoimg');
 	return {
 		js: () => { return sessionStorage.getItem('js'); },
 		css: () => { return sessionStorage.getItem('css'); },

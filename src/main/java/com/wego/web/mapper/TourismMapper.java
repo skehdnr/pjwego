@@ -3,9 +3,6 @@ package com.wego.web.mapper;
 import java.util.HashMap;
 import java.util.List;
 
-import com.wego.web.community.Like;
-import com.wego.web.hotel.Hotel;
-import com.wego.web.proxy.Proxy;
 import com.wego.web.tourism.Tourism;
 
 public interface TourismMapper {

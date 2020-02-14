@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.wego.web.mapper.HotelMapper;
-import com.wego.web.user.User;
 
 import lombok.Data;
 

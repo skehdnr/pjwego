@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 
 import com.wego.web.festival.Festival;
 import com.wego.web.festival.FestivalBook;
-import com.wego.web.hotel.Hotel;
 
 @Repository
 public interface FestivalMapper {
