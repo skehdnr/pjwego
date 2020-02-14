@@ -2,7 +2,7 @@
 var mainHome = mainHome || {};
 mainHome = (() => {
     const WHEN_ERR = '호출하는 mainHome js를 찾을 수 없습니다 .'
-    let context, js;
+    let js;
     let routerjs,mainVuejs; 
     let crewjs,introjs; 
     let tourismjs; 
@@ -11,7 +11,6 @@ mainHome = (() => {
     let hotelMainVuejs, hotelHomejs,hotelDetailjs,festivaljs;
 
     let init = () => {
-        context = $.ctx()
         js = $.js()
         routerjs = js + '/cmm/router.js'
       	mainVuejs = js +'/vue/mainVue.js'

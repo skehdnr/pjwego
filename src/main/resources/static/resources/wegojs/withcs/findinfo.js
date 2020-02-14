@@ -2,12 +2,11 @@
 var findinfo = findinfo||{}
 findinfo=(()=>{
 	const WHEN_ERR = '호출하는 findinfo 페이지가 없음'
-	let context, js;
+	let js;
     let mainVuejs;
 	let findinfovuejs;
 	let loginjs
     let init = () => {
-        context = $.ctx()
 		js = $.js()
 		findinfovuejs = js + '/withcsvue/findinfo_vue.js'
 		mainVuejs = js +'/vue/mainVue.js'
@@ -36,15 +35,14 @@ findinfo=(()=>{
 		
 		$('#findid2').click(()=>{
 			alert("떠라떠라")
-			 context = $.ctx()
-			 $.getJSON(context+'/user/'+$('#uname').val()+'/findid/'+$('#tel').val(),d=>{
+			 $.getJSON('/user/'+$('#uname').val()+'/findid/'+$('#tel').val(),d=>{
 				 let s = d.user
       		   alert("찾으시는 아이디는  [ "+s.uid+ " ] 입니다.")
 				 login.onCreate()
 				
 			 })
 	              /* $.ajax({
-	            	   url : context+'/user/'+$('#uname').val()+'/findid/'+$('#tel').val(),
+	            	   url : '/user/'+$('#uname').val()+'/findid/'+$('#tel').val(),
 	            	   type : 'GET',
 	            	   data : JSON.stringify({
 	            		   	  uname:$('#uname').val(),
@@ -70,9 +68,8 @@ findinfo=(()=>{
 		
 		$('#findpwd_btn2').click(()=>{
 			alert("떠라떠라22")
-			 context = $.ctx()
 	               $.ajax({
-	            	   url : context+'/user/'+$('#find_uid').val()+'/findpwd/'+$('#pwdtel').val(),
+	            	   url : '/user/'+$('#find_uid').val()+'/findpwd/'+$('#pwdtel').val(),
 	            	   type : 'POST',
 	            	   data : JSON.stringify({
 	            		   	  uid:$('#find_uid').val(),

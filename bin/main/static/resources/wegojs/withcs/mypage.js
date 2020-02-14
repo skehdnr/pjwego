@@ -2,11 +2,10 @@
 var mypage = mypage ||{}
 mypage=(()=>{
 	const WHEN_ERR = '호출하는 mypage 페이지가 없음'
-	let context, js;
+	let js;
     let mainVuejs,mypagevuejs,mainHomejs,routerjs;
 
 	let init = () => {
-        context = $.ctx()
 		js = $.js()
 		mypagevuejs = js + '/withcsvue/mypage_vue.js'
 		mainVuejs = js +'/vue/mainVue.js'

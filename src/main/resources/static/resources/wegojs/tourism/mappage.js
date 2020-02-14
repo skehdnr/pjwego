@@ -3,14 +3,13 @@
 var mappage = mappage || {}
 mappage = (()=>{
 	const WHEN_ERR = '호출하는 mappagejs 를 찾을 수 없습니다.'
-		let context, js
+		let js
 		let tourism_Vuejs
 		let mainHomejs
 		let mainVuejs
 		let mappageVuejs
 		let mapjs
 		let init = () =>{
-			context = $.ctx()
 			js = $.js() 
 			tourism_Vuejs = js + '/tourism/tourismVue.js'
 			mainHomejs = js + '/cmm/mainHome.js'
@@ -69,7 +68,7 @@ mappage = (()=>{
 		
 		let infoCrawl =()=>{
 			$('#infofofo').click(()=>{
-				$.getJSON(context+'/crawls/info',d=>{
+				$.getJSON('/crawls/info',d=>{
         			$.each(d, (i,j)=>{
         				$('<div/>')
 				             .html('<h3>'+j.info1+'</h3>')
@@ -82,7 +81,7 @@ mappage = (()=>{
 		
 		let newsCrawl =()=>{
 			$('#newnews').click(()=>{
-				$.getJSON(context + '/crawls/news', d=>{
+				$.getJSON('/crawls/news', d=>{
 					$.each(d, (i,j) =>{
 						$('<div/>')
 						.html('<div><img style="width:600px; height:300px;" src="'+j.photo+'"/><br/><h3>'+j.title+'</h4><br/><h4>'+j.comment+'</h4></div>')

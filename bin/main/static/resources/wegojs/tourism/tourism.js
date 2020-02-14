@@ -2,14 +2,13 @@
 var tourism = tourism || {}
 tourism = (() => {
 	const WHEN_ERR = '호출하는 tourism.js 를 찾을 수 없음 '
-	let context, js
+	let js
 	let tourism_Vuejs
 	let mainHomejs
 	let mainVuejs
 	let mappagejs
 	let mapjs
 	let init = () => {
-		context = $.ctx()
 		js = $.js()
 		tourism_Vuejs = js + '/tourism/tourismVue.js'
 		mainHomejs = js + '/cmm/mainHome.js'
@@ -43,21 +42,21 @@ tourism = (() => {
 	
 	let createtable=()=>{
 		$('#createtourism').click(()=>{
-			$.getJSON(context+'/tourism/create/table',d=>{
+			$.getJSON('/tourism/create/table',d=>{
 				alert('만들어져랏')
 			})
 		})
 	}
 	let createliketable=()=>{
 		$('#createlike').click(()=>{
-			$.getJSON(context+'/tourism/likeplace',d=>{
+			$.getJSON('/tourism/likeplace',d=>{
 				alert('만들어저랏')
 			})
 		})
 	}
 	let inserttourism=()=>{
 		$('#dummy').click(()=>{
-			$.getJSON(context+'/tourism/insert/dummy',d=>{
+			$.getJSON('/tourism/insert/dummy',d=>{
 				alert('만들어져랏')
 			})
 		})
@@ -65,7 +64,7 @@ tourism = (() => {
 
 	
 let tourList =()=>{
-	$.getJSON(context+'/tourism/list', d=>{
+	$.getJSON('/tourism/list', d=>{
 		let index = [1,2,3,4]
 		let t = d.tour
 		console.log(t)

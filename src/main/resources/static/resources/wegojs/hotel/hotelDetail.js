@@ -2,12 +2,11 @@
 var hotelDetail = hotelDetail || {}
 hotelDetail = (()=>{
 	const WHEN_ERR = '호출하는 hotelDetail js를 찾을 수 없습니다 .'
-	        let context, js;
+	        let js;
 	        let routerjs;
 	        let mainVuejs, hotelMainVuejs, hotelHomejs,hotelComparejs, hotelPayjs,hotelmapVue,loginjs,login_vuejs,mappageVuejs,mapjs;
 	       let hotelpayjs
 	        let init=()=>{
-	            context = $.ctx()
 	            js = $.js()
 	            routerjs = js+'/cmm/router.js'
 	          	mainVuejs = js+'/vue/mainVue.js'
@@ -64,8 +63,7 @@ hotelDetail = (()=>{
 	    		$('#mainbody').html(hotelDetailVue.hDetail_body(x))
 	    		 $('html').scrollTop(0);
 	    		
-	    		context = $.ctx()
-	    		$.getJSON(context+'/hotel/roomlist/'+x.hseq, d=>{	
+	    		$.getJSON('/hotel/roomlist/'+x.hseq, d=>{	
 	    			let hotel = d.hotel
 	    			let room = d.room
 	    			let c = d.comments
@@ -209,7 +207,7 @@ $('#map').click(e=>{
 	    			$('#about').click(e=>{
 	    				e.preventDefault()
     					$('#main3').empty()
-    					$.getJSON(context+'/hotel/comments/'+x.hseq,d=>{
+    					$.getJSON('/hotel/comments/'+x.hseq,d=>{
     			
     						let comments = d.comments
     						$.each(comments, (i,j)=>{

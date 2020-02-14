@@ -1,10 +1,9 @@
 var festival = festival||{}
 festival = (()=>{
 	const WHEN_ERR = `호출하는 festival js가 없음`
-		let context, js;
+		let js;
 	    let mainVuejs, festivalvuejs,routerjs,festivalDetailjs;
 		let init = ()=>{
-			context = $.ctx()
 			js = $.js()
 			routerjs = js+`/cmm/router.js`
 			mainVuejs = js + `/vue/mainVue.js`
@@ -34,7 +33,7 @@ festival = (()=>{
 	
 	let festivalcraw=()=>{
 		$(`#festivalcraw`).click(()=>{
-			$.getJSON(context+`/festival/crawling`,d=>{
+			$.getJSON(`/festival/crawling`,d=>{
 				alert(`크롤링성공`)
 			})
 		})
@@ -42,7 +41,7 @@ festival = (()=>{
 	}
 
 	let festivalList =x=>{
-		$.getJSON(context+`/festival/flist`,d=>{
+		$.getJSON(`/festival/flist`,d=>{
 			let f = d.festival
 			$.each(f, (i,j)=>{
 				$(`<div class="col-lg-6 col-md-6">  

@@ -2,9 +2,8 @@
 var hotelEnd = hotelEnd || {}
 hotelEnd = (()=>{
 	const WHEN_ERR = '호출하는 hotelEnd js를 찾을 수 없습니다 .'
-		let context, js, routerjs, mainVuejs, hotelMainVuejs, hotelHomejs,hotelComparejs,hotelEndVuejs, hotelPayjs ;
+		let js, routerjs, mainVuejs, hotelMainVuejs, hotelHomejs,hotelComparejs,hotelEndVuejs, hotelPayjs ;
 	    let init=()=>{
-	        context = $.ctx()
 	        js = $.js()
 	        routerjs = js+'/cmm/router.js'
 	      	mainVuejs = js+'/vue/mainVue.js'

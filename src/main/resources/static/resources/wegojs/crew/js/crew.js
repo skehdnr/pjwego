@@ -2,10 +2,9 @@
 var crew = crew || {}
 crew = (() => {
 	const WHEN_ERR = '호출하는 crew js를 찾을수 없습니다.'
-	let context, js;
+	let js;
 	let crewVuejs;
 	let init = () => {
-		context = $.ctx()
 		js = $.js()
 		crewVuejs = js + '/crew/vue/crewVue.js'
 		

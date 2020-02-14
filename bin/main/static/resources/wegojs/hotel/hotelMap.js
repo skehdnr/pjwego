@@ -2,9 +2,8 @@
 var hotelMap = hotelMap || {}
 hotelMap = (() => {
     const WHEN_ERR = '찾는 mapjs를 호출할수 없습니다.'
-    let context, js;
+    let js;
     let init = () => {
-        context = $.ctx()
         js = $.js()
     }
     let onCreate = () => {

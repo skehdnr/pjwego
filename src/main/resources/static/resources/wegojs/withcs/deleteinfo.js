@@ -2,11 +2,10 @@
 var deleteinfo = deleteinfo ||{}
 deleteinfo =(()=>{
 	const WHEN_ERR = '호출하는 login 페이지가 없음'
-	let context, js;
+	let js;
     let mainVuejs,deleteinfovuejs,mainHomejs ;
 
 	let init = () => {
-        context = $.ctx()
 		js = $.js()
 		deleteinfovuejs = js + '/withcsvue/deleteinfo_vue.js'
 		mainVuejs = js +'/vue/mainVue.js'
@@ -44,7 +43,7 @@ deleteinfo =(()=>{
 		$('#gogomain_btn').click(()=>{
 			let data ={uid:$(`#uid`).val(),pwd:$(`#pwd`).val()}
 			$.ajax({
-				url:context+'/user/'+$('#uid').val()+'/remove',
+				url:'/user/'+$('#uid').val()+'/remove',
 				type:'DELETE',
 				data:JSON.stringify(data),
 				dataType:'json',

@@ -1,10 +1,9 @@
 var write = write||{}
 write = (()=>{
 	const WHEN_ERR = `호출하는 글쓰기 js가 없음`
-	let context,js
+	let js
 	let writevuejs, communityjs
 	let init =()=>{
-		context = $.ctx()
 		js = $.js()
 		writevuejs = js + `/community/vue/write_vue.js`
 		communityjs = js + `/community/communityjs/write.js`
@@ -61,7 +60,7 @@ write = (()=>{
 					uid: sessionStorage.getItem(`UID`)
 				}
 				$.ajax({
-					url: context + `/community/write`,
+					url: `/community/write`,
 					type: `POST`,
 					data: JSON.stringify(json),
 					dataType: `json`,
@@ -76,7 +75,7 @@ write = (()=>{
 
 						//formData.append('uploadFile',file)
 						$.ajax({
-							url: context+`/community/fileupload/${sessionStorage.getItem('UID')}`,
+							url: `/community/fileupload/${sessionStorage.getItem('UID')}`,
 							data: formData,
 							type: `POST`,
 							contentType: false,

@@ -2,9 +2,8 @@
 var adminmain = adminmain ||{}
 adminmain=(()=>{
 	const WHEN_ERR = `호출하는 어드민 페이지가 없음`
-	let context,js,mainVuejs,mainHomejs,adminmainVuejs,routerjs
+	let js,mainVuejs,mainHomejs,adminmainVuejs,routerjs
 	let init = ()=>{
-		context = $.ctx()
 		js = $.js()
 		mainVuejs =  js +`/vue/mainVue.js`
 		mainHomejs = js + `/cmm/mainHome.js`
@@ -116,7 +115,7 @@ adminmain=(()=>{
 			});
 				/*formData.append('uploadFile',file)*/
 				$.ajax({
-					url: context+'/admin/fileupload',
+					url: '/admin/fileupload',
 					data : formData,
 					type : 'POST',
 					contentType : false,
@@ -152,7 +151,7 @@ adminmain=(()=>{
 	}
 	
 	let chartdata=()=>{
-		$.getJSON(context+`/admin/chartlead`,d=>{
+		$.getJSON(`/admin/chartlead`,d=>{
 			
 		})
 	}
@@ -163,7 +162,7 @@ adminmain=(()=>{
     let excelup=()=>{
 		$(`#excelupup`).click(()=>{
 			$.ajax({
-					url: context+'/admin/excel',
+					url: '/admin/excel',
 					type : 'POST',
 					contentType : false,
 					processData: false,

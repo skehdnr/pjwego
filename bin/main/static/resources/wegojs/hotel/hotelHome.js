@@ -2,9 +2,8 @@
 var hotelHome = hotelHome || {}
 hotelHome = (()=>{
 	const WHEN_ERR = '호출하는 hotelHome js를 찾을 수 없습니다 .'
-	let context, js, routerjs, hotelMainVuejs, mainVuejs,hotelDetailjs, search;
+	let js, routerjs, hotelMainVuejs, mainVuejs,hotelDetailjs, search;
 	let init =()=>{
-		context = $.ctx()
 		js = $.js()
         routerjs = js+'/cmm/router.js'
       	mainVuejs = js+'/vue/mainVue.js'
@@ -43,7 +42,7 @@ hotelHome = (()=>{
 	}
 
     let hotelList=x=>{
-    	$.getJSON(context+'/hotel/list', d=>{
+    	$.getJSON('/hotel/list', d=>{
     		let h = d.hotel
     		let h2 = d.hotel2
     		
@@ -133,31 +132,31 @@ hotelHome = (()=>{
 			e.preventDefault()
 
 			 
-		/*	$.getJSON(context+'/hotel/create/hoteltable/',d=>{
+		/*	$.getJSON('/hotel/create/hoteltable/',d=>{
 				alert("hoteltable성공:"+d.msg)
 				//hotel table 생성
 			})*/
 			
-			/*   $.getJSON(context+'/hotel/insert/hotelDB/',d=>{
+			/*   $.getJSON('/hotel/insert/hotelDB/',d=>{
 				alert("성공:"+d.msg)
 				//hotel db 생성
 			})  */
 			
-			/*      $.getJSON(context+'/hotel/create/roomtable/',d=>{
+			/*      $.getJSON('/hotel/create/roomtable/',d=>{
 				alert("roomtable성공:"+d.msg)
 				//room table 생성
 			})  */
 			
-			/*  $.getJSON(context+'/hotel/insert/roomdb/',d=>{
+			/*  $.getJSON('/hotel/insert/roomdb/',d=>{
 				alert("성공:"+d.msg)})*/
 			
-			/*$.getJSON(context+'/hotel/create/commentstable/',d=>{
+			/*$.getJSON('/hotel/create/commentstable/',d=>{
 				alert("commentstable 성공:"+d.msg) })*/
 				
-			/*	$.getJSON(context+'/hotel/insert/commentsDB/',d=>{
+			/*	$.getJSON('/hotel/insert/commentsDB/',d=>{
 				alert("commentsDB 성공:"+d.msg) })*/
 			
-			/*	$.getJSON(context+'/hotel/create/reservationtable/',d=>{
+			/*	$.getJSON('/hotel/create/reservationtable/',d=>{
 			alert("reservationtable 성공:"+d.msg) })*/
 			
 
@@ -176,7 +175,7 @@ hotelHome = (()=>{
       $('#searchbtn').click(e => {
           e.preventDefault()
 
-          $.getJSON(context + '/hotel/search/' + $('#harea').val(), d => {
+          $.getJSON('/hotel/search/' + $('#harea').val(), d => {
         	  alert(d.hotel)
               alert('검색 ' + $('#harea').val())
               $('#hotelList').empty()
@@ -220,7 +219,7 @@ hotelHome = (()=>{
 		  	// value 값으로 선택
 		  	alert("옵션선택")
 			  $('#hotelList').empty()
-	  $.getJSON(context + '/hotel/location/'+$('#location').val(), d=>{
+	  $.getJSON('/hotel/location/'+$('#location').val(), d=>{
 		  let h = d.hotel
 		  alert($('#location').val() + "떠라떠라")
 		

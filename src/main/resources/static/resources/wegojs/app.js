@@ -2,7 +2,7 @@
 var app = app || {};
 app = (() => {
 	const WHEN_ERR = 'app js를 찾을수 없습니다.'
-	let context, js;
+	let js;
 	let mainHomejs;
 	let run = () => {
 		$.getScript(x +'/resources/wegojs/cmm/router.js', () => {
@@ -11,7 +11,6 @@ app = (() => {
 		})
 	}
 	let init = () => {
-		context = $.ctx();
 		js = $.js();
 		mainHomejs = js + '/cmm/mainHome.js'
 	}

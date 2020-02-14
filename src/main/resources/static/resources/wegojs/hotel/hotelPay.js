@@ -2,10 +2,9 @@
 var hotelPay = hotelPay || {}
 hotelPay = (()=>{
 	const WHEN_ERR = '호출하는 hotelPay js를 찾을 수 없습니다 .'
-	let context, js, routerjs, mainVuejs, hotelMainVuejs, hotelHomejs,hotelComparejs, hotelPayVuejs,hotelEndjs;
+	let js, routerjs, mainVuejs, hotelMainVuejs, hotelHomejs,hotelComparejs, hotelPayVuejs,hotelEndjs;
 	let hoteldetailjs
     let init=()=>{
-        context = $.ctx()
         js = $.js()
         routerjs = js+'/cmm/router.js'
       	mainVuejs = js+'/vue/mainVue.js'
@@ -78,7 +77,6 @@ hotelPay = (()=>{
     		e.preventDefault()
     		alert('예약완료!!')
     		
-    		context = $.ctx()
     		let data = {
     			indate: localStorage.getItem('INDATE'),
     			outdate:localStorage.getItem('OUTDATE'),
@@ -94,7 +92,7 @@ hotelPay = (()=>{
     		alert($('#Hotelprice').val()+"가격 알럿")
     		alert(sessionStorage.getItem(`UID`))
     		$.ajax({
-    			url : context+'/hotel/insert/reservationDB',
+    			url : '/hotel/insert/reservationDB',
     			type : 'POST',
     			dataType : 'json',
     	    	data : JSON.stringify(data),

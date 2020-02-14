@@ -1,10 +1,9 @@
 var community = community||{}
 community = (()=>{
 	const WHEN_ERR = `호출하는 커뮤니티 js가 없음`
-	let context, js;
+	let js;
     let mainVuejs, detail, writejs, searchjs, communitymainvue ;
 	let init = ()=>{
-		context = $.ctx()
 		js = $.js()
 		mainVuejs = js + `/vue/mainVue.js`
 		communitymainvue = js + `/community/vue/main_vue.js`
@@ -55,7 +54,7 @@ community = (()=>{
 	}
 	
 	let recent_list = x =>{
-		$.getJSON(context + `/community/list/`+x.pageNo, d=>{
+		$.getJSON(`/community/list/`+x.pageNo, d=>{
 			console.log(d.community)
 			$.each(d.community, (i,j)=>{
 				$(`<div class="col-md-4 col-sm-6 portfolio-item">
@@ -111,7 +110,7 @@ community = (()=>{
 				uid : sessionStorage.getItem(`UID`)
 		} 
 		$.ajax({
-			url : context+`/community/${x}/reply/`,
+			url : `/community/${x}/reply/`,
 			type: `POST`,
 			data: JSON.stringify(json),
             dataType: `json`,
@@ -135,7 +134,7 @@ community = (()=>{
         $('#searchbtn').click(e => {
             e.preventDefault()
 
-            $.getJSON(context + '/community/search/' + $('#searchword').val(), d => {
+            $.getJSON('/community/search/' + $('#searchword').val(), d => {
                 alert('서치 ' + d.title)
                 $('#communitybody').empty()
                 $.each(d, (i, j) => {
@@ -180,16 +179,16 @@ community = (()=>{
 	
 	 let make = () => {
 	        $(`#create`).click(() => {
-	            $.getJSON(context + `/community/create/table`, d => {
+	            $.getJSON(`/community/create/table`, d => {
 	            })
 	        })
 	        $(`#createlike`).click(() => {
-	            $.getJSON(context + `/community/create/tablelike`, d => {
+	            $.getJSON(`/community/create/tablelike`, d => {
 	              
 	            })
 	        })
 	        $(`#createcomment`).click(() => {
-	            $.getJSON(context + `/community/create/tablecomment`, d => {
+	            $.getJSON(`/community/create/tablecomment`, d => {
 	            })
 	        })
 
@@ -198,7 +197,7 @@ community = (()=>{
 	 let crw = () => {
 	        $(`#crawling`).click(e => {
 	        	e.preventDefault()
-	            $.getJSON(context + `/community/crawler`, d => {
+	            $.getJSON(`/community/crawler`, d => {
 	            })
 	        })
 	    }

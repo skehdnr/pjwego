@@ -2,13 +2,12 @@
 var adminjoin = adminjoin ||{}
 adminjoin=(()=>{
 	const WHEN_ERR = '호출하는 admin 페이지가 없음'
-	let context, js;
+	let js;
 	let mainVuejs;
 	let adminjoinvuejs
 	let mainHomejs
 	let loginjs
 	let init = () => {
-        context = $.ctx()
 		js = $.js()
 		adminjoinvuejs = js + '/adminvue/adminjoin_vue.js'
 		mainVuejs = js +'/vue/mainVue.js'
@@ -57,7 +56,7 @@ adminjoin=(()=>{
 					addr:($(`#sample6_address`).val()+$(`#sample6_detailAddress`).val())}
 		
 			$.ajax({
-	    	url : context+'/admin/',
+	    	url : '/admin/',
 	    	type : 'POST',
 	    	dataType : 'json',
 	    	data : JSON.stringify(data),
@@ -103,7 +102,7 @@ adminjoin=(()=>{
 				content : $('#form_write textarea[name="content"]').val()
 			}
 			$.ajax({
-				url:context+'/admin/',
+				url:'/admin/',
 				type:'POST',
 				data:JSON.stringify(json),
 				dataType:'json',
@@ -112,7 +111,7 @@ adminjoin=(()=>{
 				let formData = new FormData()
 				formData.append('uploadFile',file)
 				$.ajax({
-					url: context+'/admin/fileupload',
+					url: '/admin/fileupload',
 					data : formData,
 					type : 'POST',
 					contentType : false,

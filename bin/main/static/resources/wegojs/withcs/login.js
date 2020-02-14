@@ -2,14 +2,13 @@
 var login = login ||{}
 login=(()=>{
 	const WHEN_ERR = '호출하는 login 페이지가 없음'
-	let context, js;
+	let js;
     let mainVuejs;
 	let loginvuejs;
 	let mainHomejs
 	let routerjs
 	let mypagejs,adminmainjs,adminmainVuejs,findinfojs
     let init = () => {
-        context = $.ctx()
 		js = $.js()
 		loginvuejs = js + '/withcsvue/login_vue.js'
 		mainVuejs = js +'/vue/mainVue.js'
@@ -61,10 +60,9 @@ login=(()=>{
             })	
 	}
 	let userlogin=()=>{
-		context = $.ctx()
 		$('#userlogin_btn').click(()=>{
 			$.ajax({
-		          url : context+'/user/'+$('#uid').val(),
+		          url : '/user/'+$('#uid').val(),
 		          type : 'POST',
 		          data : JSON.stringify({uid : $('#uid').val(), pwd : $('#pwd').val()}),
 		          dataType : 'json',
@@ -98,7 +96,7 @@ login=(()=>{
 			$('#mainbody').html(login_vue.adminlogin_body())
 			$('#adminlogin_btn').click(()=>{
 				$.ajax({
-		          url : context+'/admin/'+$('#aid').val(),
+		          url : '/admin/'+$('#aid').val(),
 		          type : 'POST',
 		          data : JSON.stringify({aid : $('#aid').val(), apwd : $('#apwd').val()}),
 		          dataType : 'json',

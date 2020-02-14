@@ -2,9 +2,8 @@
 var hotelCompare = hotelCompare || {}
 hotelCompare = (()=>{
 	const WHEN_ERR = '호출하는 hotelCompare js를 찾을 수 없습니다 .'
-		let context, js, routerjs, hotelMainVuejs, mainVuejs,hotelDetailjs,hotelComparejs;
+	let js, routerjs, hotelMainVuejs, mainVuejs,hotelDetailjs,hotelComparejs;
 	let init =()=>{
-		context = $.ctx()
 		js = $.js()
         routerjs = js+'/cmm/router.js'
       	mainVuejs = js+'/vue/mainVue.js'

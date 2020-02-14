@@ -1,10 +1,9 @@
 var festivalDetail = festivalDetail||{}
 festivalDetail = (()=>{
 	const WHEN_ERR = `호출하는 festivalDetail js가 없음`
-		let context, js;
-	    let mainVuejs,fastivalDetailvuejs,routerjs,festivalRvvuejs,festivalEndVuejs;
+		let js;
+	  let mainVuejs,fastivalDetailvuejs,routerjs,festivalRvvuejs,festivalEndVuejs;
 		let init = ()=>{
-			context = $.ctx()
 			js = $.js()
 			routerjs = js+`/cmm/router.js`
 			mainVuejs = js + `/vue/mainVue.js`
@@ -37,8 +36,7 @@ festivalDetail = (()=>{
 	let festival_list=x=>{
 		$('#mainbody').html(festivalDetail_Vue.fsDetail_body(x))
 		$('html').scrollTop(0);
-		context = $.ctx()
-		$.getJSON(context+`/festival/finfo/`+x.feseq, d=>{
+		$.getJSON(`/festival/finfo/`+x.feseq, d=>{
 			let festival = d.festival
 			$(`<div class="main_1 main_common1" style="background-repeat: no-repeat; background-attachment: fixed; background-size: 100% 100%; display:inline-table;  float: left; width: 700px; height: 300px; border: 1px solid #bcbcbc; >
 			          <p class="content"><img style="height: inherit; width:inherit;" id="img" src="${festival.fimg}"/></p>
@@ -81,7 +79,7 @@ festivalDetail = (()=>{
 			let data = {uid:$(`#fuid`).val(), tel:$(`#ftel`).val(),
 				date:$(`#fdate`).val(),person:$(`#fperson`).val()}
 			$.ajax({
-				url : context + `/festival/festivalend`,
+				url : `/festival/festivalend`,
 				type : `POST`,
 				dataType : `json`,
     	    	data : JSON.stringify(data),

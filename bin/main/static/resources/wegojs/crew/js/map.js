@@ -2,9 +2,8 @@
 var map = map || {}
 map = (() => {
     const WHEN_ERR = '찾는 mapjs를 호출할수 없습니다.'
-    let context, js;
+    let js;
     let init = () => {
-        context = $.ctx()
         js = $.js()
     }
     let onCreate = () => {
@@ -60,9 +59,9 @@ map = (() => {
     let mapsDBinsert = () => {
         $('#mapdb').click(e => {
             e.preventDefault
-            $.getJSON(context + '/maps/map/create/', d => {
+            $.getJSON('/maps/map/create/', d => {
               
-                $.getJSON(context + '/maps/insert/mapDB', d => {
+                $.getJSON('/maps/insert/mapDB', d => {
                  
                 })
             })

@@ -2,13 +2,12 @@
 var userjoin = userjoin ||{}
 userjoin=(()=>{
 	const WHEN_ERR = '호출하는 userjoin 페이지가 없음'
-	let context, js;
+	let js;
 	let mainVuejs;
 	let userjoinvuejs
 	let mainHomejs
 	let loginjs
 	let init = () => {
-        context = $.ctx()
 		js = $.js()
 		userjoinvuejs = js + '/user/userjoin_vue.js'
 		mainVuejs = js +'/vue/mainVue.js'
@@ -36,7 +35,7 @@ userjoin=(()=>{
 		$('#uid').keyup(() => {
 			if ($('#uid').val().length > 3) {
 				$.ajax({
-					url: context+'/user/'+$('#uid').val()+'/existId',
+					url: '/user/'+$('#uid').val()+'/existId',
 					contentType: 'application/json',
 					success: d => { 
 						if (d.msg === 'SUCCESS') {
@@ -71,7 +70,7 @@ userjoin=(()=>{
 					nickname:$(`#nickname`).val(),birth:$(`#birth`).val(),
 					tel:($(`#tel1`).val()+$(`#tel2`).val()+$(`#tel3`).val())}
             $.ajax({
-	    	url : context+'/user/',
+	    	url : '/user/',
 	    	type : 'POST',
 	    	dataType : 'json',
 	    	data : JSON.stringify(data),

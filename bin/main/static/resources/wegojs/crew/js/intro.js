@@ -2,10 +2,9 @@
 var intro = intro || {}
 intro = (()=>{
 	const WHEN_ERR ='호출하는 intro js를 찾을수 없습니다.'
-	let context,js;
+	let js;
 	let introVuejs;
 	let init=()=>{
-		context = $.ctx()
 		js = $.js()
 		introVuejs = js+'/crew/vue/introVue.js'
 	}
