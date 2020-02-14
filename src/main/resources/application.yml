@@ -1,0 +1,11 @@
+spring:
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update 
+  datasource:
+    url: jdbc:mariadb://teamwego.cgvla1pt66ci.ap-northeast-2.rds.amazonaws.com:3306/teamwego
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: teamwego
+    password: teamwego

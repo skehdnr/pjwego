@@ -1,0 +1,58 @@
+package com.wego.web.hotel;
+
+public enum SQL {
+	CREATE_HOTEL,CREATE_ROOM, CREATE_COMMENTS,CREATE_RESERVATION;
+	
+	@Override
+	public String toString() {
+		String result = "";
+		switch (this) {
+
+
+		case CREATE_HOTEL:
+			result = "CREATE TABLE HOTEL"
+					+ "(HSEQ INT(30) PRIMARY KEY AUTO_INCREMENT,"
+					+ "HOTELNAME VARCHAR(30),"
+					+ "TEL VARCHAR(30),"
+					+ "HOTELIMG VARCHAR(500),"
+					+ "HAREA VARCHAR(10),"
+					+ "HOTELINFO VARCHAR(100),"
+					+ "HADDR VARCHAR(50),"
+					+ "LATITUDE VARCHAR(30),"
+					+ "LONGITUDE VARCHAR(30))";  
+			break;
+		case CREATE_ROOM:
+			result = "CREATE TABLE ROOM"
+					+ "(RSEQ INT(30) PRIMARY KEY AUTO_INCREMENT,"
+					+ "ROOMTYPE VARCHAR(50),"
+					+ "ROOMIMG VARCHAR(500),"
+					+ "PRICE INT,"
+					+ "HSEQ INT(30) NOT NULL,"
+					+ "FOREIGN KEY(HSEQ) REFERENCES HOTEL(HSEQ))";
+	
+			break;	
+		case CREATE_COMMENTS:
+			result = "CREATE TABLE COMMENTS"
+					+"(CSEQ INT(30) PRIMARY KEY AUTO_INCREMENT,"
+					+ "HCOMMENTS VARCHAR(500),"
+					+ "RATING VARCHAR(10),"
+					+ "UID VARCHAR(30),"
+					+ "HSEQ INT(30) NOT NULL,"
+					+ "FOREIGN KEY(HSEQ) REFERENCES HOTEL(HSEQ))";
+			break;
+		case CREATE_RESERVATION: 
+			result = "CREATE TABLE RESERVATION"
+					+ "(BSEQ INT(30) PRIMARY KEY AUTO_INCREMENT,"
+					+ "INDATE VARCHAR(30),"
+					+ "OUTDATE VARCHAR(30),"
+					+ "PRICE INT,"  
+					+ "HSEQ INT(30) NOT NULL,"
+					+ "RSEQ INT(30) NOT NULL ,"
+					+ "UID VARCHAR(30),"
+					+ "FOREIGN KEY(HSEQ) REFERENCES HOTEL(HSEQ),"
+					+ "FOREIGN KEY(UID) REFERENCES USERS(UID),"
+					+ "FOREIGN KEY(RSEQ) REFERENCES ROOM(RSEQ))";
+		}
+		return result;
+	}  
+}

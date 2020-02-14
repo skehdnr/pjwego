@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.wego.web.mapper.HotelMapper">
+
+	<select id="createHotel" parameterType="hashmap">
+		${CREATE_HOTEL}
+	</select>
+	<select id="createRoom" parameterType="hashmap">
+		${CREATE_ROOM}
+	</select>
+		<select id="createComments" parameterType="hashmap">
+		${CREATE_COMMENTS}
+	</select>
+	<select id="createReservation" parameterType="hashmap">
+		${CREATE_RESERVATION}
+	</select>
+	
+	 <insert id="insertHotel" parameterType="com.wego.web.hotel.Hotel">
+    	INSERT INTO HOTEL (HOTELNAME, HOTELIMG, HID, UNAME, HADDR,HAREA, HOTELINFO, MAP) VALUES
+			(#{hotelname}, #{hotelimg}, #{hid}, #{uname}, #{haddr}, #{harea}, #{hotelinfo}, #{map})
+    </insert>
+     <insert id="insertRoom" parameterType="com.wego.web.hotel.Room">
+    	INSERT INTO ROOM(ROOMTYPE, ROOMIMG,PRICE, HSEQ) VALUES
+			(#{roomtype},#{roomimg},#{price},#{hseq})
+    </insert>
+         <insert id="insertComments" parameterType="com.wego.web.hotel.Comments">
+    	INSERT INTO COMMENTS(HCOMMENTS,RATING, UID, HSEQ) VALUES
+			(#{hcomments}, #{rating}, #{uid}, #{hseq})
+    </insert>
+    <insert id="insertReservation" parameterType="com.wego.web.hotel.Reservation"> 
+       INSERT INTO RESERVATION (INDATE, OUTDATE, UID, RSEQ, HSEQ, PRICE) VALUES 
+           (#{indate}, #{outdate}, #{uid}, #{rseq}, #{hseq}, #{price})
+   </insert> 
+    
+
+    <select id="selectHotelList" parameterType="com.wego.web.hotel.Hotel" resultType="com.wego.web.hotel.Hotel">
+			SELECT d.*
+			FROM (SELECT a.PRICE , a.HOTELNAME, a.HSEQ, b.HOTELIMG, b.RATING, b.HADDR, a.RSEQ
+			FROM 	(SELECT MIN(r.PRICE) PRICE, h.HOTELNAME, r.HSEQ, r.RSEQ
+			FROM HOTEL h JOIN ROOM r
+			ON h.HSEQ = r.HSEQ
+			GROUP BY HSEQ) a JOIN (SELECT ROUND(AVG(c.RATING)*1,2) RATING, h.HSEQ, h.HOTELNAME, h.HOTELIMG, h.HADDR
+			FROM HOTEL h JOIN COMMENTS c JOIN ROOM r
+			ON c.HSEQ = h.HSEQ = r.HSEQ
+			GROUP BY HSEQ
+			ORDER BY RATING DESC)b
+			ON a.HSEQ = b.HSEQ) d
+			ORDER BY d.RATING DESC;
+
+			
+	</select>
+	    <select id="selectHotelListForPrice" parameterType="com.wego.web.hotel.Hotel" resultType="com.wego.web.hotel.Hotel">
+			SELECT d.*
+			FROM (SELECT a.PRICE , a.HOTELNAME, a.HSEQ, b.HOTELIMG, b.RATING, b.HADDR, a.RSEQ
+			FROM 	(SELECT MIN(r.PRICE) PRICE, h.HOTELNAME, r.HSEQ, r.RSEQ
+			FROM HOTEL h JOIN ROOM r
+			ON h.HSEQ = r.HSEQ
+			GROUP BY HSEQ) a JOIN (SELECT ROUND(AVG(c.RATING)*1,2) RATING, h.HSEQ, h.HOTELNAME, h.HOTELIMG, h.HADDR
+			FROM HOTEL h JOIN COMMENTS c JOIN ROOM r
+			ON c.HSEQ = h.HSEQ = r.HSEQ
+			GROUP BY HSEQ
+			ORDER BY RATING DESC)b
+			ON a.HSEQ = b.HSEQ) d
+			ORDER BY d.PRICE;
+
+	</select>
+	    <select id="selectRoomList" parameterType="com.wego.web.hotel.Room" resultType="com.wego.web.hotel.Room">
+	    SELECT h.HSEQ,  r.ROOMTYPE, h.HOTELNAME, h.HOTELINFO, r.PRICE,r.ROOMIMG, r.RSEQ
+		FROM HOTEL h JOIN ROOM r
+		ON h.HSEQ = r.HSEQ
+		WHERE h.HSEQ LIKE #{hseq};
+	</select>
+		<select id="selectCommentsList" parameterType="com.wego.web.hotel.Comments" resultType="com.wego.web.hotel.Comments">
+			SELECT * 
+			FROM COMMENTS c JOIN HOTEL h
+			ON c.HSEQ = h.HSEQ 
+			WHERE h.HSEQ LIKE #{hseq};
+		</select> 
+		<select id="selectReservationList" parameterType="com.wego.web.hotel.Reservation" resultType="com.wego.web.hotel.Reservation">
+			SELECT * FROM RESERVATION
+		</select> 
+	
+	<select id="selectOnHotelByHseq" parameterType="int" resultType="com.wego.web.hotel.Hotel">
+		SELECT *
+		FROM HOTEL
+		WHERE HSEQ LIKE #{hseq};
+	</select>
+		<select id="selectCommentsByRating" parameterType="int" resultType="com.wego.web.hotel.Comments">
+		SELECT ROUND(AVG(RATING)*1,2) RATING
+		FROM COMMENTS
+		WHERE HSEQ LIKE #{hseq};
+	</select>
+		<select id="selectSearchList"  resultType="com.wego.web.hotel.Hotel">
+		SELECT * FROM HOTEL WHERE HAREA LIKE #{harea} ORDER BY HSEQ DESC;
+	</select>
+	<select id="selectLocationList" parameterType="com.wego.web.hotel.Hotel" resultType="com.wego.web.hotel.Hotel">
+ 			SELECT d.*
+			FROM (SELECT a.PRICE , a.HOTELNAME, a.HSEQ, b.HOTELIMG, b.RATING, b.HADDR, b.HAREA
+			FROM 	(SELECT MIN(r.PRICE) PRICE, h.HOTELNAME, r.HSEQ
+			FROM HOTEL h JOIN ROOM r
+			ON h.HSEQ = r.HSEQ
+			GROUP BY HSEQ) a JOIN (SELECT ROUND(AVG(c.RATING)*1,2) RATING, h.HSEQ, h.HOTELNAME, h.HOTELIMG, h.HADDR, h.HAREA
+			FROM HOTEL h JOIN COMMENTS c JOIN ROOM r
+			ON c.HSEQ = h.HSEQ = r.HSEQ
+			GROUP BY HSEQ
+			ORDER BY RATING DESC)b
+			ON a.HSEQ = b.HSEQ) d
+			WHERE d.HAREA LIKE #{harea}
+			ORDER BY RATING DESC;
+	</select>
+		<select id="selectMapByHseq" parameterType="int" resultType="com.wego.web.hotel.Hotel">
+		SELECT LATITUDE, LONGITUDE
+		FROM HOTEL
+		WHERE HSEQ LIKE #{hseq};
+	</select>
+</mapper>
