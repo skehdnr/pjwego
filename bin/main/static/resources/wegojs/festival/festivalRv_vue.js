@@ -1,6 +1,6 @@
 var festivalRv_vue = festivalRv_vue || {}
 festivalRv_vue = {
-		festivalRv_main: x=>{
+		festivalRv_main: x =>{
 			return `
 			<!-- breadcrumb start-->
 			    <section class="breadcrumb breadcrumb_bg">
@@ -27,14 +27,14 @@ festivalRv_vue = {
 				<div class="form-group row">
 					<label for="userid" class="col-sm-2 form-control-label">아이디</label>
 					<div class="col-sm-5">
-						<input id="fuid" type="text" class="form-control" value="" readonly>
+						<input id="fuid" type="text" class="form-control" value="${x.userid}" readonly>
 					</div>
 				</div>
 
 				<div class="form-group row">
 					<label for="usertel" class="col-sm-2 form-control-label">전화번호</label>
 					<div class="col-sm-5">
-						<input id="ftel" type="text" class="form-control" value="" readonly>
+						<input id="ftel" type="text" class="form-control" value="${x.tel}" readonly>
 					</div>
 				</div>
 
@@ -48,8 +48,7 @@ festivalRv_vue = {
 				<div class="form-group row" >
 					<label for="userpe" class="col-sm-2 form-control-label">참여인원</label>
 						<div id="inputadd">
-						<input id="fperson" type="text" value="`+$(`#fper option:selected`).val()+`" 
-							style="margin-left:3.5%; height:30px; width:360px;" readonly>
+						<input id="fpersons" type="text" value="" style="margin-left:3.5%; height:30px; width:360px;" readonly>
 						</div>
 						<select id="fper" name="select" style="margin-left:2%; height:30px; width:8%; ">
 	                        <option value="1인">1인</option>
@@ -63,7 +62,6 @@ festivalRv_vue = {
 	                        <option value="9인">9인</option>
                     	</select>
                     	<p>※10인 이상 단체인 경우 별도문의 필요※</p>
-					</div>
 				</div>
 				
 				<div class="btnfield" style="text-align: center">

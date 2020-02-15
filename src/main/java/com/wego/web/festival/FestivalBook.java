@@ -13,5 +13,5 @@ import lombok.NoArgsConstructor;
 @Lazy
 @NoArgsConstructor
 public class FestivalBook {
-	private String uid,tel,fdate,fper;
+	private String userid,tel,visit_date,person;
 }

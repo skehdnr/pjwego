@@ -56,6 +56,7 @@ public class FestivalController {
 	
 	@PostMapping("/festivalend")
 	public Map<?,?> insertbook(@RequestBody FestivalBook param){
+		System.out.println(param);
 		Consumer<FestivalBook> c= t -> festivalmapper.insertFestivalBook(param);
 		c.accept(param);
 		map.clear();

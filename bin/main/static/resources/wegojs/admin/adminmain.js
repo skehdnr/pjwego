@@ -21,16 +21,66 @@ adminmain=(()=>{
 			setContentView()
 			fileupload()
 			excelup()
+			admin_navibar()
 		}).fail(()=>{
 			alert(WHEN_ERR)
 		})
 	}
 	let setContentView =()=>{
 		$('#mainbody').html(adminmain_Vue.admin_body())
-		chart()
 	}
 	
-	let chart=()=>{
+	let hchart=()=>{
+			let ctx = document.getElementById('myChart');
+			
+			let myChart = new Chart(ctx, {
+		    type: 'bar',
+		    data: {
+		        labels: ["종로구", "중구", "용산구", "성동구", "광진구", "동대문구", "중랑구", "성북구", "강북구", "도봉구", "노원구",
+		        		 "은평구", "서대문구", "마포구", "양천구", "강서구", "구로구", "금천구", "영등포구", "동작구", "관악구", "서초구",
+		        		 "강남구", "송파구", "강동구"],
+		        datasets: [{
+		            label: '# 지역별 호텔 등록현황',
+		            data: [18, 6, 6, 3, 2, 15, 4, 12, 1, 2, 8, 5, 2, 4, 2, 3, 2, 9, 3, 2, 3, 4, 20, 8, 2],
+		            backgroundColor: [
+		                'rgba(255, 99, 132, 0.2)','rgba(54, 162, 235, 0.2)','rgba(255, 206, 86, 0.2)',
+		                'rgba(75, 192, 192, 0.2)','rgba(153, 102, 255, 0.2)','rgba(255, 159, 64, 0.2)',
+		                'rgba(255, 99, 132, 0.2)','rgba(54, 162, 235, 0.2)','rgba(255, 206, 86, 0.2)',
+		                'rgba(75, 192, 192, 0.2)','rgba(153, 102, 255, 0.2)','rgba(255, 159, 64, 0.2)',
+		                'rgba(255, 99, 132, 0.2)','rgba(54, 162, 235, 0.2)','rgba(255, 206, 86, 0.2)',
+		                'rgba(75, 192, 192, 0.2)','rgba(153, 102, 255, 0.2)','rgba(255, 159, 64, 0.2)',
+		                'rgba(255, 99, 132, 0.2)','rgba(54, 162, 235, 0.2)','rgba(255, 206, 86, 0.2)',
+		                'rgba(75, 192, 192, 0.2)','rgba(153, 102, 255, 0.2)','rgba(255, 159, 64, 0.2)',
+		                'rgba(255, 99, 132, 0.2)'
+		            ],
+		            borderColor: [
+		                'rgba(255,99,132,1)','rgba(54, 162, 235, 1)','rgba(255, 206, 86, 1)',
+		                'rgba(75, 192, 192, 1)','rgba(153, 102, 255, 1)','rgba(255, 159, 64, 1)',
+		                'rgba(255,99,132,1)','rgba(54, 162, 235, 1)','rgba(255, 206, 86, 1)',
+		                'rgba(75, 192, 192, 1)','rgba(153, 102, 255, 1)','rgba(255, 159, 64, 1)',
+		                'rgba(255,99,132,1)','rgba(54, 162, 235, 1)','rgba(255, 206, 86, 1)',
+		                'rgba(75, 192, 192, 1)','rgba(153, 102, 255, 1)','rgba(255, 159, 64, 1)',
+		                'rgba(255,99,132,1)','rgba(54, 162, 235, 1)','rgba(255, 206, 86, 1)',
+		                'rgba(75, 192, 192, 1)','rgba(153, 102, 255, 1)','rgba(255, 159, 64, 1)',
+		                'rgba(255,99,132,1)'
+		            ],
+		            borderWidth: 1
+		        }]
+		    },
+		    options: {
+		        maintainAspectRatio: true, // default value. false일 경우 포함된 div의 크기에 맞춰서 그려짐.
+		        scales: {
+		            yAxes: [{
+		                ticks: {
+		                    beginAtZero:true
+		                }
+		            }]
+		        }
+		    }
+		});
+	}
+
+	let tchart=()=>{
 			let ctx = document.getElementById('myChart');
 			
 			let myChart = new Chart(ctx, {
@@ -41,7 +91,57 @@ adminmain=(()=>{
 		        		 "강남구", "송파구", "강동구"],
 		        datasets: [{
 		            label: '# 지역별 관광지 등록현황',
-		            data: [18, 6, 6, 1, 2, 2, 4, 0, 1, 0, 0, 0, 2, 4, 1, 3, 2, 0, 3, 2, 3, 4, 7, 8, 2],
+		            data: [18, 6, 6, 1, 2, 2, 4, 0, 1, 5, 4, 9, 2, 4, 1, 3, 2, 0, 3, 2, 3, 4, 7, 8, 2],
+		            backgroundColor: [
+		                'rgba(255, 99, 132, 0.2)','rgba(54, 162, 235, 0.2)','rgba(255, 206, 86, 0.2)',
+		                'rgba(75, 192, 192, 0.2)','rgba(153, 102, 255, 0.2)','rgba(255, 159, 64, 0.2)',
+		                'rgba(255, 99, 132, 0.2)','rgba(54, 162, 235, 0.2)','rgba(255, 206, 86, 0.2)',
+		                'rgba(75, 192, 192, 0.2)','rgba(153, 102, 255, 0.2)','rgba(255, 159, 64, 0.2)',
+		                'rgba(255, 99, 132, 0.2)','rgba(54, 162, 235, 0.2)','rgba(255, 206, 86, 0.2)',
+		                'rgba(75, 192, 192, 0.2)','rgba(153, 102, 255, 0.2)','rgba(255, 159, 64, 0.2)',
+		                'rgba(255, 99, 132, 0.2)','rgba(54, 162, 235, 0.2)','rgba(255, 206, 86, 0.2)',
+		                'rgba(75, 192, 192, 0.2)','rgba(153, 102, 255, 0.2)','rgba(255, 159, 64, 0.2)',
+		                'rgba(255, 99, 132, 0.2)'
+		            ],
+		            borderColor: [
+		                'rgba(255,99,132,1)','rgba(54, 162, 235, 1)','rgba(255, 206, 86, 1)',
+		                'rgba(75, 192, 192, 1)','rgba(153, 102, 255, 1)','rgba(255, 159, 64, 1)',
+		                'rgba(255,99,132,1)','rgba(54, 162, 235, 1)','rgba(255, 206, 86, 1)',
+		                'rgba(75, 192, 192, 1)','rgba(153, 102, 255, 1)','rgba(255, 159, 64, 1)',
+		                'rgba(255,99,132,1)','rgba(54, 162, 235, 1)','rgba(255, 206, 86, 1)',
+		                'rgba(75, 192, 192, 1)','rgba(153, 102, 255, 1)','rgba(255, 159, 64, 1)',
+		                'rgba(255,99,132,1)','rgba(54, 162, 235, 1)','rgba(255, 206, 86, 1)',
+		                'rgba(75, 192, 192, 1)','rgba(153, 102, 255, 1)','rgba(255, 159, 64, 1)',
+		                'rgba(255,99,132,1)'
+		            ],
+		            borderWidth: 1
+		        }]
+		    },
+		    options: {
+		        maintainAspectRatio: true, // default value. false일 경우 포함된 div의 크기에 맞춰서 그려짐.
+		        scales: {
+		            yAxes: [{
+		                ticks: {
+		                    beginAtZero:true
+		                }
+		            }]
+		        }
+		    }
+		});
+	}
+
+	let fchart=()=>{
+			let ctx = document.getElementById('myChart');
+			
+			let myChart = new Chart(ctx, {
+		    type: 'bar',
+		    data: {
+		        labels: ["종로구", "중구", "용산구", "성동구", "광진구", "동대문구", "중랑구", "성북구", "강북구", "도봉구", "노원구",
+		        		 "은평구", "서대문구", "마포구", "양천구", "강서구", "구로구", "금천구", "영등포구", "동작구", "관악구", "서초구",
+		        		 "강남구", "송파구", "강동구"],
+		        datasets: [{
+		            label: '# 지역별 행사 등록현황',
+		            data: [5, 2, 3, 1, 2, 2, 4, 0, 1, 9, 2, 6, 2, 4, 10, 3, 2, 2, 3, 2, 3, 4, 7, 8, 2],
 		            backgroundColor: [
 		                'rgba(255, 99, 132, 0.2)','rgba(54, 162, 235, 0.2)','rgba(255, 206, 86, 0.2)',
 		                'rgba(75, 192, 192, 0.2)','rgba(153, 102, 255, 0.2)','rgba(255, 159, 64, 0.2)',
@@ -155,9 +255,28 @@ adminmain=(()=>{
 			
 		})
 	}
+
+	let admin_navibar=()=>{
+		$(`<ul class="adminnavi">
+			<li><a id="hotelchart" href="#">호텔현황</a></li>
+			<li><a id="tourchart" href="#">관광지현황</a></li>
+			<li><a id="festivalchart" href="#">행사현황</a></li>
+		</ul>`).appendTo('#admin_navi')
 	
 	
-	
+	$('#hotelchart').click(e=>{
+	    				e.preventDefault()
+    					$('#myChart').empty().append(hchart())
+					})
+	$('#tourchart').click(e=>{
+	    				e.preventDefault()
+    					$('#myChart').empty().append(tchart())
+					})
+	$('#festivalchart').click(e=>{
+	    				e.preventDefault()
+    					$('#myChart').empty().append(fchart())
+    				})
+	}
 	
     let excelup=()=>{
 		$(`#excelupup`).click(()=>{

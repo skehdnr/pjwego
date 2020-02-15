@@ -15,7 +15,7 @@ mypage_vue = {
 			            </div>
 			        </div>
 			    </section>
-		<div id="admin-container">
+		<div id="admin-container style="height: 960px;">
 <div>
 	<form name="searchForm" id="searchForm">
 		<div class="sub">

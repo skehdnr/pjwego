@@ -3,14 +3,13 @@ mainVue = {
 	main_body: x => {
 		return `<div id="mainbody"><body>
     <!-- banner part start-->
-
-                    <div class="container" style="width:100%;">
+        <div>
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
      <!-- Wrapper for slides -->
     <div class="carousel-inner">
 
       <div class="item active">
-        <img src="/resources/img/banner_bg.png" alt="Seoul" style="width:100%;">
+        <img src="/resources/img/banner_bg.png" alt="Seoul" style="width:100%; height:500px">
         <div class="carousel-caption">
           <h3>Seoul</h3>
           <p>Seoul is always so much fun!</p>
@@ -18,7 +17,7 @@ mainVue = {
       </div>
 
       <div class="item">
-        <img src="/resources/img/banner_bg2.png" alt="63 square seoul" style="width:100%;">
+        <img src="/resources/img/banner_bg2.png" alt="63 square seoul" style="width:100%; height:500px">
         <div class="carousel-caption">
           <h3>63 Square Seoul</h3>
           <p>Thank you, 63Square!</p>
@@ -26,13 +25,12 @@ mainVue = {
       </div>
     
       <div class="item">
-        <img src="/resources/img/banner_bg3.png" alt="Changdeokgung" style="width:100%;">
+        <img src="/resources/img/banner_bg3.png" alt="Changdeokgung" style="width:100%; height:500px">
         <div class="carousel-caption">
           <h3>Changdeokgung</h3>
           <p>Changdeokgung World Heritage Site!</p>
         </div>
       </div>
-  
     </div>
     
     <!-- Indicators -->
@@ -58,36 +56,12 @@ mainVue = {
 
     <!-- banner part start-->
     <!-- booking part start-->
-    <section class="booking_part">
-<section class="best_services section_padding">
         <div class="container">
 <div class="section_tittle text-center">
                         <h2>Best Hotel and Play</h2>
                     </div>
             <div class="row">
-<div class="col-lg-6 col-md-6">
-                    <div class="single_place">
-                        <img alt="" src="${x.img}/hotel1.jpg">
-                        <div class="hover_Text d-flex align-items-end justify-content-between">
-                            <div class="hover_text_iner">
-                                <a class="place_btn" href="#">travel</a>
-                                <h3>Hotel</h3>
-                                <p>Technaf, Bangladesh</p>
-                                <div class="place_review">
-                                    <a href="#"><i class="fas fa-star"></i></a>
-                                    <a href="#"><i class="fas fa-star"></i></a>
-                                    <a href="#"><i class="fas fa-star"></i></a>
-                                    <a href="#"><i class="fas fa-star"></i></a>
-                                    <a href="#"><i class="fas fa-star"></i></a>
-                                    <span>(210 review)</span>
-                                </div>
-                            </div>
-                            <div class="details_icon text-right">
-                                <i class="ti-share"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
 <div class="col-lg-6 col-md-6">
                     <div class="single_place">
                         <img alt="" src="${x.img}/play1.jpg">
@@ -111,10 +85,21 @@ mainVue = {
                         </div>
                     </div>
                 </div>
+<div class="col-lg-6 col-md-6">
+                    <div class="single_place">
+                        <div id="openweathermap-widget-15"></div>
+                        <div class="hover_Text d-flex align-items-end justify-content-between">
+                            <div class="hover_text_iner">
+                                <h3>Today Seoul Weather</h3>
+                            </div>
+                            <div class="details_icon text-right">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
-    </section>
-    </section>
     <!-- Header part end-->
     <!--top place start-->
             </div>

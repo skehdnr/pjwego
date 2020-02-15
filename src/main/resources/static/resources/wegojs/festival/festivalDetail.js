@@ -66,18 +66,25 @@ festivalDetail = (()=>{
 	}
 	
 	let festival_Reservation=()=>{
-		 let x = {css:$.css(),img:$.img()}
+		 let x = {css:$.css(),img:$.img(),
+			     userid : sessionStorage.getItem('userid'),
+				tel : sessionStorage.getItem('tel')}
 		 $('#mainbody').empty()
-		 $('#mainbody').html(festivalRv_vue.festivalRv_main())
+		 $('#mainbody').html(festivalRv_vue.festivalRv_main(x))
 	     $('html').scrollTop(0);
 		 festivalend()
 	}
 	
 	let festivalend=()=>{
 		$(`#fpass`).click(()=>{
-			alert(`예약완료`)
+			alert(`예약하기`)
 			let data = {userid:$(`#fuid`).val(), tel:$(`#ftel`).val(),
-				visit_date:$(`#fdate`).val(),person:$(`#fperson`).val()}
+				visit_date:$(`#fdate`).val(),person:$(`#fpersons`).val()}
+				alert(data)
+				alert(data.userid)
+				alert(data.tel)
+				alert(data.visit_date)
+				alert(data.person)
 			$.ajax({
 				url : `/festival/festivalend`,
 				type : `POST`,
@@ -96,13 +103,12 @@ festivalDetail = (()=>{
 	    		})
 		})
 	}
+
 	let fperson=()=>{
 		let perf = $(`#fper option:selected`).val()
 		$(`#fper`).on(`change`,function(){
 			alert($(`#fper option:selected`).val())
-			/*$(`#inputadd`).empty()*/
-			/*$(`<input id="fperson" type="text" value="`+$(`#fper option:selected`).val()+`" 
-		style="margin-left:3.5%; height:30px; width:360px;" readonly>`).appendTo(`#inputadd`)*/
+			$(`#fpersons`).val($(`#fper option:selected`).val())
 		})
 		
 	}
