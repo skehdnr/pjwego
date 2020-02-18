@@ -135,7 +135,6 @@ community = (()=>{
             e.preventDefault()
 
             $.getJSON('/community/search/' + $('#searchword').val(), d => {
-                alert('서치 ' + d.title)
                 $('#communitybody').empty()
                 $.each(d, (i, j) => {
                     $(`<div class="col-md-4 col-sm-6 portfolio-item">

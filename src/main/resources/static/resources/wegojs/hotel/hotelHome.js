@@ -35,7 +35,26 @@ hotelHome = (()=>{
 		    $('#aa').click(e=>{
 			e.preventDefault()
 			alert($('#checkIn').val()+"~"+ $('#checkOut').val())
-			dateStorage({indate:$('#checkIn').val(), outdate:$('#checkOut').val()})
+			localStorage.setItem(`checkin_date`, $('#checkIn').val());
+			 localStorage.setItem(`checkout_date`, $('#checkOut').val());
+
+
+    let sdd = document.getElementById("checkIn").value;
+    let edd = document.getElementById("checkOut").value;
+    let ar1 = sdd.split('-');
+	let ar2 = edd.split('-');
+	let da1 = new Date(ar1[0], ar1[1], ar1[2]);
+    let da2 = new Date(ar2[0], ar2[1], ar2[2]);
+	let dif = da2 - da1;
+	let cDay = 24 * 60 * 60 * 1000;// 시 * 분 * 초 * 밀리세컨
+    let cMonth = cDay * 30;// 월 만듬
+    let cYear = cMonth * 12; // 년 만듬
+	 if(sdd && edd){
+	localStorage.setItem('total', document.getElementById('days').value = parseInt(dif/cDay));
+	/* alert(document.getElementById('days').value = parseInt(dif/cDay)) */
+ }
+
+			
 		})
 		
 		 $('html').scrollTop(0);	
@@ -52,11 +71,11 @@ hotelHome = (()=>{
     							<img src="${j.hotel_img}" alt="" style="min-inline-size:-webkit-fill-available">  
     							<div class="hover_Text d-flex align-items-end justify-content-between"> 
     								<div class="hover_text_iner"> 
-    								 <a id="id${j.hotel_seq}" href="#" class="place_btn"><img src="${j.hotel_img}" alt=""></a> <h3>${j.hotel_name}</h3> 
+    								 <a id="id${j.hotel_seq}" href="#" class="place_btn"><img id="hotel_img" src="${j.hotel_img}" alt=""></a> <h3 id="hotel_name_${i}">${j.hotel_name}</h3> 
     								 <p>${j.hotel_addr}</p>  
     								 <div class="place_review">   
     								 	<a href="#"><i class="fas fa-star"></i></a> 
-    								 		<a href="#"><i class="fas fa-star"></i></a> 
+    								 	<a href="#"><i class="fas fa-star"></i></a> 
     								 	<a href="#"><i class="fas fa-star"></i></a>  
     								 	<a href="#"><i class="fas fa-star"></i></a>   
     							 	 	<a href="#"><i class="fas fa-star"></i></a>  
@@ -64,7 +83,8 @@ hotelHome = (()=>{
     								 	<div class="details_icon text-right"> <h3>${j.price}원</h3></div></div></div></div>`)
     					.appendTo('#hotelList')
     					$('#id'+j.hotel_seq).click(e=>{
-        		e.preventDefault()
+				e.preventDefault()
+				localStorage.setItem('hotel_name', $('#hotel_name_'+i).text());
         		hotelDetail.roomList({hotel_seq:j.hotel_seq})
         	})
     		})
@@ -152,8 +172,8 @@ hotelHome = (()=>{
 			/*$.getJSON('/hotel/create/commentstable/',d=>{
 				alert("commentstable 성공:"+d.msg) })*/
 				
-			/*    	$.getJSON('/hotel/insert/commentsDB/',d=>{
-				alert("commentsDB 성공:"+d.msg) }) */
+			     	$.getJSON('/hotel/insert/commentsDB/',d=>{
+				alert("commentsDB 성공:"+d.msg) })  
 			 
 			/*	$.getJSON('/hotel/create/reservationtable/',d=>{
 			alert("reservationtable 성공:"+d.msg) })*/
@@ -163,11 +183,6 @@ hotelHome = (()=>{
 		})
 	}
     
-    function dateStorage(x) {
-    	  localStorage.setItem('INDATE', x.indate);
-    	  localStorage.setItem('OUTDATE', x.outdate);
-
-    	}
 
   
   let hotelSearch = x => {
@@ -175,8 +190,6 @@ hotelHome = (()=>{
           e.preventDefault()
 
           $.getJSON('/hotel/search/' + $('#hotel_area').val(), d => {
-        	  alert(d.hotel)
-              alert('검색 ' + $('#hotel_area').val())
               $('#hotelList').empty()
               $.each(d, (i, j) => {
                   $(`<div class="col-lg-6 col-md-6">  
@@ -216,11 +229,9 @@ hotelHome = (()=>{
 
 		  $("#location").on("change", function(){
 		  	// value 값으로 선택
-		  	alert("옵션선택")
 			  $('#hotelList').empty()
 	  $.getJSON('/hotel/location/'+$('#location').val(), d=>{
 		  let h = d.hotel
-		  alert($('#location').val() + "떠라떠라")
 		
 		  	$(this).val({h}).prop("selected", true);
 			   $.each(h, (i,j)=>{
@@ -253,6 +264,7 @@ hotelHome = (()=>{
 	  })
 	    
   }
+
 
 	return{onCreate}
 		

@@ -48,7 +48,8 @@ festivalRv_vue = {
 				<div class="form-group row" >
 					<label for="userpe" class="col-sm-2 form-control-label">참여인원</label>
 						<div id="inputadd">
-						<input id="fpersons" type="text" value="" style="margin-left:3.5%; height:30px; width:360px;" readonly>
+						<input id="fpersons" type="text" value="" style="margin-left:3.5%; height:30px; width:360px;" 
+						placeholder="참가인원을 선택해 주세요." readonly>
 						</div>
 						<select id="fper" name="select" style="margin-left:2%; height:30px; width:8%; ">
 	                        <option value="1인">1인</option>

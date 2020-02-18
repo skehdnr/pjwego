@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.wego.web.festival.FestivalBook;
 import com.wego.web.mapper.UserMapper;
 import com.wego.web.util.Printer;
 
@@ -29,6 +30,8 @@ public class UserController {
 	@Autowired UserMapper userMapper;
 	@Autowired UserServiceImpl userService;
 	@Autowired DumProxy dumproxy;
+	@Autowired FestivalBook festivalbook;
+	
 	
 	@GetMapping("/create/table")
     public Map<?,?> createUser(){
@@ -75,7 +78,6 @@ public class UserController {
 	   }
 	@GetMapping("/{uid}/existId")
 	public Map<?, ?> existId(@PathVariable String uid ){
-		printer.accept("exist 들어옴"+uid);
 		Function<String,Integer> p = o -> userMapper.existId(uid);
 		map.clear();
 		map.put("msg", (p.apply(uid)==0)? "SUCCESS":"FAIL");
@@ -89,24 +91,12 @@ public class UserController {
       return paramMap;
    }
    
-//   	@PostMapping("/{uname}/findid") 
-//	 public Map<?,?> findId(@PathVariable String uname , @RequestBody User param){ 
-//		 printer.accept("아이디찾기이름 : "+uname);
-//		 Function<User, User> f = t -> userMapper.findId(param); 
-//		 map.clear(); 
-//		 map.put("msg", "SUCCESS");
-//		 map.put("user",f.apply(param));
-//		 printer.accept("아이디찾기2");
-//		 return map; 
-//	}
 	@GetMapping("/{uname}/findid/{tel}")
 	public Map<String, Object> findId(@PathVariable String uname, @PathVariable String tel) {
-		
 		Map<String, Object> map = new HashMap<>();
 		user.setUsername(uname);
 		user.setTel(tel);
 		map.put("user", userService.findFindId(user));
-		System.out.println("유저1" + map.get("user"));
 		return map;
 	}
 	@PostMapping("/{uid}/findpwd/{tel}")
@@ -114,10 +104,15 @@ public class UserController {
 		Map<String, Object> map = new HashMap<>();
 		user.setUserid(uid);
 		user.setTel(tel);
-		System.out.println("유저 리스트 컨트롤러111"+uid);
-		System.out.println("유저 리스트 컨트롤러222"+tel);
 		map.put("user", userService.findFindPwd(user));
-		System.out.println("유저2" + map.get("user"));
+		return map;
+	}
+	
+	@GetMapping("/mypagelist/{userid}")
+	public Map<String, Object> mypage(@PathVariable String userid){
+		Map<String, Object> map = new HashMap<>();
+		festivalbook.setUserid(userid);
+		map.put("festivalbook", userService.mypagelist(festivalbook));
 		return map;
 	}
 

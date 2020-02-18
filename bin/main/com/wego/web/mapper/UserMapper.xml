@@ -51,4 +51,9 @@
 		and tel like #{tel}
 	</select>
    
+   <select id="mypagelists" parameterType="com.wego.web.festival.FestivalBook" resultType="com.wego.web.festival.FestivalBook">
+   		select *
+   		from festivalbook
+   		where userid like #{userid}
+   </select>
 </mapper>

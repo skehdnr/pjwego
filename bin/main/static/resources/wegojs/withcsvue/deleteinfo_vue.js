@@ -1,11 +1,22 @@
 var deleteinfo_vue = deleteinfo_vue||{}
 deleteinfo_vue = {
 	deleteinfo_body:()=>{
-		return `<div id="admin-container">
+		return `<section class="breadcrumb breadcrumb_bg">
+			        <div class="container">
+			            <div class="row">
+			                <div class="col-lg-12">
+			                    <div class="breadcrumb_iner">
+			                        <div class="breadcrumb_iner_item text-center">
+			                            <h2>Membership Withdrawal</h2>
+			                        </div>
+			                    </div>
+			                </div>
+			            </div>
+			        </div>
+					</section>
+					<section>
+		<div id="admin-container">
 		<form name="deleteadmin_form">
-		<div id="admin-header">
-				<h1 align="center">회원탈퇴</h1>
-			</div>
 		<div class="form-group row">
 					<label for="pwd" class="col-sm-2 form-control-label">아이디</label>
 					<div class="col-sm-5">
@@ -36,6 +47,6 @@ deleteinfo_vue = {
 			</div>
 		</div>
 		<button id="gogomain_btn" style="width: 10%; float: right;">탈퇴</button><br/><br/>
-	</form></div>`
+	</form></div></section>`
 	}
 }

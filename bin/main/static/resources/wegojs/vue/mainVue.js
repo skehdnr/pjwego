@@ -11,24 +11,18 @@ mainVue = {
       <div class="item active">
         <img src="/resources/img/banner_bg.png" alt="Seoul" style="width:100%; height:500px">
         <div class="carousel-caption">
-          <h3>Seoul</h3>
-          <p>Seoul is always so much fun!</p>
         </div>
       </div>
 
       <div class="item">
         <img src="/resources/img/banner_bg2.png" alt="63 square seoul" style="width:100%; height:500px">
         <div class="carousel-caption">
-          <h3>63 Square Seoul</h3>
-          <p>Thank you, 63Square!</p>
         </div>
       </div>
     
       <div class="item">
         <img src="/resources/img/banner_bg3.png" alt="Changdeokgung" style="width:100%; height:500px">
         <div class="carousel-caption">
-          <h3>Changdeokgung</h3>
-          <p>Changdeokgung World Heritage Site!</p>
         </div>
       </div>
     </div>
@@ -56,31 +50,39 @@ mainVue = {
 
     <!-- banner part start-->
     <!-- booking part start-->
-        <div class="container">
+         <div class="container">
 <div class="section_tittle text-center">
-                        <h2>Best Hotel and Play</h2>
+                        <h2>Best Hotel and Weather</h2>
                     </div>
             <div class="row">
 
 <div class="col-lg-6 col-md-6">
-                    <div class="single_place">
-                        <img alt="" src="${x.img}/play1.jpg">
+ <div class="single_place">
+                      
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" data-toggle="tab" id="rating_tab" href="#">평점순</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" id="price_tab" href="#">최저가순</a>
+  </li>
+  </ul>
+<div id="rating_List" class="ah_list" style="border: 1px solid #edf1f5;height: 260px;font-size: large;
+}">
+		
+			
+	</div>
+
+
+
                         <div class="hover_Text d-flex align-items-end justify-content-between">
                             <div class="hover_text_iner">
-                                <a class="place_btn" href="#">travel</a>
-                                <h3>Play</h3>
-                                <p>Technaf, Bangladesh</p>
-                                <div class="place_review">
-                                    <a href="#"><i class="fas fa-star"></i></a>
-                                    <a href="#"><i class="fas fa-star"></i></a>
-                                    <a href="#"><i class="fas fa-star"></i></a>
-                                    <a href="#"><i class="fas fa-star"></i></a>
-                                    <a href="#"><i class="fas fa-star"></i></a>
-                                    <span>(210 review)</span>
-                                </div>
+                          
+                                <h3>Best Hotel TOP10</h3>
+                              
                             </div>
                             <div class="details_icon text-right">
-                                <i class="ti-share"></i>
+                               
                             </div>
                         </div>
                     </div>

@@ -49,42 +49,35 @@ mypage=(()=>{
 	}
 	let gomypage =()=>{
 		let x = {
+			hotel_name: localStorage.getItem('hotel_name'),
+			checkin_date: localStorage.getItem('checkin_date'),
+			checkout_date:localStorage.getItem('checkout_date'),
+			room_type: localStorage.getItem('room_type'),
+			festival_title : localStorage.getItem('festival_title'),
 			userid : sessionStorage.getItem('userid'),
 			username : sessionStorage.getItem('username'),
 			nickname : sessionStorage.getItem('nickname'),
 			birth : sessionStorage.getItem('birth'),
 			tel : sessionStorage.getItem('tel')
-		}
-		$(`#mainbody`).html(mypage_vue.mypage_body(x))
-	} 
+			} 
+		$.getJSON(`/user/mypagelist/`+ x.userid , d=>{
+			let mypagelists = d.festivalbook
+			$(`<div id="title"><h2>${x.nickname} 님의 Mypage</h2></div>
+						<h5 size="50" style="font-size: larger";>아이디 : ${x.userid}</h5></br>
+						<h5 size="50" style="font-size: larger";>닉네임 : ${x.nickname}</h5></br>
+						<h5 size="50" style="font-size: larger";>생년월일 : ${x.birth}</h5></br>
+						<h5 size="50" style="font-size: larger";>연락처 : ${x.tel}</h5></br>
+						<h5 size="50" style="font-size: larger";>※ Festival 예약정보 ※ <br/> 
+		Festival 명 : ${x.festival_title}  <br/> 예약일 : ${mypagelists.visit_date} <br/> 인원수  : ${mypagelists.person} </h5></br>
+						<h5 size="50" style="font-size: larger";>※ Hotel 예약정보 ※ <br/> 
+															호텔명 : ${x.hotel_name} <br />
+															객실명 : ${x.room_type} <br />
+															이용날짜 : ${x.checkin_date} 부터  ${x.checkout_date}  </h5></br>`).appendTo(`#main1`)
 
-	/* let gomypage =()=>{
-		if (login(d.uid)===uid){
-		let x = {
-			uid : sessionStorage.getItem('uid'),
-			uname : sessionStorage.getItem('uname'),
-			nickname : sessionStorage.getItem('nickname'),
-			birth : sessionStorage.getItem('birth'),
-			tel : sessionStorage.getItem('tel'),
-			pettype : sessionStorage.getItem('pettype')
-		}
-		alert(x.uid+x.uname+x.tel)
+		})
+		
 		$(`#mainbody`).html(mypage_vue.mypage_body(x))
-	}else{
-		let z ={
-			hname : sessionStorage.getItem('hname'),
-			hid : sessionStorage.getItem('hid'),
-			pwd : sessionStorage.getItem('pwd'),
-			ceoname : sessionStorage.getItem('ceoname'),
-			tel : sessionStorage.getItem('tel'),
-			addr : sessionStorage.getItem('addr'),
-			licensenum : sessionStorage.getItem('licensenum'),
-			companytype : sessionStorage.getItem('companytype')
-		}
-		$(`#mainbody`).html(mypage_vue.adminmypage_body(z))
 	}
-	} */
-
 
 	return{onCreate}
 })()

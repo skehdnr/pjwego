@@ -12,7 +12,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Lazy
 public class Hotel {		
-	private String hotel_seq, hotel_name,hotel_img, hotel_addr, hotel_area, hotel_info, latitude, longitude, tel;
+	private String hotel_seq, hotel_name,hotel_img, hotel_addr, hotel_area, hotel_info, latitude, longitude, tel, rating;
+	private int price;
 	 public Hotel(String hotel_name, String hotel_img,String hotel_addr, 
 			  String hotel_area, String hotel_info,String tel) { 
 	  this.hotel_name = hotel_name;

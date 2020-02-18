@@ -14,12 +14,12 @@ hotelDetail = (()=>{
 	          	hotelHomejs = js+'/hotel/hotelHome.js'
 	          	hotelComparejs = js+'/hotel/hotelCompare.js'
 	          	hotelPayjs = js + '/hotel/hotelPay.js'
-				hotelmapVue = js+ '/hotel/hVue/hotelMapVue.js'
-				loginjs = js + '/withcs/login.js'
-				login_vuejs = js + '/withcsvue/login_vue.js'
-				mappageVuejs = js + '/tourism/mappageVue.js'
-				mapjs = js + '/crew/js/map.js'
-				hotelpayjs = js+`/hotel/hotelPay`
+							hotelmapVue = js+ '/hotel/hVue/hotelMapVue.js'
+							loginjs = js + '/withcs/login.js'
+							login_vuejs = js + '/withcsvue/login_vue.js'
+							mappageVuejs = js + '/tourism/mappageVue.js'
+							mapjs = js + '/crew/js/map.js'
+							hotelpayjs = js+`/hotel/hotelPay`
 				
 	        }
 	        let onCreate=()=>{
@@ -69,7 +69,6 @@ hotelDetail = (()=>{
 	    			let c = d.comments
 	    			let e = parseInt(c.rating)
 	    			let m = d.hotelMap
-	    			alert(x.hotel_seq)
 	    			/*alert (m.latitude)
 	    			alert (m.longitude)
 	    			let res = m.latitude +','+ m.longitude
@@ -100,7 +99,6 @@ hotelDetail = (()=>{
 	    		
 $('#map').click(e=>{
 		e.preventDefault()
-		alert('지도 팝업 ')
 		$(`<div id="myModal" class="modal">
 				  <!-- Modal content -->
 				  <div class="modal-content">
@@ -123,8 +121,6 @@ $('#map').click(e=>{
 			  }
 			}			
 	})						
-
-	    					         
 	    				   $(`<div class="detail_head"><h2 style=" text-align: center;">${hotel.hotel_name}</h2></div><div style="text-align-last: right">  <h4 id="star">총 평점 : [ ${c.rating} ] </h4> </div>
     		    			<div class="detail_hotelinfo"><h3 style=" text-align: center;">${hotel.hotel_info}</h3></div>`)
     		    			.appendTo('#main4')
@@ -136,27 +132,26 @@ $('#map').click(e=>{
 								  <li><a id="contact" href="#contact">정책</a></li>
 								  <li><a id="about" href="#about">이용후기</a></li>
 								</ul>`).appendTo('#main5')
-								
-								
-	    				  
-	    				
+
 	    				$.each(room, (i,j)=>{
 	    					console.log(j)
 	    					
 		    					$(`<div class="content2" id="home">
 	    									 <div id="inner" class="inner" style="background-image: url(${j.room_img});"></div>
 	    									<div class="inner2">
-	    									<h2 id="roomtype">${j.room_type}</h2>
-	    									<div id="Hotelhseq" value="${j.hotel_seq}"><h2>호텔번호 : ${j.hotel_seq}</h2></div>
-	    									<div id="Hotelrseq" value="${j.room_seq}"><h2>객실번호 : ${j.room_seq}</h2></div>
-	    									<h2 id="Hotelprice" value="${j.price}">${j.price}원1</h2>	
+	    									<h2 id="room_type_${i}">${j.room_type}</h2>
+	    									<h5 id="room_seq_${i}">${j.room_seq}</h5>
+	    									<span id="price_div"><h3 id="payment_${i}">${j.price}</h3>원</span>
 	    									 <button id="hPaygo" type="button" class="genric-btn primary radius" style="inline-size:-webkit-fill-available; font-size: x-large;"> 예약</button>
 	    									 </div>
-	    									 </div>`).appendTo('#main3')
-	    				})
-	    			$('#hPaygo').click(e=>{
+												 </div>`).appendTo('#main3')
+											
+					$('#hPaygo').click(e=>{
 	    			e.preventDefault()
-	    			
+	    		
+						 localStorage.setItem('room_type', $('#room_type_'+i).text());
+						 localStorage.setItem('room_seq', $('#room_seq_'+i).text());
+						 localStorage.setItem('payment', $('#payment_'+i).text()*localStorage.getItem('total'));
 	    			if(sessionStorage.getItem('userid') != null){
 	    				hotelPay.booking()
 	    			}else{
@@ -167,37 +162,43 @@ $('#map').click(e=>{
 	    			}
 	    			
 	    		})
+	    				})
+
     				$('#room').click(e=>{
     					e.preventDefault()
     					$('#main3').empty()
     						$.each(room, (i,j)=>{
 	    					console.log(j)
-		    				$(`<div class="content2" id="home">
-	    						<div id="inner" class="inner" style="background-image: url(${j.room_img});"></div>
-	    						<div class="inner2">
-	    						<h2 id="roomtype">${j.room_type}</h2>
-	    						<div id="Hotelhseq1" value="${j.hotel_seq}"><h2>호텔번호 : ${j.hotel_seq}</h2></div>
-	    						<div id="Hotelrseq1" value="${j.room_seq}"><h2>객실번호 : ${j.room_seq}</h2></div>
-	    						<h2 id="Hotelprice1">${j.price}원</h2>	
-	    						<div id="btn"></div>
-	    						</div>
-	    						</div>`).appendTo('#main3')
-    						$('<button class="hPaygo1" type="button"  > 예약</button>')
-    						.click(e=>{
-    							e.preventDefault()
-    							alert('>>>> '+ $('#room_type').text())
-    							if(sessionStorage.getItem('userid') != null){
-    			    				hotelPay.booking()
-    			    			}else{
-    			    				alert("로그인을 해주세요")
-    			    				$('#mainbody').html(login_vue.login_body())
-    			    				 $('html').scrollTop(0);
-    			    				login.userlogin()
-    			    			}
-    						}).appendTo('#btn')
-    						
-	    									
+	    					
+		    					$(`<div class="content2" id="home">
+	    									 <div id="inner" class="inner" style="background-image: url(${j.room_img});"></div>
+	    									<div class="inner2">
+	    									<h2 id="room_type_${i}">${j.room_type}</h2>
+	    									<h5 id="room_seq_${i}">${j.room_seq}</h5>
+	    									<span id="price_div"><h3 id="payment_${i}">${j.price}</h3>원</span>
+	    									 <button id="hPaygo1" type="button" class="genric-btn primary radius" style="inline-size:-webkit-fill-available; font-size: x-large;"> 예약</button>
+	    									 </div>
+												 </div>`).appendTo('#main3')
+												
+						$('#hPaygo1').click(e=>{
+	    			e.preventDefault()
+						  
+						 localStorage.setItem('room_type', $('#room_type_'+i).text());
+						 localStorage.setItem('room_seq', $('#room_seq_'+i).text());
+						 localStorage.setItem('payment', $('#payment_'+i).text()*localStorage.getItem('total'));
+	    			if(sessionStorage.getItem('userid') != null){
+	    				hotelPay.booking()
+	    			}else{
+	    				alert("로그인을 해주세요")
+	    				$('#mainbody').html(login_vue.login_body())
+	    				 $('html').scrollTop(0);
+	    				login.userlogin()
+	    			}
+	    			
+	    		})
 	    				})
+
+							
 	    			
     				})
 	    			$('#contact').click(e=>{
@@ -208,13 +209,12 @@ $('#map').click(e=>{
 	    				e.preventDefault()
 							$('#main3').empty()
 							
-    					$.getJSON('/hotel/comments/'+x.room_seq,d=>{
-    			alert(x.room_seq)
+    					$.getJSON('/hotel/comments/'+x.hotel_seq,d=>{
     						let comments = d.comments
     						$.each(comments, (i,j)=>{
     							console.log(j)
-    		    				$(`<div id="detail_comments"><h3>${j.user_comment}</h3><h4 style="text-align-last: right"> ----${j.userid}, 평점 : [${j.rating}]</h4></div>`).appendTo('#main3')
-    		    				
+    		    			$(`<div id="detail_comments" style="border: 1px solid black; "><h3>${j.user_comment}</h3><h4 style="text-align-last: right"> ----${j.userid}, 평점 : [${j.rating}]</h4></div>`).appendTo('#main3')
+    		    				$(`<input type="text" id="hotel_comments"><button id="comment_go">등록</button>`).appendTo('#main3')
     						})
     						 
     					})
@@ -260,6 +260,7 @@ $('#map').click(e=>{
 	        
 
 	        
-	    }
+			}
+			
 	        return{onCreate, roomList}
 })();

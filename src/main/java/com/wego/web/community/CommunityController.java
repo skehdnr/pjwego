@@ -69,7 +69,6 @@ public class CommunityController {
   
 	@GetMapping("/list/{pageNo}")
 	public Map<?,?>list(@PathVariable int pageNo){
-		System.out.println("리스트 컨트롤러");
 		HashMap<String,List<Community>> map = new HashMap<>();
 		communityProxy.setPageNum(pageNo);
 		communityProxy.paging();
@@ -79,7 +78,6 @@ public class CommunityController {
 	
 	@GetMapping("/reply/{art_seq}")
 	public Map<?,?>reply(@PathVariable int art_seq){
-		System.out.println("코멘트 읽기 컨트롤러");
 		HashMap<String,List<Reply>> map = new HashMap<>();		
 		map.put("reply", communityMapper.getreply(art_seq));
 		return map;
@@ -88,7 +86,6 @@ public class CommunityController {
 	
 	@GetMapping("/likeimg/{artseq}/{userid}")
 	public Map<?,?>likeimg(@PathVariable String art_seq,@PathVariable String userid){
-		System.out.println("이미지컨트롤러");
 		HashMap<String,String> map = new HashMap<>();
 		like.setArt_seq(art_seq);
 		like.setUserid(userid);
@@ -113,7 +110,6 @@ public class CommunityController {
 	
 	@PostMapping("/fileupload/{userid}")
     public void fileupload(MultipartFile [] uploadFile,@PathVariable String userid) {
-		System.out.println("파일 업로드");
 		fileProxy.fileupload(uploadFile);
 		community.setUserid(userid);
 		community.setArt_seq(communityMapper.selectbyuid(community));
@@ -126,7 +122,6 @@ public class CommunityController {
 	@PostMapping("/{artseq}/reply")
 	public Map<?,?> reply(@RequestBody Reply param,@PathVariable String art_seq){
 		HashMap<String,String> map = new HashMap<>();
-		System.out.println("코멘트 컨트롤러"+art_seq);
 		Consumer<Reply> c = s->communityMapper.insertReply(param);
 		c.accept(param);
 		map.put("reply", param.getBoard_comment());
@@ -135,7 +130,6 @@ public class CommunityController {
 	}
 	  @GetMapping("/crawler")
 	   public ArrayList<HashMap<String,String>> db()  {
-		  System.out.println("crawling");
 	      return communityCrawler.communityCrawing();
 
 	   }

@@ -269,11 +269,7 @@ li a:hover:not(.active) {
 			
 			<div class="last_main" style="border: 1px solid #bcbcbc;">
 			<div class="main5" id="main5" style="border: 1px solid #bcbcbc;">
-			<ul class="hotelnavi">
-								  <li><a id="tour" href="#home">관광지</a></li>
-								  <li><a id="traffic" href="#contact">교통</a></li>
-								  <li><a id="weather" href="#about">날씨</a></li>
-								</ul>
+			
 			</div>
 
 					<div class="main3" id="main3" style="height:1000px;">
@@ -286,15 +282,12 @@ li a:hover:not(.active) {
 	    									 </div>
 					
 					</div>
-					<div class="tourInfo" style=" overflow:scroll;" >
+					<div id="tourInfo" class="tourInfo" style=" overflow:scroll;" >
 					
 		
  
 
 
-					<div class="tourInfoTitle"><h2>관광지 이름</h2></div>
-					<div class="tourInfoImg"><h2>관광지 사진</h2></div>
-					<div class="tourInfoMain"><h2>관광지 설명</h2></div>
 					</div>
 					
 										

@@ -29,6 +29,7 @@ tourism = (() => {
 			inserttourism()
 			mapfun()
 			tourList()
+			tour_navi()
 			
 		map.onCreate()
 		}).fail(() => {
@@ -36,56 +37,70 @@ tourism = (() => {
 		})
 	}
 	let setContentView = () => {
+		let x = {css:$.css(),img:$.img()}
 		$('#mainbody').html(tourismVue.tourism_body())
+		 $('html').scrollTop(0);
 	}
 
 	
 	let createtable=()=>{
 		$('#createtourism').click(()=>{
 			$.getJSON('/tourism/create/table',d=>{
-				alert('만들어져랏')
 			})
 		})
 	}
 	let createliketable=()=>{
 		$('#createlike').click(()=>{
 			$.getJSON('/tourism/likeplace',d=>{
-				alert('만들어저랏')
 			})
 		})
 	}
 	let inserttourism=()=>{
 		$('#dummy').click(()=>{
 			$.getJSON('/tourism/insert/dummy',d=>{
-				alert('만들어져랏')
 			})
 		})
 	}
 
 	
-let tourList =()=>{
+	let tourList =()=>{
 	$.getJSON('/tourism/list', d=>{
-		let index = [1,2,3,4]
 		let t = d.tour
-		console.log(t)
+	
+		
 		
 		$.each(t, (i,j) =>{
 
 			$(`<div class="content2" id="home">
 					 <div id="inner" class="inner" style="background-image: url(${j.tourimg});"></div>
 					<div class="inner2">
+					
 					<h1 id="tourName">${j.tour_name}</h1>
-					<div id="tourinfo" value=""><h4>${j.tour_addr}</h4></div>
-					<div id="tourTag" value=""><h5>${j.tel}</h5></div>				 
+					<div id="tourinfo" value=""><h3>${j.tour_addr}</h3></div>
+					<div id="tourTag" value=""><h4>${j.tel}</h4></div>
+					<button class="genric-btn primary radius" id="tour_id_${j.tour_seq}">상세보기</button>				 
 					 </div>`).appendTo('#tourList')
-		})
+				
+			$(`#tour_id_`+j.tour_seq).click(e=>{
+					e.preventDefault()
+					let x = {tour_seq:j.tour_seq}
+			$.getJSON('/tourism/tourinfo/'+x.tour_seq,d=>{
+				$('#tourInfo').empty()
+					let t2 = d.tourinfo
+			$(`<div class="tourInfoTitle" style="text-align: center;"><h2>${t2.tour_name}</h2></div>
+					<div class="tourInfoImg"><img src="${t2.tourimg}"></div>
+					<div class="tourInfoMain"><h4>${t2.tour_info}</h4></div>`).appendTo('#tourInfo')
+			})
+	
 		
-	})
-}
-
-
 
 	
+				})
+		})
+	
+	})
+
+}
 	
 
 	
@@ -133,6 +148,29 @@ let tourList =()=>{
         		infowindow.open(map, marker);
         	})
         }
-    }
+	}
+	let tour_weather=()=>{
+        window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];  window.myWidgetParam.push({id: 15,cityid: '1835848',appid: '1fb33004552be7cdfe718df5afbd67c6',units: 'metric',containerid: 'openweathermap-widget-15',  });  (function() {var script = document.createElement('script');script.async = true;script.charset = "utf-8";script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(script, s);  })();
+	}
+	let tour_navi=()=>{
+	$(`<ul class="hotelnavi">
+								  <li><a id="tour" href="#home">관광지</a></li>
+								  <li><a id="weather" href="#about">날씨</a></li>
+								</ul>`).appendTo(`#main5`)
+								navilist()
+}
+	let navilist=()=>{
+		$(`#weather`).click(e=>{
+					e.preventDefault()
+					$(`#main3`).empty()
+					tour_weather()
+					$(`<div id="openweathermap-widget-15"></div>`).appendTo(`#main3`)
+				})
+		$(`#tour`).click(e=>{
+					e.preventDefault()
+					$(`#main3`).empty().append(tourList())
+					
+				})
+	}
 	return { onCreate }
 })();

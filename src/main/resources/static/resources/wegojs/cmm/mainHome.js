@@ -45,7 +45,8 @@ mainHome = (() => {
         ).done(() => {
             setContentView()
             btnVowel()
-            aaaa()
+            weather()
+            ratingList()
             
         }).fail(() => {
             alert(WHEN_ERR)
@@ -102,8 +103,68 @@ mainHome = (() => {
         })
        
     }
-    let aaaa=()=>{
+    let weather=()=>{
         window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];  window.myWidgetParam.push({id: 15,cityid: '1835848',appid: '1fb33004552be7cdfe718df5afbd67c6',units: 'metric',containerid: 'openweathermap-widget-15',  });  (function() {var script = document.createElement('script');script.async = true;script.charset = "utf-8";script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(script, s);  })();
     }
-    return { onCreate }
+    let ratingList=()=>{
+        $.getJSON('/hotel/bestList',d=>{
+            let h = d.hotelRating
+            let h2 = d.hotelPrice
+  
+            $.each(h, (i,j)=>{
+                let y = i+1
+                $(`<div><li class="ah_item  ah_on" data-rtk-rank="${y}">
+						<a id="best_go${j.hotel_seq}" href="#">
+							<span class="ah_r">${y}</span>
+							<span class="ah_k">${j.hotel_name}</span>
+						</a>
+                </li></div>`).appendTo('#rating_List')
+                $(`#best_go`+j.hotel_seq).click(e=>{
+                    e.preventDefault()
+                    hotelDetail.roomList({hotel_seq:j.hotel_seq})
+                 
+                })
+            })
+            $(`#rating_tab`).click(e=>{
+                e.preventDefault()
+                $('#rating_List').empty()
+                 $.each(h, (i,j)=>{
+                let y = i+1
+                $(`<div><li class="ah_item  ah_on" data-rtk-rank="${y}">
+						<a id="best_go${j.hotel_seq}" href="#">
+							<span class="ah_r">${y}</span>
+							<span class="ah_k">${j.hotel_name}</span>
+						</a>
+                </li></div>`).appendTo('#rating_List')
+                $(`#best_go`+j.hotel_seq).click(e=>{
+                    e.preventDefault()
+                    hotelDetail.roomList({hotel_seq:j.hotel_seq})
+                 
+                })
+            })
+            })
+            $(`#price_tab`).click(e=>{
+                e.preventDefault()
+                 $('#rating_List').empty()
+                 $.each(h2, (i,j)=>{
+                let y = i+1
+                $(`<div><li class="ah_item  ah_on" data-rtk-rank="${y}">
+						<a id="best_go${j.hotel_seq}" href="#">
+							<span class="ah_r">${y}</span>
+							<span class="ah_k">${j.hotel_name}</span>
+						</a>
+                </li></div>`).appendTo('#rating_List')
+                $(`#best_go`+j.hotel_seq).click(e=>{
+                    e.preventDefault()
+                    hotelDetail.roomList({hotel_seq:j.hotel_seq})
+                 
+                })
+            })
+            })
+                        
+        })
+        
+       
+    }
+    return { onCreate ,weather}
 })();

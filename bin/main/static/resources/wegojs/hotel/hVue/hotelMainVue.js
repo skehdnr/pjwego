@@ -88,10 +88,10 @@ hotelMainVue = {
 			
 			</section>
 					<div class="calendar-container" style="font-size: 20px;">
-					<span class="time-tab"><label class="in"></label><input type="date" id="checkIn" placeholder="Check in"> / <input type="date" id="checkOut" placeholder="check-out">
+					<span class="time-tab"><label class="in"></label><input type="date" id="checkIn" placeholder="Check in"> <input type="text" id="days" size="6" style="text-align:center;">일 <input type="date" id="checkOut" placeholder="check-out">
 			<a href="#" id= "aa" class="genric-btn primary radius">Search</a></span></div>
 			 <button id = "tablebtn">값 넘기기 테스트중</button>
-			
+		
 			                              <div class="form-group">
                                   <div class="input-group mb-3">  
                                       <input id="searchword" type="text" class="form-control" placeholder="Search Keyword" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">

@@ -23,7 +23,6 @@ public class MapController {
 		public Map<?,?> createMap(){
 			HashMap<String,String> paramMap= new HashMap<>();
 			paramMap.put("CREATE_MAP", SQL.CREATE_MAP.toString());
-			printer.accept("테이블 생성쿼리"+paramMap.get("CREATE_MAP"));
 			Consumer<HashMap<String,String>> p = r -> mapMapper.createMap(r);
 			p.accept(paramMap);
 			paramMap.clear();
@@ -34,7 +33,6 @@ public class MapController {
 		
 		@GetMapping("/insert/mapDB")
 		public Map<?,?> insertMapDB(){
-			printer.accept("컨트롤러 들어옴");
 			HashMap<String, String> paramMap = new HashMap<>();
 			mapProxy.insertMapDB();
 			paramMap.clear();

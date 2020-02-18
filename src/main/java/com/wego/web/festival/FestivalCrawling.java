@@ -43,13 +43,11 @@ public class FestivalCrawling {
 			festival.setFestival_img(festivalimg.get(i).select("img").attr("src"));
 			festival.setFestival_date(date.get(i).text());
 			festivalMapper.insertFestival(festival);
-			System.out.println("****"+festivalimg.get(i).text());
 			inventory.add(map);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println("--------크롤링 결과---------");
 		inventory.get().forEach(System.out::println);
 		return inventory.get();
 	}

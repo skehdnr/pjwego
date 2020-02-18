@@ -119,7 +119,7 @@ hotelPayVue = {
 					<div id="title"><h2>1단계: 예약자 정보</h2></div>
 					<p>이 객실의 숙박객 중 한 명의 이름을 입력해 주세요.</p>
 					<h5>호텔 체크인 시 제시할 신분증에 나와 있는 대로 숙박객 이름을 입력해 주세요. 성을 2개 이상 사용하실 경우 모두 입력해 주세요.</h5>
-					이름 :  <input value="${x.uname}" size="50" style="font-size: larger";></br>
+					이름 :  <input value="${x.username}" size="50" style="font-size: larger";></br>
 					연락처 : <input value="${x.tel}" size="50" style="font-size: larger";></br>
 					생년월일 :  <input value="${x.birth}" size="50" style="font-size: larger";></br>
 					<p>*특별 요청 사항(예: 간이 침대, 늦은 체크인)을 자세히 포함해 주세요. 요청하신 사항을 호텔이 제공할 수 있는지 확인 후 24시간 이내에 고객님께 메일로 알려드립니다. 24시간이 지나도록 메일을 받지 못하시면 호텔에 직접 문의하거나 호텔에서 다른 대안을 마련할 수 있도록 연락해 주세요. 특별 요청은 항상 보장되지는 않으며, 추가 요금이 발생할 수 있습니다.</p>
@@ -128,7 +128,7 @@ hotelPayVue = {
 				<div id="main2">
 					<div id="title"><h2>2단계: 결제 세부 정보</h2></div>
 					<p>영문으로만 입력해 주세요.*</p>
-					이름 :  <input value="${x.uname}" size="50" style="font-size: larger";></br>
+					이름 :  <input value="${x.username}" size="50" style="font-size: larger";></br>
 					연락처 : <input value="${x.tel}" size="50" style="font-size: larger";></br>
 					<p>카드 종류*</p>
 					<select id="payment-details-card-type-selector" name="payments.submittedPayments[0].paymentIdentifier" data-error-title="카드 종류" autocomplete="cc-type"><option value="">카드 종류</option><option value="CreditCard:AmericanExpress:AmericanExpress">American Express</option><option value="CreditCard:DinersClub:BC Card">BC Card</option><option value="CreditCard:DinersClub:Diners Club International">Diners Club International</option><option value="CreditCard:JCB:JCB">JCB</option><option value="CreditCard:MasterCard:MasterCard">Mastercard</option><option value="CreditCard:Visa:Visa">Visa</option></select>
@@ -145,8 +145,8 @@ hotelPayVue = {
 				<div id="main3">
 					<div id="title"><h2>3단계: 취소 정책</h2></div>
 					<p>디럭스 더블룸</p>
-					체크인 : <input value="${x.indate}" size="50" style="font-size: larger";></br>
-					체크아웃 :  <input value="${x.outdate}" size="50" style="font-size: larger";></br>
+					체크인 : <input value="${x.checkin_date}" size="50" style="font-size: larger";></br>
+					체크아웃 :  <input value="${x.checkout_date}" size="50" style="font-size: larger";></br>
 					<div class="widget-toggle cancellation-policy-penalty mb-base widget-toggle-done widget-toggle-open"><p class="widget-toggle-btn  widget-toggle-btn-icon widget-toggle-btn-open" type="button" aria-controls="widget-toggle-i1-e3" aria-expanded="true">*무료 취소 기한: 2020/01/01*</p><div class="widget-toggle-bd" data-widget-toggle-text="무료 취소 기한: 2020/01/01" data-widget-toggle-speed="normal" id="widget-toggle-i1-e3" aria-hidden="false" style="display: block;"><ul class="bullets mb-small"><li>2020/01/01, 오후 6:00(한국 표준시) 이후에 예약을 변경하거나 취소하시는 경우 1박에 해당하는 요금(세금 포함)이 수수료로 부과됩니다.</li></ul><p class="mb-small cancellation-alternate">노쇼 또는 일찍 체크아웃하시는 경우 환불해 드리지 않습니다.</p></div></div>
 					<h3>예약 약관</h3>
 					<p>“예약” 버튼을 클릭하면 이용약관 및 개인정보 보호정책 을 읽었고 이에 동의하시는 것으로 간주됩니다.</p>

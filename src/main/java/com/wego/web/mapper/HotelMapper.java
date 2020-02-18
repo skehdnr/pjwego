@@ -32,4 +32,6 @@ public interface HotelMapper {
 	public List<Hotel> selectSearchList();
 	public List<Hotel> selectLocationList(Hotel hotel);
 	public Hotel selectMapByHseq(int hotel_seq);
+	public List<Hotel> selectBestRatingList(Hotel hotel);
+	public List<Hotel> selectBestPriceList(Hotel hotel);
 }

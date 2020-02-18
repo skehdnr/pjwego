@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Lazy
 public class Reservation {
-	private String checkin_date, checkout_date, userid, room_seq,  hotel_seq;
+	private String checkin_date, checkout_date, userid, room_type, hotel_name, username, room_seq;
 	private int payment;
 }

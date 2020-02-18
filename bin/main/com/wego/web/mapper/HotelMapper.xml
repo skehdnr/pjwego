@@ -27,16 +27,17 @@
 			(#{room_type},#{room_img},#{price},#{hotel_seq})
     </insert>
          <insert id="insertComments" parameterType="com.wego.web.hotel.Comments">
-    	insert into comments(user_comment,rating, userid, room_seq) values
-			(#{user_comment}, #{rating}, #{userid}, #{room_seq})
+    	insert into comments(user_comment,rating, userid, hotel_seq) values
+			(#{user_comment}, #{rating}, #{userid}, #{hotel_seq})
     </insert>
     <insert id="insertReservation" parameterType="com.wego.web.hotel.Reservation"> 
-       insert into reservations (checkin_date, checkout_date, userid, room_seq, hotel_seq, payment) values 
-           (#{checkin_date}, #{checkout_date}, #{userid}, #{room_seq}, #{hotel_seq}, #{payment})
+       insert into reservations (checkin_date, checkout_date, userid, payment, room_type, hotel_name, username, room_seq) values 
+           (#{checkin_date}, #{checkout_date}, #{userid}, #{payment}, #{room_type}, #{hotel_name}, #{username}, #{room_seq})
    </insert> 
     
 
     <select id="selectHotelList" parameterType="com.wego.web.hotel.Hotel" resultType="com.wego.web.hotel.Hotel">
+
 			select d.*
 			from (select a.price , a.hotel_name, a.hotel_seq, b.hotel_img, b.rating, b.hotel_addr, a.room_seq
 			from 	(select min(r.price) price, h.hotel_name, r.hotel_seq, r.room_seq
@@ -44,7 +45,7 @@
 			on h.hotel_seq = r.hotel_seq
 			group by hotel_seq) a join (select round(avg(c.rating)*1,2) rating, h.hotel_seq, h.hotel_name, h.hotel_img, h.hotel_addr
 			from hotels h join comments c join rooms r
-			on c.room_seq = r.room_seq
+			on c.hotel_seq = h.hotel_seq = r.hotel_seq
 			group by hotel_seq
 			order by rating desc)b
 			on a.hotel_seq = b.hotel_seq) d
@@ -60,7 +61,7 @@
 			on h.hotel_seq = r.hotel_seq
 			group by hotel_seq) a join (select round(avg(c.rating)*1,2) rating, h.hotel_seq, h.hotel_name, h.hotel_img, h.hotel_addr
 			from hotels h join comments c join rooms r
-			on c.room_seq = r.room_seq
+			on c.hotel_seq = r.hotel_seq 
 			group by hotel_seq
 			order by rating desc)b
 			on a.hotel_seq = b.hotel_seq) d
@@ -76,7 +77,7 @@
 		<select id="selectCommentsList" parameterType="com.wego.web.hotel.Comments" resultType="com.wego.web.hotel.Comments">
 			select * 
 			from comments c join hotels h
-			on c.room_seq = h.hotel_seq 
+			on c.hotel_seq  = h.hotel_seq 
 			where h.hotel_seq like #{hotel_seq};
 		</select> 
 		<select id="selectReservationList" parameterType="com.wego.web.hotel.Reservation" resultType="com.wego.web.hotel.Reservation">
@@ -91,7 +92,7 @@
 		<select id="selectCommentsByRating" parameterType="int" resultType="com.wego.web.hotel.Comments">
 		select round(avg(rating)*1,2) rating
 		from comments
-		where room_seq like #{room_seq};
+		where hotel_seq  like #{hotel_seq };
 	</select>
 		<select id="selectSearchList"  resultType="com.wego.web.hotel.Hotel">
 		select * from hotels where hotel_area like #{hotel_area} order by hotel_seq desc;
@@ -104,7 +105,7 @@
 			on h.hotel_seq = r.hotel_seq
 			group by hotel_seq) a join (select round(avg(c.rating)*1,2) rating, h.hotel_seq, h.hotel_name, h.hotel_img, h.hotel_addr, h.hotel_area
 			from hotels h join comments c join rooms r
-			on c.room_seq = h.hotel_seq = r.hotel_seq
+			on c.hotel_seq  = h.hotel_seq = r.hotel_seq
 			group by hotel_seq
 			order by rating desc)b
 			on a.hotel_seq = b.hotel_seq) d
@@ -115,5 +116,21 @@
 		select latitude, longitude
 		from hotels
 		where hotel_seq like #{hotel_seq};
+	</select>
+	<select id="selectBestRatingList" parameterType="com.wego.web.hotel.Hotel" resultType="com.wego.web.hotel.Hotel">
+		select round(avg(c.rating)*1,2) rating, h.hotel_seq, h.hotel_name, h.hotel_img, h.hotel_addr
+			from hotels h join comments c
+			on c.hotel_seq = h.hotel_seq 
+			group by hotel_seq
+			order by rating desc
+			limit 10;
+	</select>
+		<select id="selectBestPriceList" parameterType="com.wego.web.hotel.Hotel" resultType="com.wego.web.hotel.Hotel">
+		select min(r.price) price, h.hotel_name, r.hotel_seq
+			from hotels h join rooms r
+			on h.hotel_seq = r.hotel_seq
+			group by hotel_seq
+			order by price
+			LIMIT 10;
 	</select>
 </mapper>

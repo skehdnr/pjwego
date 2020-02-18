@@ -36,7 +36,6 @@ public class AdminController {
 	@GetMapping("/create/table")
 	public Map<?,?> createAdmin(){
 		HashMap<String, String> paramMap = new HashMap<>();
-		printer.accept("어드민테이블생성");
 		paramMap.put("CREATE_ADMIN", AdminSQL.CREATE_ADMIN.toString());
 		Consumer<HashMap<String,String>> c = t -> adminMapper.createAdmin(paramMap);
 		c.accept(paramMap);
@@ -66,18 +65,15 @@ public class AdminController {
 	
 	@PostMapping("/fileupload")
 	public void fileupload(MultipartFile[]uploadFile) {
-		printer.accept("파일업로드 어드민컨트롤러"+uploadFile);
 		csproxy.fileupload(uploadFile);
 	}
 	
 	@PostMapping("/excel")
 	public void excel() {
-		printer.accept("엑셀");
 		excelService.getWorkbook("");
 	}
 	@GetMapping("/chartlead")
 	public Map<?, ?> chartlead (@PathVariable String tour_area,@RequestBody Tourism param){
-		printer.accept("차트컨트롤러 들어옴"+tour_area);
 		Function<Tourism,Tourism> f = t -> adminMapper.cartlead(tourism);
 		map.clear();
 		map.put("tour_area",f.apply(param));

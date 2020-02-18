@@ -24,6 +24,20 @@ festivalEnd_vue = {
 				}
 			</style>
 			<body>
+			<!-- breadcrumb start-->
+			    <section class="breadcrumb breadcrumb_bg">
+			        <div class="container">
+			            <div class="row">
+			                <div class="col-lg-12">
+			                    <div class="breadcrumb_iner">
+			                        <div class="breadcrumb_iner_item text-center">
+			                            <h2>FESTIVAL</h2>
+			                        </div>
+			                    </div>
+			                </div>
+			            </div>
+			        </div>
+			    </section>
 			<section class="festival_details_content section_padding">
 			        <div class="container">
 			            <div class="row justify-content-center">
@@ -35,19 +49,20 @@ festivalEnd_vue = {
 			                        
 			             <div id="main1">
 						<div id="title"><h2>RESERVATION INFORMATION</h2></div>
-						<h5 size="50" style="font-size: larger";>${x.uid}</h5></br>
-						<h5 size="50" style="font-size: larger";>${x.tel}</h5></br>
-						<h5 size="50" style="font-size: larger";>${x.fdate}</h5></br>
-						<h5 size="50" style="font-size: larger";>${x.fper}</h5></br>
+						<h5 size="50" style="font-size: larger";>아이디 : ${x.userid}</h5></br>
+						<h5 size="50" style="font-size: larger";>연락처 : ${x.tel}</h5></br>
+						<h5 size="50" style="font-size: larger";>참가일 : ${x.visit_date}</h5></br>
+						<h5 size="50" style="font-size: larger";>참여인원 : ${x.person}</h5></br>
 						
-					
-						<p>*특별 요청 사항(예: 간이 침대, 늦은 체크인)을 자세히 포함해 주세요. 요청하신 사항을 호텔이 제공할 수 있는지 확인 후 24시간 이내에 고객님께 메일로 알려드립니다. 24시간이 지나도록 메일을 받지 못하시면 호텔에 직접 문의하거나 호텔에서 다른 대안을 마련할 수 있도록 연락해 주세요. 특별 요청은 항상 보장되지는 않으며, 추가 요금이 발생할 수 있습니다.</p>
-						<h5 size="50" style="font-size: larger";>${x.indate}</h5> ~ <h5 size="50" style="font-size: larger";>${x.outdate}</h5></br>
-					</div>
+						<p>*Festival의 특성상 입장료,참가비 등의 추가 요금이 발생할수 있습니다.*</p>
+						<p>*추가요금 문의는 각 Festival에 문의해 주세요.*</p>
+						<p>*Due to the characteristics of the Festival, additional charges such as admission fee and participation fee may be incurred.*</p>
+						<p>*For additional charges, please contact each Festival.*</p>
+						</div>
 					
 					
 			                        <div class="festival_details_content_btn">
-			                            <a id="maingo" href="#" class="btn_1">메인으로 돌아가기</a>
+			                            <a id="festivalmain_go" href="#" class="btn_1">메인으로 돌아가기</a>
 			                        </div>
 			                    </div>
 			                </div>

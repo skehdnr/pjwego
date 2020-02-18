@@ -37,3 +37,4 @@ function Users(s){
 		admin_addr : ()=>{return sessionStorage.getItem('admin_addr');}
 	}
 }
+

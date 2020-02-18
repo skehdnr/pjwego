@@ -2,9 +2,10 @@ var festivalDetail = festivalDetail||{}
 festivalDetail = (()=>{
 	const WHEN_ERR = `호출하는 festivalDetail js가 없음`
 		let js;
-	  let mainVuejs,fastivalDetailvuejs,routerjs,festivalRvvuejs,festivalEndVuejs;
+	  let mainVuejs,fastivalDetailvuejs,routerjs,festivalRvvuejs,festivalEndVuejs,festivaljs;
 		let init = ()=>{
 			js = $.js()
+			festivaljs = `/festival/festival.js`
 			routerjs = js+`/cmm/router.js`
 			mainVuejs = js + `/vue/mainVue.js`
 			fastivalDetailvuejs = js +`/festival/fastivalDetail_vue.js`
@@ -19,6 +20,7 @@ festivalDetail = (()=>{
 				$.getScript(routerjs),
 				$.getScript(fastivalDetailvuejs),
 				$.getScript(festivalRvvuejs),
+				$.getScript(festivaljs),
 				$.$.getScript(festivalEndVuejs)
 			).done(()=>{
 				setContentView()
@@ -75,16 +77,12 @@ festivalDetail = (()=>{
 		 festivalend()
 	}
 	
-	let festivalend=()=>{
+	let festivalend=x=>{
 		$(`#fpass`).click(()=>{
-			alert(`예약하기`)
+			let x = {css:$.css(),img:$.img(),userid:$(`#fuid`).val(), tel:$(`#ftel`).val(),
+				visit_date:$(`#fdate`).val(),person:$(`#fpersons`).val()}
 			let data = {userid:$(`#fuid`).val(), tel:$(`#ftel`).val(),
 				visit_date:$(`#fdate`).val(),person:$(`#fpersons`).val()}
-				alert(data)
-				alert(data.userid)
-				alert(data.tel)
-				alert(data.visit_date)
-				alert(data.person)
 			$.ajax({
 				url : `/festival/festivalend`,
 				type : `POST`,
@@ -93,7 +91,8 @@ festivalDetail = (()=>{
     	    	contentType : `application/json`,
     	    	success : d=>{
     	    		if(d.msg === `SUCCESS`){
-    	    			festivalEnd_vue.fEnd_body()
+						$(`#mainbody`).html(festivalEnd_vue.fEnd_body(x))
+						maingogogo()
 	    			}else
 	    				alert(`예약실패`)
     	    	},
@@ -107,13 +106,16 @@ festivalDetail = (()=>{
 	let fperson=()=>{
 		let perf = $(`#fper option:selected`).val()
 		$(`#fper`).on(`change`,function(){
-			alert($(`#fper option:selected`).val())
 			$(`#fpersons`).val($(`#fper option:selected`).val())
 		})
-		
 	}
-	
-	
+
+	let maingogogo=()=>{
+	    	$('#festivalmain_go').click(e=>{
+	    		e.preventDefault()
+	    		festival.onCreate()
+	    	})
+	    }
 	
 	return{onCreate,festival_list}
 })()

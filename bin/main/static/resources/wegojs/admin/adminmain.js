@@ -19,9 +19,9 @@ adminmain=(()=>{
 			$.getScript(adminmainVuejs)
 		).done(()=>{
 			setContentView()
-			fileupload()
-			excelup()
+			/* excelup() */
 			admin_navibar()
+			hchart()
 		}).fail(()=>{
 			alert(WHEN_ERR)
 		})
@@ -84,7 +84,7 @@ adminmain=(()=>{
 			let ctx = document.getElementById('myChart');
 			
 			let myChart = new Chart(ctx, {
-		    type: 'bar',
+		    type: 'line',
 		    data: {
 		        labels: ["종로구", "중구", "용산구", "성동구", "광진구", "동대문구", "중랑구", "성북구", "강북구", "도봉구", "노원구",
 		        		 "은평구", "서대문구", "마포구", "양천구", "강서구", "구로구", "금천구", "영등포구", "동작구", "관악구", "서초구",
@@ -134,7 +134,7 @@ adminmain=(()=>{
 			let ctx = document.getElementById('myChart');
 			
 			let myChart = new Chart(ctx, {
-		    type: 'bar',
+		    type: 'pie',
 		    data: {
 		        labels: ["종로구", "중구", "용산구", "성동구", "광진구", "동대문구", "중랑구", "성북구", "강북구", "도봉구", "노원구",
 		        		 "은평구", "서대문구", "마포구", "양천구", "강서구", "구로구", "금천구", "영등포구", "동작구", "관악구", "서초구",
@@ -201,6 +201,7 @@ adminmain=(()=>{
 			let size = uploadFiles.push(file); //업로드 목록에 추가
 				preview(file, size - 1); //미리보기 만들기
 			}
+			
 			$('#fileupup').click(e=>{
 			e.preventDefault();
 			let json = {
@@ -250,20 +251,16 @@ adminmain=(()=>{
 
 	}
 	
-	let chartdata=()=>{
-		$.getJSON(`/admin/chartlead`,d=>{
-			
-		})
-	}
-
 	let admin_navibar=()=>{
 		$(`<ul class="adminnavi">
 			<li><a id="hotelchart" href="#">호텔현황</a></li>
 			<li><a id="tourchart" href="#">관광지현황</a></li>
 			<li><a id="festivalchart" href="#">행사현황</a></li>
+			<li><a id="insert_fe" href="#">행사 등록하기</a></li>
 		</ul>`).appendTo('#admin_navi')
-	
-	
+		navilist()
+	}
+	let navilist=()=>{
 	$('#hotelchart').click(e=>{
 	    				e.preventDefault()
     					$('#myChart').empty().append(hchart())
@@ -275,10 +272,13 @@ adminmain=(()=>{
 	$('#festivalchart').click(e=>{
 	    				e.preventDefault()
     					$('#myChart').empty().append(fchart())
-    				})
+					})
+	$(`#insert_fe`).click(e=>{
+					e.preventDefault()
+    					$('#myChart').empty().append(festivalinsert())
+					})
 	}
-	
-    let excelup=()=>{
+   /*  let excelup=()=>{
 		$(`#excelupup`).click(()=>{
 			$.ajax({
 					url: '/admin/excel',
@@ -286,11 +286,40 @@ adminmain=(()=>{
 					contentType : false,
 					processData: false,
 					success : d=> {
-						alert("엑셀 디비저장클릭")
 					}
 				})
 		})
-	}
+	} */
+	 let festivalinsert=()=>{
+		 $(`<div class="form-group row">
+					<label for="festivaltitle" class="col-sm-2 form-control-label">*Festival명 입력</label>
+					<div class="col-sm-5">
+						<input id="festivaltitle" type="text" class="form-control" name="festivaltitle" 
+						autocomplete="off">
+					</div>
+					<div class="form-group row">
+					<label for="fastivaldate" class="col-sm-2 form-control-label">*Festival기간을 입력해주세요</label>
+					<div class="col-sm-5">
+						<input id="festivaldate" type="text" class="form-control" name="festivaldate" 
+						autocomplete="off">
+					</div>
+					<div class="form-group row">
+					<label for="fastivalinfos" class="col-sm-2 form-control-label">*Festival소개 입력</label>
+					<div class="col-sm-5">
+						<textarea id="fastivalinfos" style="width:340px; height:150px;"></textarea>
+					</div>
+
+
+				<div class="form-group row">
+				<label for="filesup" class="col-sm-2 form-control-label">파일업로드</label>
+					<div class="col-sm-5">
+						<input id="fileup" style=" width:340px; height:150px; class="form-control" placeholder="파일을 드래그해서 올려주세요">          
+						<div id="thumbnails"style="border: 1px solid #d4d4d4; width:95%; height:100px; padding:3px;writing-mode: vertical-lr;">
+						</div>
+						<input type="button" id="fileupup" value="폴더저장"/>
+					</div>`).appendTo(`#insertfestival`)
+					fileupload()
+	} 
     
 	return{onCreate}
 })()

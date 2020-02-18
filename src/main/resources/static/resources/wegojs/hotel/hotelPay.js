@@ -21,7 +21,8 @@ hotelPay = (()=>{
     	$.when(
                 $.getScript(mainVuejs),
                 $.getScript(routerjs),
-                $.getScript(hotelHomejs),	
+								$.getScript(hotelHomejs),	
+								$.getScript(hotelMainVuejs),
                 $.getScript(hotelComparejs),
                 $.getScript(hotelEndjs),
                 $.getScript(hotelPayVuejs),
@@ -64,33 +65,41 @@ hotelPay = (()=>{
     	})
     }
     let userinfo=()=>{
-    	let x = {uname: sessionStorage.getItem('UNAME'),
-    			tel: sessionStorage.getItem('TEL'),
-    			birth: sessionStorage.getItem('BIRTH'),
-    			indate: localStorage.getItem('INDATE'),
-    	    	outdate: localStorage.getItem('OUTDATE')}
-    	$('#mainbody').html(hotelPayVue.hPay_body(x))
+    	let x = {username: sessionStorage.getItem('username'),
+    			tel: sessionStorage.getItem('tel'),
+    			birth: sessionStorage.getItem('birth'),
+    			checkin_date: localStorage.getItem('checkin_date'),
+    	    checkout_date:localStorage.getItem('checkout_date')}
+			$('#mainbody').html(hotelPayVue.hPay_body(x))
+
+		
     }
     let booking=()=>{
     	userinfo()
     	$('#book').click(e=>{
     		e.preventDefault()
     		alert('예약완료!!')
-    		
+	
+
     		let data = {
-    			indate: localStorage.getItem('INDATE'),
-    			outdate:localStorage.getItem('OUTDATE'),
-    			hseq:$('#Hotelhseq').val(),
-    			rseq:$('#Hotelrseq').val(),
-    			price:$('#Hotelprice').val(),
-    			uid: sessionStorage.getItem(`UID`)
-    			}
-    		alert(localStorage.getItem('INDATE'))
-    		alert(localStorage.getItem('OUTDATE'))
-    		alert($('#Hotelhseq').val()+"호텔 알럿")
-    		alert($('#Hotelrseq').val()+"룸 알럿")
-    		alert($('#Hotelprice').val()+"가격 알럿")
-    		alert(sessionStorage.getItem(`UID`))
+    			checkin_date: localStorage.getItem('checkin_date'),
+					checkout_date:localStorage.getItem('checkout_date'),
+					room_type: localStorage.getItem('room_type'),
+					payment:localStorage.getItem('payment'),
+					hotel_name: localStorage.getItem('hotel_name'),
+				  room_seq: localStorage.getItem('room_seq'),
+					userid: sessionStorage.getItem('userid'),
+					username: sessionStorage.getItem('username')
+					}
+					
+    		/* alert(localStorage.getItem(`checkin_date`))
+    		alert(localStorage.getItem(`checkout_date`))
+    		alert(localStorage.getItem('room_type'))
+				alert(localStorage.getItem('payment'))
+				alert(localStorage.getItem('hotel_name'))
+				alert(localStorage.getItem('room_seq'))
+				alert(sessionStorage.getItem('userid'))
+				alert(sessionStorage.getItem('username')) */
     		$.ajax({
     			url : '/hotel/insert/reservationDB',
     			type : 'POST',

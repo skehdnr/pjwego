@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wego.web.community.Community;
+import com.wego.web.festival.FestivalBook;
 import com.wego.web.mapper.HotelMapper;
 import com.wego.web.user.User;
 import com.wego.web.util.Printer;
@@ -52,30 +53,13 @@ public class HotelController {
 	}
 	@PostMapping("/insert/reservationDB")
 	public Map<?, ?> book(@RequestBody Reservation param){
-		HashMap<String,String> map = new HashMap<>();
+		System.out.println("예약예약예약!!!!"+param);
 		Consumer<Reservation> c = t -> hotelMapper.insertReservation(param);
 		c.accept(param);
-		System.out.println("예약예약예약!!!!"+map);
+		map.clear();
+		map.put("msg","SUCCESS");
 		return map;
 	}
-//	@PostMapping("/write")
-//	public Map<?,?> write(@RequestBody Community param){
-//		HashMap<String,String> map = new HashMap<>();
-//		Consumer<Community> c = s->communityMapper.insertCommunity(param);
-//		c.accept(param);	
-//		return map;
-//	}
-//	@GetMapping("/insert/reservationDB/")
-//	public Map<?, ?> book(@PathVariable Reservation param) {
-//		printer.accept("예약 컨트롤러 들어옴");
-//		HashMap<String, String> paramMap = new HashMap<>();
-//		hotelMapper.insertReservation(param);
-//		paramMap.clear();
-//		paramMap.put("msg", "SUCCESS");
-//		return paramMap;
-//	}
-	
-
 	
 	@GetMapping("/create/commentstable/")
 	public Map<?, ?> createComments() {
@@ -158,30 +142,23 @@ public class HotelController {
 	}
 	@GetMapping("/roomlist/{hotel_seq}")
 	public Map<String, Object> roomList(@PathVariable int hotel_seq) {
-		System.out.println("룸리스트 컨트롤러"+hotel_seq);
 		Map<String, Object> map = new HashMap<>();		
 		room.setHotel_seq(String.valueOf(hotel_seq));
-		map.put("room", hotelService.findRoomList(room));
-		System.out.println("룸리스트" + map.get("room"));
 		Hotel hotel = hotelService.findOnHotelByHseq(hotel_seq);
-		System.out.println(hotel_seq+"-----------------");
 		Comments comments = hotelService.findOnCommentsByRating(hotel_seq);
 		Hotel hotelMap = hotelService.findMapByHseq(hotel_seq);
-		//map.put("comments", hotelService.findCommentsList(comments));
 		
-		System.out.println(comments + "------------2222222222");
-		System.out.println(comments.getRating() + "TEST============");
-		System.out.println("dkdkdkdkdk"+hotelMap);
+		map.put("room", hotelService.findRoomList(room));
 		map.put("hotel", hotel);
 		map.put("hotelMap", hotelMap);
 		map.put("comments", comments);
 		return map;
 	}
-	@GetMapping("/comments/{room_seq}")
-	public Map<String, Object> commentsList(@PathVariable int room_seq) {
-		System.out.println("코맨츠 리스트 컨트롤러"+room_seq);
+	@GetMapping("/comments/{hotel_seq}")
+	public Map<String, Object> commentsList(@PathVariable int hotel_seq) {
+		System.out.println("코맨츠 리스트 컨트롤러"+hotel_seq);
 		Map<String, Object> map = new HashMap<>();
-		comments.setRoom_seq(String.valueOf(room_seq));
+		comments.setHotel_seq(String.valueOf(hotel_seq));
 		map.put("comments", hotelService.findCommentsList(comments));
 		System.out.println("코맨츠" + map.get("comments"));
 		return map;
@@ -216,6 +193,17 @@ public class HotelController {
 		System.out.println(comments.getRating() + "TEST============");
 		map.put("hotel", hotel);
 		map.put("comments", comments);
+		return map;
+	}
+	
+	@GetMapping("/bestList")
+	public Map<?, ?> bestList() {
+		System.out.println("호텔 리스트 컨트롤러");
+		HashMap<String, Object> map = new HashMap<>();
+		//System.out.println(pageNo);
+		map.put("hotelRating", hotelService.findBestRatingList(hotel));
+		map.put("hotelPrice", hotelService.findBestPriceList(hotel));
+		System.out.println("호텔리스트=====" + map.get("hotel"));
 		return map;
 	}
 }

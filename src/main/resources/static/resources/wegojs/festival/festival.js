@@ -50,13 +50,14 @@ festival = (()=>{
     							<img src="${j.festival_img}" alt="" style="min-inline-size:-webkit-fill-available">  
     							<div class="hover_Text d-flex align-items-end justify-content-between"> 
     								<div class="hover_text_iner"> 
-    								 <a id="id${j.festival_seq}" href="#" class="place_btn"><img src="${j.festival_img}" alt=""></a> <h3>${j.festival_title}</h3> 
+    								 <a id="id${j.festival_seq}" href="#" class="place_btn"><img src="${j.festival_img}" alt=""></a> <h3 id="festival_title${i}">${j.festival_title}</h3> 
     								 <p>${j.festival_date}</p>  
     								 <div class="place_review"></div></div> 
     								 	</div></div></div>`)
     								 	.appendTo(`#festivalList`)
     								 	$(`#id`+j.festival_seq).click(e=>{
-    								 		e.preventDefault()
+											 e.preventDefault()
+											 localStorage.setItem('festival_title', $(`#festival_title`+i).text())
     								 		festivalDetail.festival_list({festival_seq:j.festival_seq})
     								 	})
 			})

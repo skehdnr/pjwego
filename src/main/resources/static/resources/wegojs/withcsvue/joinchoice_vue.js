@@ -17,7 +17,7 @@ joinchoice_vue = {
 			            </div>
 			        </div>
 			    </section>
-		
+		<section>
 		<div id="admin-container"><div>
 		<div align="center" style= "solid black;">
 		<div>
@@ -36,6 +36,6 @@ joinchoice_vue = {
 			<div>어드민 전용 회원가입입니다. </div>
 			<span><button id="adminjoin">회원가입</button></span>
 		</div>
-	</div></div></div></div>`
+	</div></div></div></div></section>`
 	}
 }

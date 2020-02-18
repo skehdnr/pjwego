@@ -1,8 +1,12 @@
 package com.wego.web.user;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.wego.web.festival.Festival;
+import com.wego.web.festival.FestivalBook;
 import com.wego.web.mapper.UserMapper;
 
 
@@ -20,4 +24,11 @@ public class UserServiceImpl implements UserService{
 		// TODO Auto-generated method stub
 		return userMapper.selectfindPwd(user);
 	}
+
+	@Override
+	public FestivalBook mypagelist(FestivalBook festivalbook) {
+		return userMapper.mypagelists(festivalbook);
+	}
+
+
 }

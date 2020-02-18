@@ -12,11 +12,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Lazy
 public class Comments {
-	private String comm_seq, userid, user_comment, rating, room_seq;
-	public Comments( String userid, String user_comment, String rating,String room_seq){
+	private String comm_seq, userid, user_comment, rating, hotel_seq;
+	public Comments( String userid, String user_comment, String rating,String hotel_seq){
 		this.userid = userid;
 		this.user_comment = user_comment;
 		this.rating = rating;
-		this.room_seq = room_seq;
+		this.hotel_seq = hotel_seq;
 	}
 }

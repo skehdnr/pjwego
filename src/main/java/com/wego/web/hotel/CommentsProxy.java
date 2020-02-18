@@ -30,11 +30,10 @@ public class CommentsProxy {
 //		}
 	
 	public String ratingList(){
-		List<String> rating1 = Arrays.asList("4","5","6","7","8","9");
-		List<String> rating2 = Arrays.asList(".1",".2",".3",".4",".5",".6",".7",".8",".9",".0");
+		List<String> rating1 = Arrays.asList("1","2","3","4","5","6","7","8","9","10");
 		Collections.shuffle(rating1);
-		Collections.shuffle(rating2);
-		String result = rating1.get(0)+rating2.get(1);
+
+		String result = rating1.get(0);
 		System.out.println("==2==");
 		return result;
 	}

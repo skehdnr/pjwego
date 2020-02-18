@@ -28,8 +28,6 @@ public class FestivalPage {
 //		lista = (List<String>) fc.crawling(url).get("titles");
 
 		int a = lista.size();
-		System.out.println("---------------------");
-		System.out.println(a);
 		totalCount =a;
 
 		pageCount = (totalCount % pageSize !=0)?(totalCount /pageSize)+1 : totalCount / pageSize;

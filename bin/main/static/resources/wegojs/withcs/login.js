@@ -81,7 +81,8 @@ login=(()=>{
 					  html(`<a id="mypage_go" href="#" class="btn_1 d-none d-lg-block">MYPAGE</a>`)
 		             
 					  $('#mainbody').empty()
-		              $('#mainbody').html(mainVue.main_body(x))
+					  $('#mainbody').html(mainVue.main_body(x))
+					  mainHome.weather()
 		              $('html').scrollTop(0);
 		             loginafter()
 				},

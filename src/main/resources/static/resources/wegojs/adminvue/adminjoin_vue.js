@@ -13,7 +13,8 @@ adminjoin_vue = {
 			                </div>
 			            </div>
 			        </div>
-			    </section>
+				</section>
+				<section>
 		<div id="admin-container">
 	<div style="solid black;">
 		<div>
@@ -69,6 +70,6 @@ adminjoin_vue = {
 			</form>
 		</div>
 	</div>
-</div>`
+</div></section>`
 	}
 }
