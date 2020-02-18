@@ -13,4 +13,5 @@ public interface FestivalMapper {
 	public List<Festival> selectFestivalList(Festival festival);
 	public Festival selectFestivalInfo(int festival_seq);
 	public void insertFestivalBook(FestivalBook festivalbook);
+	public void insertFestivalImg(Festival festival);
 }

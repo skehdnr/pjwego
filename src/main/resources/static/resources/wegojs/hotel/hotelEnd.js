@@ -46,7 +46,7 @@ hotelEnd = (()=>{
 	    	})
 	    }
 	   let bookList=()=>{
-		   let totals = localStorage.setItem('total', document.getElementById('days').value = parseInt(dif/cDay));
+		   /* let totals = localStorage.setItem('total', document.getElementById('days').value = parseInt(dif/cDay)); */
 		   let x = {
     				checkin_date: localStorage.getItem('checkin_date'),
 					checkout_date:localStorage.getItem('checkout_date'),

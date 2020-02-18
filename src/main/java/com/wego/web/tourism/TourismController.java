@@ -49,10 +49,8 @@ public class TourismController {
 	}
 	@GetMapping("/list")
 	public Map<?, ?> tourList() {
-		System.out.println("투어 리스트 컨트롤러");
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("tour", tourService.findTourismList(tourism));
-		System.out.println("투어리스트=====" + map.get("tour"));
 		
 //		int tour_seq = 1;
 //		tourism.setTour_seq(String.valueOf(tour_seq));
@@ -68,8 +66,6 @@ public class TourismController {
 		tourism.setTour_seq(String.valueOf(tour_seq));
 		Tourism tourinfo = tourService.findTourInfo(tour_seq);
 		map.put("tourinfo", tourinfo);
-		System.out.println("투어인포 tourseq"+tour_seq);
-		System.out.println("투어인포 컨트롤러"+tourinfo);
 		return map;
 		
 	}

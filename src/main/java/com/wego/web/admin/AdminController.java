@@ -11,12 +11,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.wego.web.festival.Festival;
 import com.wego.web.mapper.AdminMapper;
+import com.wego.web.mapper.FestivalMapper;
 import com.wego.web.tourism.Tourism;
 import com.wego.web.user.UserProxy;
 import com.wego.web.util.Printer;
@@ -32,6 +35,8 @@ public class AdminController {
 	@Autowired UserProxy csproxy;
 	@Autowired ExcelService excelService;
 	@Autowired Tourism tourism;
+	@Autowired FestivalMapper festivalmapper;
+	@Autowired Festival festival;
 	
 	@GetMapping("/create/table")
 	public Map<?,?> createAdmin(){
@@ -63,11 +68,6 @@ public class AdminController {
 		
 	}
 	
-	@PostMapping("/fileupload")
-	public void fileupload(MultipartFile[]uploadFile) {
-		csproxy.fileupload(uploadFile);
-	}
-	
 	@PostMapping("/excel")
 	public void excel() {
 		excelService.getWorkbook("");
@@ -79,6 +79,22 @@ public class AdminController {
 		map.put("tour_area",f.apply(param));
 		return map;
 	}
+	@PostMapping("/festivalinsert")
+	public Map<?, ?> festivalinsert(@RequestBody Festival param){
+		HashMap<String, String> map = new HashMap<>();
+		Consumer<Festival>c = s -> festivalmapper.insertFestival(param);
+		c.accept(param);
+		return map;
+	}
+	
+	@PutMapping("/festivalImg/{festival_seq}")
+	public void festivalup(MultipartFile [] uploadFile, @PathVariable String festival_seq) {
+		csproxy.fileupload(uploadFile);
+		System.out.println("컨트롤러"+uploadFile);
+		festival.setFestival_img(uploadFile.toString());
+		festivalmapper.insertFestivalImg(festival);
+	}
+	
 	
 
 }

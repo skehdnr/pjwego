@@ -25,4 +25,8 @@
 	from tourism
 	group by tarea
 	</select>
+	<insert id="insertFestival" parameterType="com.wego.web.festival.Festival">
+  insert into festival(festival_title,festival_img,festival_date,festival_info)values
+  				(#{festival_title},#{festival_img},#{festival_date},#{festival_info})
+  </insert>
 </mapper>

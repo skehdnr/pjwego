@@ -47,7 +47,7 @@ festival = (()=>{
 			$.each(f, (i,j)=>{
 				$(`<div class="col-lg-6 col-md-6">  
     						<div class="single_place"> 
-    							<img src="${j.festival_img}" alt="" style="min-inline-size:-webkit-fill-available">  
+    							<img src="/resources/wegoimg/festival/${j.img}" alt="" style="min-inline-size:-webkit-fill-available">  
     							<div class="hover_Text d-flex align-items-end justify-content-between"> 
     								<div class="hover_text_iner"> 
     								 <a id="id${j.festival_seq}" href="#" class="place_btn"><img src="${j.festival_img}" alt=""></a> <h3 id="festival_title${i}">${j.festival_title}</h3> 
@@ -58,6 +58,7 @@ festival = (()=>{
     								 	$(`#id`+j.festival_seq).click(e=>{
 											 e.preventDefault()
 											 localStorage.setItem('festival_title', $(`#festival_title`+i).text())
+											 localStorage.setItem('festival_seq', $(`#festival_seq`+i).text())
     								 		festivalDetail.festival_list({festival_seq:j.festival_seq})
     								 	})
 			})

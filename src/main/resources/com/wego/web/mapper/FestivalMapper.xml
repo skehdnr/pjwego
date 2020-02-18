@@ -23,5 +23,10 @@
 	insert into festivalbook (userid,tel,visit_date,person)values
 					(#{userid},#{tel},#{visit_date},#{person})
 	</insert>
+	<insert id="insertFestivalImg" parameterType="com.wego.web.festival.Festival">
+    	update festival set festival_img = #{festival_img} where festival_seq like #{festival_seq}
+    	
+    </insert>
+	
 	  
   </mapper>

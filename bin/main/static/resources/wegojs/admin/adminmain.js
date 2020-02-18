@@ -183,7 +183,6 @@ adminmain=(()=>{
 	
 	let fileupload=()=>{
 		$(window).unbind('scroll');
-		
 		let uploadFiles = [];
 		$("#fileup").on('dragenter', function(e) { //드래그 요소가 들어왔을떄
 			$(this).addClass('drag-over');
@@ -202,11 +201,12 @@ adminmain=(()=>{
 				preview(file, size - 1); //미리보기 만들기
 			}
 			
-			$('#fileupup').click(e=>{
+			$('#insertfestivals').click(e=>{
 			e.preventDefault();
 			let json = {
-  				title : $('#form_write input[name="title"]').val(),
-				content : $('#form_write textarea[name="content"]').val()
+				festival_title : $('#festivaltitle').val(),
+				festival_date : ($('#festivaldate1').val()+'~'+$('#festivaldate2').val()),
+				festival_info : $(`#fastivalinfos`).val()
 			}
 				let formData = new FormData()
 			
@@ -215,20 +215,27 @@ adminmain=(()=>{
 					formData.append('uploadFile', file, file.name);  //모든 첨부파일은 upload-file 이름으로 전달함
 			});
 				/*formData.append('uploadFile',file)*/
-				$.ajax({
-					url: '/admin/fileupload',
-					data : formData,
-					type : 'POST',
-					contentType : false,
-					processData: false,
-					success : d=> {
-						alert("파일저장경로 : C:\wego")
-					}
-				})
+			$.ajax({
+				url : '/admin/festivalinsert',
+				data: JSON.stringify(json),
+				type : 'POST',
+				dataType: `json`,
+				contentType: `application/json`,
+				success: d =>{
+					$.ajax({
+						url: '/admin/festivalImg/${festival_seq}',
+						data : formData,
+						type : 'PUT',
+						contentType : false,
+						processData: false,
+						success : d=> {}
+					})
 					adminmain.onCreate()
+				},
 				error:e=>{
 					alert(' 파일업로드 실패')
 				}
+			})
 		})
 		function preview(file, idx) {
 			let reader = new FileReader();
@@ -248,7 +255,6 @@ adminmain=(()=>{
 		uploadFiles[idx].upload = 'disable'; //삭제된 항목은 업로드하지 않기 위해 플래그 생성
 		$target.parent().remove(); //프리뷰 삭제
 		});
-
 	}
 	
 	let admin_navibar=()=>{
@@ -263,34 +269,26 @@ adminmain=(()=>{
 	let navilist=()=>{
 	$('#hotelchart').click(e=>{
 	    				e.preventDefault()
-    					$('#myChart').empty().append(hchart())
+    					$('#myChart').empty()
+    					$('#myChart').appendTo(hchart())
 					})
 	$('#tourchart').click(e=>{
 	    				e.preventDefault()
-    					$('#myChart').empty().append(tchart())
+    					$('#myChart').empty()
+    					$('#myChart').appendTo(tchart())
 					})
 	$('#festivalchart').click(e=>{
 	    				e.preventDefault()
-    					$('#myChart').empty().append(fchart())
+    					$('#myChart').empty()
+    					$('#myChart').appendTo(fchart())
 					})
-	$(`#insert_fe`).click(e=>{
-					e.preventDefault()
-    					$('#myChart').empty().append(festivalinsert())
+					$('#insert_fe').click(e=>{
+						e.preventDefault()
+						$('#myChart').empty()
+    					$('#myChart').appendTo(festivalinserts())
 					})
 	}
-   /*  let excelup=()=>{
-		$(`#excelupup`).click(()=>{
-			$.ajax({
-					url: '/admin/excel',
-					type : 'POST',
-					contentType : false,
-					processData: false,
-					success : d=> {
-					}
-				})
-		})
-	} */
-	 let festivalinsert=()=>{
+	 let festivalinserts=()=>{
 		 $(`<div class="form-group row">
 					<label for="festivaltitle" class="col-sm-2 form-control-label">*Festival명 입력</label>
 					<div class="col-sm-5">
@@ -298,9 +296,15 @@ adminmain=(()=>{
 						autocomplete="off">
 					</div>
 					<div class="form-group row">
-					<label for="fastivaldate" class="col-sm-2 form-control-label">*Festival기간을 입력해주세요</label>
+					<label for="fastivaldate" class="col-sm-2 form-control-label">*Festival 시작일 </label>
 					<div class="col-sm-5">
-						<input id="festivaldate" type="text" class="form-control" name="festivaldate" 
+						<input id="festivaldate1" type="date" class="form-control" name="festivaldate" 
+						autocomplete="off">
+					</div>
+					<div class="form-group row">
+					<label for="fastivaldate" class="col-sm-2 form-control-label">*Festival 종료일</label>
+					<div class="col-sm-5">
+						<input id="festivaldate2" type="date" class="form-control" name="festivaldate" 
 						autocomplete="off">
 					</div>
 					<div class="form-group row">
@@ -309,15 +313,14 @@ adminmain=(()=>{
 						<textarea id="fastivalinfos" style="width:340px; height:150px;"></textarea>
 					</div>
 
-
 				<div class="form-group row">
 				<label for="filesup" class="col-sm-2 form-control-label">파일업로드</label>
 					<div class="col-sm-5">
 						<input id="fileup" style=" width:340px; height:150px; class="form-control" placeholder="파일을 드래그해서 올려주세요">          
 						<div id="thumbnails"style="border: 1px solid #d4d4d4; width:95%; height:100px; padding:3px;writing-mode: vertical-lr;">
 						</div>
-						<input type="button" id="fileupup" value="폴더저장"/>
-					</div>`).appendTo(`#insertfestival`)
+						<input type="button" id="insertfestivals" value="페스티벌등록"/>
+					</div>`).appendTo(`#festivalinfo`)
 					fileupload()
 	} 
     

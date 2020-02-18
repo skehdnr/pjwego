@@ -168,9 +168,11 @@ tourism = (() => {
 				})
 		$(`#tour`).click(e=>{
 					e.preventDefault()
-					$(`#main3`).empty().append(tourList())
+					$(`#main3`).empty()
+					tourList()
+					$(`#tourLists`).appendTo(`#main3`)
 					
 				})
 	}
 	return { onCreate }
-})();
+})()
