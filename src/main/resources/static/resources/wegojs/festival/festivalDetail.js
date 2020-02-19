@@ -1,6 +1,7 @@
 var festivalDetail = festivalDetail||{}
 festivalDetail = (()=>{
 	const WHEN_ERR = `호출하는 festivalDetail js가 없음`
+	const PATH = "/resources/wegoimg/festival/"
 		let js;
 	  let mainVuejs,fastivalDetailvuejs,routerjs,festivalRvvuejs,festivalEndVuejs,festivaljs;
 		let init = ()=>{
@@ -41,16 +42,17 @@ festivalDetail = (()=>{
 		$.getJSON(`/festival/finfo/`+x.festival_seq, d=>{
 			let festival = d.festival
 			$(`<div class="main_1 main_common1" style="background-repeat: no-repeat; background-attachment: fixed; background-size: 100% 100%; display:inline-table;  float: left; width: 700px; height: 300px; border: 1px solid #bcbcbc; >
-			          <p class="content"><img style="height: inherit; width:inherit;" id="img" src="${festival.festival_img}"/></p>
+			          <p class="content"><img style="height: inherit; width:inherit;" id="img" src="${PATH}${festival.festival_img}"/></p>
 			        </div>
 			          <div class="main_2 main_common2"  style= display:inline-table; float: left; width: 430px; height: 300px;  border: 1px solid #bcbcbc; >
 			            <div class="content3"><h2 style="font-weightbolder">${festival.festival_title}</h2></div>
 			            <div class="content3"><h2 style="font-weightbolder">행사기간<br/>${festival.festival_date}</h2></div>
-			            <div class="content3"><h2 style="font-weightbolder">
-			            <button id="fsrv" type="button">행사&축제 예약하기</button></h2></div>
+			            <div class="content3"><h2 style="font-weightbolder">행사주소 ${festival.festival_addr}</h2></div>
+			           
 			          </div>`).appendTo('#main1')
 			          $(`<div class="detail_head"><h2 style=" text-align: center;">${festival.festival_title}</h2></div><div style="text-align-last: right"></div>
-    		    			<div class="detail_festivalinfo"><h3 style=" text-align: center;">${festival.festival_info}</h3></div>`)
+									<div class="detail_festivalinfo"><h3 style=" text-align: center;">${festival.festival_info}</h3></div>
+									 </div>`)
     		    			.appendTo('#main4')
 		$('#fsrv').click(e=>{
 			e.preventDefault()

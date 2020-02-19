@@ -66,7 +66,14 @@ hotelMainVue = {
 							<option value="강남구"><a href="#" id="gangnam">강남구</a></option>
 							<option value="종로구"><a href="#" id="jongro">종로구</a></option>
 							<option value="중구"><a href="#" id="junggu">중구</a></option>
+							<option value="강서구"><a href="#" id="dongdaemungu">강서구</a></option>
+							<option value="마포구"><a href="#" id="dongdaemungu">마포구</a></option>
+							<option value="금천구"><a href="#" id="dongdaemungu">금천구</a></option>
+							<option value="구로구"><a href="#" id="dongdaemungu">구로구</a></option>
+							<option value="용산구"><a href="#" id="dongdaemungu">용산구</a></option>
 							<option value="동대문구"><a href="#" id="dongdaemungu">동대문구</a></option>
+							<option value="서대문구"><a href="#" id="dongdaemungu">서대문구</a></option>
+							<option value="영등포구"><a href="#" id="dongdaemungu">영등포구</a></option>
 							</form>
 						</select>
 						<select name="select" id="persons" >

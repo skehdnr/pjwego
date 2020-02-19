@@ -9,6 +9,7 @@ import com.wego.web.community.Community;
 import com.wego.web.community.CommunityProxy;
 import com.wego.web.community.Like;
 import com.wego.web.community.Reply;
+import com.wego.web.hotel.Comments;
 
 @Repository
 public interface CommunityMapper {
@@ -23,11 +24,15 @@ public interface CommunityMapper {
 	//public List<Community> selectCommunityList(Community community);
 	public List<Community> allcommunitylist();
 	public int countCommunity();
-	public void insertReply(Reply c);
-	public List<Reply> getreply(int art_seq);
-	public int selectbyuid(Community r);
+
+	
+	//public int selectbyuid(Community r);
 	public void insertIMG(Community r);
 	public int likecount(String art_seq);
 	public String liked(Like l);
-
+	
+	
+	public void insertReply(Reply param);
+	public List<Reply> selectReply(int art_seq);
+	public List<Reply> selectReplyList(Reply reply);
 }

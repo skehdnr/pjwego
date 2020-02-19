@@ -5,11 +5,24 @@
   <mapper namespace="com.wego.web.mapper.FestivalMapper">
   
   <insert id="insertFestival" parameterType="com.wego.web.festival.Festival">
-  insert into festival(festival_title,festival_img,festival_date,festival_info)values
-  				(#{festival_title},#{festival_img},#{festival_date},#{festival_info})
+  insert into festival(festival_title,festival_img,festival_date,festival_info,festival_addr,festival_area)values
+  				(#{festival_title},#{festival_img},#{festival_date},#{festival_info},#{festival_addr},#{festival_area})
+  <!-- 	<selectKey keyProperty="festival_seq" resultType="Integer" order="AFTER">
+		SELECT LAST_INSERT_ID()
+	</selectKey> -->
   </insert>
   
-     <select id="selectFestivalList" resultType="com.wego.web.festival.Festival" parameterType="com.wego.web.festival.Festival" >
+  <select  id="getfestivalseq" resultType="string">
+  	SELECT festival_seq
+	FROM festival
+	ORDER BY festival_seq DESC LIMIT 1
+  </select>
+  
+  <select id="chartlead" resultType="int">
+	select count(festival_area) from festival group by festival_area
+	</select>
+  
+     <select id="selectFestivalList" resultType="com.wego.web.festival.Festival" >
 	select * from festival
 	</select>
 	
@@ -22,11 +35,11 @@
 	<insert id="insertFestivalBook" parameterType="com.wego.web.festival.FestivalBook">
 	insert into festivalbook (userid,tel,visit_date,person)values
 					(#{userid},#{tel},#{visit_date},#{person})
+				
 	</insert>
-	<insert id="insertFestivalImg" parameterType="com.wego.web.festival.Festival">
+	<update id="insertFestivalImg" parameterType="com.wego.web.festival.Festival" >
     	update festival set festival_img = #{festival_img} where festival_seq like #{festival_seq}
-    	
-    </insert>
+    </update>
 	
 	  
   </mapper>

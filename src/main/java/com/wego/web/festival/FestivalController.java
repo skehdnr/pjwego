@@ -2,6 +2,7 @@ package com.wego.web.festival;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 
@@ -39,10 +40,8 @@ public class FestivalController {
 	   }
 	
 	@GetMapping("/flist")
-	public Map<?,?> fastivallist(){
-		HashMap<String, Object> map = new HashMap<>();
-		map.put("festival", festivalservice.findFestivalList(festival));
-		return map;
+	public List<Festival> fastivallist() throws Exception{
+		return festivalservice.findFestivalList();
 	}
 	
 	@GetMapping("/finfo/{festival_seq}")
@@ -56,12 +55,10 @@ public class FestivalController {
 	
 	@PostMapping("/festivalend")
 	public Map<?,?> insertbook(@RequestBody FestivalBook param){
-		Consumer<FestivalBook> c= t -> festivalmapper.insertFestivalBook(param);
-		c.accept(param);
+		festivalservice.insertFestivalBook(festivalbook);
 		map.clear();
 		map.put("msg","SUCCESS");
 		return map;
 	}
-	
 	
 }

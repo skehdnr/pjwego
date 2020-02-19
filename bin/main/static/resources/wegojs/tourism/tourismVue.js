@@ -21,7 +21,7 @@ tourismVue = {
 			  background-size: 100% 100%;
 			    display:inline-table;
 			     width: 50%;
-			    height: 100%;
+			    height: 1000px;
 			    float: left;
 			    border: 1px solid #bcbcbc; 
 			}
@@ -31,7 +31,7 @@ tourismVue = {
 			  background-size: 100% 100%;
 			    display:inline-table;
 			     width: 50%;
-			    height: 100%;
+			    height: 1000px;
 			    float: left;
 			    border: 1px solid #bcbcbc; 
 			}
@@ -137,7 +137,7 @@ border: 1px solid #bcbcbc;
 			          text-align: center;
 			        background-color: #ffffff;
 			        opacity: 0.9;
-			        
+			        overflow:scroll;
 				border: 1px solid #bcbcbc; 
 				}
 
@@ -273,22 +273,23 @@ li a:hover:not(.active) {
 			</div>
 
 					<div class="main3" id="main3" style="height:1000px;">
-					<div class="tourList" id="tourLists">
+					<div class="tourList" id="tourList" >
 
 
 
 
 					
-	    									 </div>
-					
-					</div>
-					<div id="tourInfo" class="tourInfo" style=" overflow:scroll;" >
+												 </div>
+												 <div id="tourInfo" class="tourInfo">
 					
 		
  
 
 
 					</div>
+					
+					</div>
+					
 					
 										
 						 

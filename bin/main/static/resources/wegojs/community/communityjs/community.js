@@ -75,28 +75,70 @@ community = (()=>{
 				        	$(`html`).scrollTop(0)
 				        	$(`#communitybody`).empty()
 				        	$(detail_vue.detail(j)).appendTo(`#communitybody`)
-				        	
-				        	$(`<p class="item-intro text-muted">작성자 : ${j.userid} 님</p>`).appendTo(`#writerid`)
+			let x = {art_seq : j.art_seq}		
+			$.getJSON(`/community/reply/`+x.art_seq, d=>{
+				let c = d.reply
+				console.log(c)
+				$.each(c, (i,j)=>{
+					$(`<div id="detail_reply"><h5>${j.board_comment}</h5><h5 style="text-align-last: right"> id: ${j.userid}</h5>`).appendTo(`#commentspace`)
+				})
+			})
+		$(`#reply_go`).click(e=>{
+					e.preventDefault()
+					let data = {
+					board_comment: $(`#writecomment`).val(),
+					userid: sessionStorage.getItem(`userid`),
+					art_seq: x.art_seq
+				}
+				
+    		$.ajax({
+    			url : `/community/insert/Reply`,
+    			type : `POST`,
+    			dataType : `json`,
+    	    	data : JSON.stringify(data),
+    	    	contentType : `application/json`,
+    	    	success : d=>{
+    	    		if(d.msg === `SUCCESS`){
+								alert("등록되었습니다.")
+								
+								$.getJSON(`/community/newReply/`+x.art_seq, d=>{
+									
+									let r = d.reply
+								
+									$.each(r, (i,j)=>{
+									$(`<div id="detail_reply"><h5>${j.board_comment}</h5><h5 style="text-align-last: right"> id: ${j.userid}</h5>`).appendTo(`#commentspace`)
+									
+									})
+								})
+								
+	    			}else
+	    				alert(`다시 시도해주세요`)
+    	    	},
+    	    	error : e=>{
+    	    		alert(`ajax 실패....`)
+    	    		
+    	    	}
+				})
+
+				
+				})
+
+
+				        	/* $(`<p class="item-intro text-muted">작성자 : ${j.userid} 님</p>`).appendTo(`#writerid`)
 				        	if(sessionStorage.getItem(`userid`) != null){
 				        		$(`<a id = "replybtn"href="#" class="genric-btn primary small" style="width:100%">댓글달기</a>`)
 	                            .appendTo(`#replybtnspace`)
-				        	}
-				        	$(`#replybtn`).click(e => {
+							} */
+
+							
+				        /* 	$(`#replybtn`).click(e => {
 		                        e.preventDefault()
 		                        reply(j.art_seq)
-		                    })
-		                    if (sessionStorage.getItem('userid') != null) {
-		                    $('#likebtn').on("click", function (e) {
-                            $(this).find(">img").attr("src", function (index, attr) {
-                                if (attr.match('beforeheart')) {
-                                    return attr.replace("beforeheart.png", "afterheart.png")
-                                } else {
-                                    return attr.replace("afterheart.png", "beforeheart.png")
-                                }
-                            })
-
-                        })
-                    }
+		                    }) */
+							$(`#gowrite`).click(e=>{
+							e.preventDefault()
+							write.onCreate()
+		})
 				        	
 				        })
 			})
@@ -131,11 +173,11 @@ community = (()=>{
 	}
 	
 	let movesearch = () => {
-        $('#searchbtn').click(e => {
+        $(`#searchbtn`).click(e => {
             e.preventDefault()
 
-            $.getJSON('/community/search/' + $('#searchword').val(), d => {
-                $('#communitybody').empty()
+            $.getJSON(`/community/search/` + $(`#searchword`).val(), d => {
+                $(`#communitybody`).empty()
                 $.each(d, (i, j) => {
                     $(`<div class="col-md-4 col-sm-6 portfolio-item">
                     <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
@@ -150,7 +192,7 @@ community = (()=>{
                         <h4>${j.title}</h4>
                     </div>
                     </div>`).appendTo(`#communitybody`)
-                    $('#id' + i).click(e => {
+                    $(`#id` + i).click(e => {
                         e.preventDefault()
                         $(`#communitybody`).empty()
 

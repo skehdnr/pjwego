@@ -227,9 +227,9 @@ li a:hover:not(.active) {
 
 			<div class="main4" id="main4" style="border: 1px solid #bcbcbc;"></div>
 			<div class="last_main" style="border: 1px solid #bcbcbc;">
-			<div class="main5" id="main5" style="border: 1px solid #bcbcbc;"></div>
+			<div class="main5" id="main5" style="border: 1px solid #bcbcbc;">
+			<button class="genric-btn primary radius" id="fsrv" type="button" style="inline-size:-webkit-fill-available; font-size: x-large;">행사&축제 예약하기</button></div>
 				</div>
-				
 				
 			</div>
 					</div>

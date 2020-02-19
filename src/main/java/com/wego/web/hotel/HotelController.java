@@ -83,6 +83,17 @@ public class HotelController {
 		paramMap.put("msg", "SUCCESS");
 		return paramMap;
 	}
+	@PostMapping("/insert/hotelComment")
+	public Map<?, ?> comment(@RequestBody Comments param) {
+		System.out.println();
+		Consumer<Comments> c = t -> hotelMapper.insertComments(param);
+		c.accept(param);
+		map.clear();
+		map.put("msg","SUCCESS");
+		return map;
+	
+	}
+		
 	
 	@GetMapping("/create/hoteltable/")
 	public Map<?, ?> createHotel() {
@@ -137,6 +148,7 @@ public class HotelController {
 		//System.out.println(pageNo);
 		map.put("hotel", hotelService.findHotelList(hotel));
 		map.put("hotel2", hotelService.findHotelListForPrice(hotel));
+		System.out.println("호텔리스트=====" + map.get("hotel"));
 		return map;
 	}
 	@GetMapping("/roomlist/{hotel_seq}")
@@ -145,7 +157,7 @@ public class HotelController {
 		room.setHotel_seq(String.valueOf(hotel_seq));
 		Hotel hotel = hotelService.findOnHotelByHseq(hotel_seq);
 		Comments comments = hotelService.findOnCommentsByRating(hotel_seq);
-		Hotel hotelMap = hotelService.findMapByHseq(hotel_seq);
+		Hotel hotelMap = hotelService.findMapHotel(hotel_seq);
 		
 		map.put("room", hotelService.findRoomList(room));
 		map.put("hotel", hotel);
@@ -155,9 +167,21 @@ public class HotelController {
 	}
 	@GetMapping("/comments/{hotel_seq}")
 	public Map<String, Object> commentsList(@PathVariable int hotel_seq) {
+		/* System.out.println("코맨츠 리스트 컨트롤러"+hotel_seq); */
 		Map<String, Object> map = new HashMap<>();
 		comments.setHotel_seq(String.valueOf(hotel_seq));
 		map.put("comments", hotelService.findCommentsList(comments));
+		/* System.out.println("코맨츠" + map.get("comments")); */
+		return map;
+	}
+	
+	@GetMapping("/newComments/{hotel_seq}")
+	public Map<String, Object> commentNew(@PathVariable int hotel_seq) {
+		System.out.println("코맨트 달기 컨트롤러"+hotel_seq);
+		Map<String, Object> map = new HashMap<>();
+		comments.setHotel_seq(String.valueOf(hotel_seq));
+		map.put("newComment", hotelService.findHotelcomment(hotel_seq));
+		System.out.println("뉴 코멘트" + map.get("newComment"));
 		return map;
 	}
 	@GetMapping("/search/{hotel_area}")
@@ -169,29 +193,30 @@ public class HotelController {
 		Map<String, Object> map = new HashMap<>();	
 		hotel.setHotel_area(hotel_area);
 		map.put("hotel", hotelService.findLocationList(hotel));
-		return map;
-	}
-	@GetMapping("/hotelMap/{hotel_seq}")
-	public Map<String, Object> hotelMap(@PathVariable int hotel_seq) {
-		Map<String, Object> map = new HashMap<>();		
-		hotel.setHotel_seq(String.valueOf(hotel_seq));
-		map.put("room", hotelService.findRoomList(room));
-		Hotel hotel = hotelService.findOnHotelByHseq(hotel_seq);
-		Comments comments = hotelService.findOnCommentsByRating(hotel_seq);
-		
-		//map.put("comments", hotelService.findCommentsList(comments));
-		
-		map.put("hotel", hotel);
-		map.put("comments", comments);
+		System.out.println("111111"+hotel);
+		System.out.println("2222222"+hotel_area);
 		return map;
 	}
 	
 	@GetMapping("/bestList")
 	public Map<?, ?> bestList() {
+		System.out.println("호텔 리스트 컨트롤러");
 		HashMap<String, Object> map = new HashMap<>();
 		//System.out.println(pageNo);
 		map.put("hotelRating", hotelService.findBestRatingList(hotel));
 		map.put("hotelPrice", hotelService.findBestPriceList(hotel));
+		System.out.println("호텔리스트=====" + map.get("hotel"));
 		return map;
 	}
+	
+	@GetMapping("/hotelMap/{hotel_seq}")
+	public Map<String, Object> hotelMap(@PathVariable int hotel_seq) {
+		Map<String, Object> map = new HashMap<>();		
+		hotel.setHotel_seq(String.valueOf(hotel_seq));
+		Hotel hotel = hotelService.findMapHotel(hotel_seq);
+		map.put("hotelMap", hotel);
+		System.out.println(hotel);
+		return map;
+	}
+	
 }

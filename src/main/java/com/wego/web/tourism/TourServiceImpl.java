@@ -20,5 +20,10 @@ public class TourServiceImpl implements TourService{
 		System.out.println("투어서비스임플"+tourismMapper.selectTourInfo(tour_seq));
 		return tourismMapper.selectTourInfo(tour_seq);
 	}
+	@Override
+	public Tourism findMapTour(int tour_seq) {
+		// TODO Auto-generated method stub
+		return tourismMapper.selectMapTour(tour_seq);
+	}
 
 }

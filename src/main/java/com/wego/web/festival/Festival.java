@@ -13,6 +13,6 @@ import lombok.NoArgsConstructor;
 @Lazy
 @NoArgsConstructor
 public class Festival {
-	private String festival_seq,festival_title,festival_img,festival_date,festival_info;
+	private String festival_seq,festival_title,festival_img,festival_date,festival_info,festival_addr,festival_area;
 
 }

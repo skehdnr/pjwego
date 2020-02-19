@@ -15,5 +15,7 @@ public interface TourismMapper {
 
 	public List<Tourism> selectTourismList(Tourism tourism);
 	public Tourism selectTourInfo(int tour_seq);
+	public Tourism selectMapTour(int tour_seq);
+	
 
 }

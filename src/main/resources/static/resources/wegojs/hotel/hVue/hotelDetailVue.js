@@ -216,9 +216,10 @@ li a:hover:not(.active) {
 			<div class="main4" id="main4" style="border: 1px solid #bcbcbc;"></div>
 			<div class="last_main" style="border: 1px solid #bcbcbc;">
 			<div class="main5" id="main5" style="border: 1px solid #bcbcbc;"></div>
-					<div class="main3" id="main3" style="height:1000px;">
+					<div class="main3" id="main3" style="height:900px;">
 										
 										</div>
+										<div class="comment_place" id="comment_place" style="text-align: center;border: 1px solid #bcbcbc;height:100px;"></div>
 				</div>
 				
 				

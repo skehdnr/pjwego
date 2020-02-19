@@ -6,20 +6,18 @@ detail_vue = {
                   
               <div id ="imgspace"><img class="img-fluid d-block mx-auto" src=${j.img} alt=""></div>
               <p>${j.content}</p>   
-              <div class="likelike" style="padding-bottom: 20px;">  
-              <div id="btnspace"></div> 
-                <button id = "likebtn" style ="height:60px; width:60px; background : none; border: none; float : right;">
-                <h6 id ="likecount">${j.likecnt}개</h6><img id="heart" src = "/web/resources/wegoimg/communityimg/beforeheart.png"></button>
-              </div>     
+              
               <div style=" padding-left: 10px; padding-top: 20px;">
-                <input id ="writecomment" type="text" style="width:100%"/>
-                <div id="commentbtnspace"></div>
+                <input id ="writecomment" type="text" style="width:80%"/><button id="reply_go">등록</button>
+               
               </div>
           
               <div style="text-align: initial; padding-left: 15px; padding-top: 9px; padding-bottom: 10px;">
-                <li id = "commentspace"></li>
-              </div>                
-              </div>`
+               <div id="commentspace" style="height: 300px;"></div>
+              </div>            
+              </div>
+              
+               `
 
 
 

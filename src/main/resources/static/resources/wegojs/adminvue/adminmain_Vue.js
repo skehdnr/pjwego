@@ -42,17 +42,13 @@ li a {
 		<div>
 			<div class="admin_navi" id="admin_navi" style="border: 1px solid #bcbcbc;"></div>
 			<div class="form-group row">
-			<div id="festivalinfo"></div>
-				<div style="width:800px">
-					<canvas id="myChart"></canvas>
-					<div id="insertfestival"></div>
+					<div id="festivaladmin" style="width:100%; height:800px;">
+					
+					</div>
 				</div>
 			</div>	
-			<div id="festival_insert">
 			 
-			</div>
 			</div>			  
-			 </div>
 			 </div>
 		</div>
 	</div>

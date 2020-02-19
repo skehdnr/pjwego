@@ -8,4 +8,5 @@ import org.springframework.stereotype.Component;
 public interface TourService {
 	public List<Tourism> findTourismList(Tourism tourism);
 	public Tourism findTourInfo(int tour_seq);
+	public Tourism findMapTour(int tour_seq);
 }

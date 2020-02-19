@@ -6,8 +6,13 @@
     <select id="selectTourismList" parameterType="com.wego.web.tourism.Tourism" resultType="com.wego.web.tourism.Tourism">
 		select * from tourism
 	</select>
-		<select id="selectTourInfo" parameterType="int" resultType="com.wego.web.tourism.Tourism">
+	<select id="selectTourInfo" parameterType="int" resultType="com.wego.web.tourism.Tourism">
 		select *
+		from tourism
+		where tour_seq like #{tour_seq};
+	</select>
+	<select id="selectMapTour" parameterType="int" resultType="com.wego.web.tourism.Tourism">
+		select latitude, longitude, tour_seq, tour_name
 		from tourism
 		where tour_seq like #{tour_seq};
 	</select>

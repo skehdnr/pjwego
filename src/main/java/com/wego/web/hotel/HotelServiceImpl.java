@@ -60,12 +60,6 @@ public class HotelServiceImpl implements HotelService{
 	}
 
 	@Override
-	public Hotel findMapByHseq(int hotel_seq) {
-		// TODO Auto-generated method stub
-		return hotelMapper.selectMapByHseq(hotel_seq);
-	}
-
-	@Override
 	public List<Hotel> findBestRatingList(Hotel hotel) {
 		// TODO Auto-generated method stub
 		return hotelMapper.selectBestRatingList(hotel);
@@ -75,6 +69,18 @@ public class HotelServiceImpl implements HotelService{
 	public List<Hotel> findBestPriceList(Hotel hotel) {
 		// TODO Auto-generated method stub
 		return hotelMapper.selectBestPriceList(hotel);
+	}
+
+	@Override
+	public List<Comments> findHotelcomment(int hotel_seq) {
+		// TODO Auto-generated method stub
+		return hotelMapper.selectHotelcomment(hotel_seq);
+	}
+
+	@Override
+	public Hotel findMapHotel(int hotel_seq) {
+		// TODO Auto-generated method stub
+		return hotelMapper.selectMapHotel(hotel_seq);
 	}
 
 

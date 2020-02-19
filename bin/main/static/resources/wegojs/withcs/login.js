@@ -111,6 +111,7 @@ login=(()=>{
 				  $('#login_2').
 				  html(`<a id="adminpage_go" href="#" class="btn_1 d-none d-lg-block">ADMIN</a>`)
 				  adminmain.onCreate()
+				mainHome.ratingList()
 				  loginafter()
 			},
 	          error : e => {

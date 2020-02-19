@@ -49,15 +49,11 @@ public class TourismController {
 	}
 	@GetMapping("/list")
 	public Map<?, ?> tourList() {
+		System.out.println("투어 리스트 컨트롤러");
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("tour", tourService.findTourismList(tourism));
-		
-//		int tour_seq = 1;
-//		tourism.setTour_seq(String.valueOf(tour_seq));
-//		Tourism tourism = tourService.findTourInfo(tour_seq);
-//		map.put("tourism", tourism);
-//		System.out.println("투어인포 tourseq"+tour_seq);
-//		System.out.println("투어인포 컨트롤러"+tourism);
+		System.out.println("투어리스트=====" + map.get("tour"));
+
 		return map;
 	}
 	@GetMapping("/tourinfo/{tour_seq}")
@@ -66,31 +62,23 @@ public class TourismController {
 		tourism.setTour_seq(String.valueOf(tour_seq));
 		Tourism tourinfo = tourService.findTourInfo(tour_seq);
 		map.put("tourinfo", tourinfo);
+		Tourism tourism = tourService.findMapTour(tour_seq);
+		map.put("tourism", tourism);
+		System.out.println("투어맵"+tourism);
+		System.out.println("투어인포 컨트롤러"+tourinfo);
 		return map;
 		
 	}
-//	@GetMapping("/roomlist/{hotel_seq}")
-//	public Map<String, Object> roomList(@PathVariable int hotel_seq) {
-//		System.out.println("룸리스트 컨트롤러"+hotel_seq);
+
+//	@GetMapping("/tourMap/{tour_seq}")
+//	public Map<String, Object> tourMap(@PathVariable int tour_seq) {
 //		Map<String, Object> map = new HashMap<>();		
-//		room.setHotel_seq(String.valueOf(hotel_seq));
-//		map.put("room", hotelService.findRoomList(room));
-//		System.out.println("룸리스트" + map.get("room"));
-//		Hotel hotel = hotelService.findOnHotelByHseq(hotel_seq);
-//		System.out.println(hotel_seq+"-----------------");
-//		Comments comments = hotelService.findOnCommentsByRating(hotel_seq);
-//		Hotel hotelMap = hotelService.findMapByHseq(hotel_seq);
-//		//map.put("comments", hotelService.findCommentsList(comments));
-//		
-//		System.out.println(comments + "------------2222222222");
-//		System.out.println(comments.getRating() + "TEST============");
-//		System.out.println("dkdkdkdkdk"+hotelMap);
-//		map.put("hotel", hotel);
-//		map.put("hotelMap", hotelMap);
-//		map.put("comments", comments);
+//		tourism.setTour_seq(String.valueOf(tour_seq));
+//		Tourism tourism = tourService.findMapTour(tour_seq);
+//		map.put("tourMap", tourism);
+//		System.out.println(tourism);
 //		return map;
 //	}
-
 	
 	
 }

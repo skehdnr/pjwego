@@ -66,7 +66,7 @@ festivalRv_vue = {
 				</div>
 				
 				<div class="btnfield" style="text-align: center">
-					<input id="fpass" type="button" value="예약하기">
+					<input class="genric-btn primary radius" id="fpass" type="button" value="예약하기">
 				</div>
 			</form>
 		</div>

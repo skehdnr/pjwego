@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.wego.web.hotel.Comments;
 import com.wego.web.mapper.CommunityMapper;
 import com.wego.web.proxy.Inventory;
 
@@ -28,7 +29,7 @@ public class CommunityController {
 	@Autowired FileProxy fileProxy;	
 	@Autowired Reply reply;
 	@Autowired Community community;
-
+	@Autowired CommunityService communityService;
 	@Autowired Like like;
 	
 
@@ -76,12 +77,12 @@ public class CommunityController {
 		return map;
 	}
 	
-	@GetMapping("/reply/{art_seq}")
-	public Map<?,?>reply(@PathVariable int art_seq){
-		HashMap<String,List<Reply>> map = new HashMap<>();		
-		map.put("reply", communityMapper.getreply(art_seq));
-		return map;
-	}
+//	@GetMapping("/reply/{art_seq}")
+//	public Map<?,?>reply(@PathVariable int art_seq){
+//		HashMap<String,List<Reply>> map = new HashMap<>();		
+//		map.put("reply", communityMapper.getreply(art_seq));
+//		return map;
+//	}
 	
 	
 	@GetMapping("/likeimg/{artseq}/{userid}")
@@ -108,11 +109,11 @@ public class CommunityController {
 		return map;
 	}
 	
-	@PostMapping("/fileupload/{userid}")
-    public void fileupload(MultipartFile [] uploadFile,@PathVariable String userid) {
+	@PostMapping("/fileupload")
+    public void fileupload(MultipartFile [] uploadFile) {
 		fileProxy.fileupload(uploadFile);
-		community.setUserid(userid);
-		community.setArt_seq(communityMapper.selectbyuid(community));
+		//community.setUserid(userid);
+		//community.setArt_seq(communityMapper.selectbyuid(community));
 		community.setArt_img(uploadFile.toString());
 		communityMapper.insertIMG(community);
 		
@@ -133,5 +134,36 @@ public class CommunityController {
 	      return communityCrawler.communityCrawing();
 
 	   }
+	  
+	  
+	  
+		@PostMapping("/insert/Reply")
+		public Map<?, ?> Reply(@RequestBody Reply param) {
+			Map<String, Object> map = new HashMap<>();
+			Consumer<Reply> c = t -> communityMapper.insertReply(param);
+			c.accept(param);
+			map.clear();
+			map.put("msg","SUCCESS");
+			return map;
+		
+		}
+		
+		@GetMapping("/newReply/{art_seq}")
+		public Map<String, Object> ReplyNew(@PathVariable int art_seq) {
+			System.out.println("코맨트 달기 컨트롤러"+art_seq);
+			Map<String, Object> map = new HashMap<>();
+			reply.setArt_seq(String.valueOf(art_seq));
+			map.put("reply", communityService.findReply(art_seq));
+			System.out.println("뉴 코멘트" + map.get("reply"));
+			return map;
+		}	  
+		@GetMapping("/reply/{art_seq}")
+		public Map<String, Object> commentsList(@PathVariable int art_seq) {
 	
+			Map<String, Object> map = new HashMap<>();
+			reply.setArt_seq(String.valueOf(art_seq));
+			map.put("reply", communityService.findReplyList(reply));
+			System.out.println("제발 있어라..ㅎ" + map.get("reply")); 
+			return map;
+		}
 }

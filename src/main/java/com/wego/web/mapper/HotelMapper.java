@@ -31,7 +31,9 @@ public interface HotelMapper {
 	public Comments selectCommentsByRating(int hotel_seq);
 	public List<Hotel> selectSearchList();
 	public List<Hotel> selectLocationList(Hotel hotel);
-	public Hotel selectMapByHseq(int hotel_seq);
 	public List<Hotel> selectBestRatingList(Hotel hotel);
 	public List<Hotel> selectBestPriceList(Hotel hotel);
+	public void insertHotelComment(Comments param);
+	public List<Comments> selectHotelcomment(int hotel_seq);
+	public Hotel selectMapHotel(int hotel_seq);
 }

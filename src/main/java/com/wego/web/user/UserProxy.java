@@ -19,27 +19,21 @@ public class UserProxy {
 			uploadPath.mkdirs();
 			System.out.println("유저프록시 ==== : "+uploadPath);
 		}
-		System.out.println("for loop 진입 전 배열 크기 ... "+uploadFile.length);
 		
 		for(MultipartFile m : uploadFile) {
 			System.out.println("for loop 진입 후 ... "+uploadPath);
 			String fname = m.getOriginalFilename();
 			String extension = fname.substring(fname.lastIndexOf(".")+1);
 			fname = fname.substring(fname.lastIndexOf("\\")+1, fname.lastIndexOf("."));
-			File saveFile = makeFile(uploadPath, fname+"-"+UUID.randomUUID().toString()+"."+extension);
-			name= fname+"-"+UUID.randomUUID().toString();
-			System.out.println("filename : "+fname+"-"+UUID.randomUUID().toString()+"."+extension);
-			System.out.println("ffffff : "+saveFile);
+			name= fname+"-"+UUID.randomUUID().toString()+"."+extension;
+			File saveFile = makeFile(uploadPath, name);
 			
 			try {
-				System.out.println("프록시ㅣㅣㅣㅣㅣ"+saveFile);
 				m.transferTo(saveFile);
 			} catch (Exception e) {
 				e.printStackTrace();
 			} 
 		}
-		System.out.println("유저프록시 : "+uploadFolder);
-		System.out.println("유저프록시 : "+uploadFile);
 		return name;
 	}
 	

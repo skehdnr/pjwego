@@ -57,8 +57,9 @@ write = (()=>{
 				let json = {
 					title: $(`#form_write input[name="title"]`).val(),
 					content: $(`#form_write textarea[name="content"]`).val(),
-					uid: sessionStorage.getItem(`UID`)
+					userid: sessionStorage.getItem(`userid`)
 				}
+			
 				$.ajax({
 					url: `/community/write`,
 					type: `POST`,
@@ -66,6 +67,7 @@ write = (()=>{
 					dataType: `json`,
 					contentType: `application/json`,
 					success: d => {
+						
 						let formData = new FormData()
 
 						$.each(uploadFiles, function (i, file) {
@@ -73,9 +75,9 @@ write = (()=>{
 								formData.append(`uploadFile`, file, file.name)  //모든 첨부파일은 upload-file 이름으로 전달함
 						});
 
-						//formData.append('uploadFile',file)
+						//formData.append(`uploadFile`,file)
 						$.ajax({
-							url: `/community/fileupload/${sessionStorage.getItem('userid')}`,
+							url: `/community/fileupload`,
 							data: formData,
 							type: `POST`,
 							contentType: false,
@@ -111,5 +113,46 @@ write = (()=>{
 		})
 	}
 	
+	/* let insertReply=()=>{
+			$(`#reply_go`).click(e=>{
+					e.preventDefault()
+					let data = {
+					board_comment: $(`#writecomment`).val(),
+					userid: sessionStorage.getItem(`userid`),
+					art_seq: x.art_seq
+				}
+				
+    		$.ajax({
+    			url : `/community/insert/Reply`,
+    			type : `POST`,
+    			dataType : `json`,
+    	    	data : JSON.stringify(data),
+    	    	contentType : `application/json`,
+    	    	success : d=>{
+    	    		if(d.msg === `SUCCESS`){
+								alert("등록되었습니다.")
+								
+								$.getJSON(`/hotel/newComments/`+x.art_seq, d=>{
+									
+									let new_comments = d.newComment
+								
+									$.each(new_comments, (i,j)=>{
+									$(`<div id="detail_comments" style="border: 1px solid black; "><h3>${j.board_comment}</h3><h4 style="text-align-last: right"> ----${j.userid}`).appendTo(`#main3`)
+									
+									})
+								})
+								
+	    			}else
+	    				alert(`다시 시도해주세요`)
+    	    	},
+    	    	error : e=>{
+    	    		alert(`ajax 실패....`)
+    	    		
+    	    	}
+				})
+
+				
+				})
+	} */
 	return{onCreate}
 })()

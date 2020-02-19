@@ -20,13 +20,9 @@
 	    and admin_pwd like #{admin_pwd}
 	</select>
 	
-	<select id="cartlead" resultType="com.wego.web.tourism.Tourism" parameterType="com.wego.web.tourism.Tourism">
-	select tarea, count(*)
-	from tourism
-	group by tarea
-	</select>
 	<insert id="insertFestival" parameterType="com.wego.web.festival.Festival">
   insert into festival(festival_title,festival_img,festival_date,festival_info)values
   				(#{festival_title},#{festival_img},#{festival_date},#{festival_info})
   </insert>
+  
 </mapper>
