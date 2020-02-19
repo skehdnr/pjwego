@@ -17,11 +17,9 @@ public class UserProxy {
 		String name ="";
 		if(uploadPath.exists() == false) {
 			uploadPath.mkdirs();
-			System.out.println("유저프록시 ==== : "+uploadPath);
 		}
 		
 		for(MultipartFile m : uploadFile) {
-			System.out.println("for loop 진입 후 ... "+uploadPath);
 			String fname = m.getOriginalFilename();
 			String extension = fname.substring(fname.lastIndexOf(".")+1);
 			fname = fname.substring(fname.lastIndexOf("\\")+1, fname.lastIndexOf("."));

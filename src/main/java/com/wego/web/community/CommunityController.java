@@ -5,11 +5,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.wego.web.hotel.Comments;
 import com.wego.web.mapper.CommunityMapper;
 import com.wego.web.proxy.Inventory;
+import com.wego.web.user.UserProxy;
 
 @RestController
 @RequestMapping("/community")
@@ -28,6 +31,7 @@ public class CommunityController {
 	@Autowired CommunityProxy communityProxy;
 	@Autowired FileProxy fileProxy;	
 	@Autowired Reply reply;
+	@Autowired UserProxy csproxy;
 	@Autowired Community community;
 	@Autowired CommunityService communityService;
 	@Autowired Like like;
@@ -102,19 +106,21 @@ public class CommunityController {
 
 	
 	@PostMapping("/write")
-	public Map<?,?> write(@RequestBody Community param){
-		HashMap<String,String> map = new HashMap<>();
+	public String write(@RequestBody Community param){
 		Consumer<Community> c = s->communityMapper.insertCommunity(param);
 		c.accept(param);	
-		return map;
+		Supplier<String> f = ()->communityMapper.getcommunityseq();
+		System.out.println("컨트롤러"+communityMapper.getcommunityseq());
+		return f.get();
 	}
 	
-	@PostMapping("/fileupload")
-    public void fileupload(MultipartFile [] uploadFile) {
-		fileProxy.fileupload(uploadFile);
-		//community.setUserid(userid);
-		//community.setArt_seq(communityMapper.selectbyuid(community));
-		community.setArt_img(uploadFile.toString());
+	@PutMapping("/fileupload/{art_seq}")
+    public void fileupload(MultipartFile [] uploadFile , @PathVariable String art_seq) {
+		String name = fileProxy.fileupload(uploadFile);
+		System.out.println("컨트롤러+++시퀀스++"+art_seq);
+		community.setArt_img(name);
+		community.setArt_seq(art_seq);
+		System.out.println("컨트롤러+++이름++"+name);
 		communityMapper.insertIMG(community);
 		
     }

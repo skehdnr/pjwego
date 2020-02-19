@@ -13,30 +13,29 @@ import com.wego.web.sharing.Path;
 @Component
 public class FileProxy   {
 	
-	public void fileupload(MultipartFile[] uploadFile) {
+	public String fileupload(MultipartFile[] uploadFile) {
 		String uploadFolder = Path.UPLOAD_PATH.toString();
-		File uploadPath = makeDir(uploadFolder, getFolder());
-		
+		File uploadPath = makeDir(uploadFolder, "community");
+		String name ="";
 		if(uploadPath.exists() == false) {
 			uploadPath.mkdirs();
 		}
-		final String s = getFolder();
 		for(MultipartFile m : uploadFile) {
 			String fname = m.getOriginalFilename();
 			String extension = fname.substring(fname.lastIndexOf(".")+1);
 			fname = fname.substring(fname.lastIndexOf("\\")+1, fname.lastIndexOf("."));
-			File savedFile = makeFile(uploadPath, fname+"-"+UUID.randomUUID().toString()+"."+extension);
+			name= fname+"-"+UUID.randomUUID().toString()+"."+extension;
+			File saveFile = makeFile(uploadPath, name);
+			
 			try {
-				m.transferTo(savedFile);
+				m.transferTo(saveFile);
 			} catch (Exception e) {
 				e.printStackTrace();
 			} 
 		}
+		return name;
 	}
 	
-	public String getFolder() {
-		return "community";
-	}
 	public File makeDir(String t, String u) {
 		BiFunction<String,String, File> f = File::new;
 		return f.apply(t, u);

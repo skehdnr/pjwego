@@ -26,12 +26,12 @@ import com.wego.web.util.Printer;
 public class FestivalController {
 	private static final Logger logger = LoggerFactory.getLogger(FestivalController.class);
 	@Autowired FestivalCrawling fc;
-	@Autowired FestivalPage fp;
 	@Autowired Map<String, Object>map;
 	@Autowired Festival festival;
 	@Autowired Printer printer;
 	@Autowired FestivalServiceImpl festivalservice;
 	@Autowired FestivalBook festivalbook;
+	@Autowired FestivalPage pager;
 	@Autowired FestivalMapper festivalmapper;
 	
 	@GetMapping("/crawling")
@@ -43,6 +43,27 @@ public class FestivalController {
 	public List<Festival> fastivallist() throws Exception{
 		return festivalservice.findFestivalList();
 	}
+//	@GetMapping("/flist")
+//	public Map<?,?>festivallist(@PathVariable String page){
+//		System.out.println("festival");
+//		ArrayList<HashMap<String, String>> list = festivalservice.findFestivalList();
+//		pager.setRowCount(list.size());
+//		pager.setPageSize(10);
+//		pager.setBlockSize(5);
+//		pager.setNowPage(pager.integer(page));
+//		pager.paging();
+//		ArrayList<HashMap<String, String>> temp = new ArrayList<>();
+//		for(int i=0;i< list.size(); i++) {
+//			if(i >= pager.getStartRow() && i <= pager.getEndRow() ) {
+//				temp.add(list.get(i));
+//			}
+//			if(i > pager.getEndRow()) {break;}
+//		}
+//		box.put("pager", pager);
+//		box.put("list", temp);
+//		
+//		return box.get();
+//	}
 	
 	@GetMapping("/finfo/{festival_seq}")
 	public Map<String,Object> festivalinfo(@PathVariable int festival_seq){

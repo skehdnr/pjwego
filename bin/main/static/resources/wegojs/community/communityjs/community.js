@@ -1,6 +1,7 @@
 var community = community||{}
 community = (()=>{
 	const WHEN_ERR = `호출하는 커뮤니티 js가 없음`
+	const PATH = "/resources/wegoimg/community/"
 	let js;
     let mainVuejs, detail, writejs, searchjs, communitymainvue ;
 	let init = ()=>{
@@ -64,7 +65,7 @@ community = (()=>{
 				                <i class="fas fa-plus fa-3x"></i>
 				              </div>
 				            </div>
-				            <img style="width:100%;"class="img-fluid" src="${j.art_img}" alt="">
+				            <img style="width:100%;"class="img-fluid" src="${PATH}${j.art_img}" alt="">
 				          </a>
 				          <div class="portfolio-caption">
 				            <h4>${j.title}</h4>
@@ -186,7 +187,7 @@ community = (()=>{
                             <i class="fas fa-plus fa-3x"></i>
                         </div>
                         </div>
-                        <img style="width:100%;"class="img-fluid" src="${j.art_img}" alt="">
+                        <img style="width:100%;"class="img-fluid" src="${PATH}${j.art_img}" alt="">
                     </a>
                     <div class="portfolio-caption">
                         <h4>${j.title}</h4>
@@ -199,7 +200,7 @@ community = (()=>{
                         $(`<div style="display: block; padding-right: 17px; width: 70%; text-align: center; border: solid #d4d4d4;">
                             <h2 class="text-uppercase">${j.title}</h2>
                         <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                        <img class="img-fluid d-block mx-auto" src=${j.art_img} alt="">
+                        <img class="img-fluid d-block mx-auto" src="${PATH}${j.art_img}" alt="">
                         <p>${j.content}</p>           
                         <div style=" padding-left: 10px;">
                             <input type="text" style="width:100%" />

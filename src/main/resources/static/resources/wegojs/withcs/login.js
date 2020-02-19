@@ -82,9 +82,11 @@ login=(()=>{
 		             
 					  $('#mainbody').empty()
 					  $('#mainbody').html(mainVue.main_body(x))
-					  mainHome.weather()
+						mainHome.weather()
+						mainHome.ratingList()
 		              $('html').scrollTop(0);
-		             loginafter()
+								 loginafter()
+								 
 				},
 		          error : e => {
 			    	alert('로그인 실패');

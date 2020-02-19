@@ -19,7 +19,7 @@ public interface CommunityMapper {
 	public void dropCommunity(HashMap<String, String> paramMap);
 	public void truncateCommunity(HashMap<String, String> paramMap);
 	
-	public void insertCommunity(Community r);
+	public void insertCommunity(Community community);
 	public List<Community> communitylist(CommunityProxy pxy);
 	//public List<Community> selectCommunityList(Community community);
 	public List<Community> allcommunitylist();
@@ -27,7 +27,7 @@ public interface CommunityMapper {
 
 	
 	//public int selectbyuid(Community r);
-	public void insertIMG(Community r);
+	public void insertIMG(Community community);
 	public int likecount(String art_seq);
 	public String liked(Like l);
 	
@@ -35,4 +35,5 @@ public interface CommunityMapper {
 	public void insertReply(Reply param);
 	public List<Reply> selectReply(int art_seq);
 	public List<Reply> selectReplyList(Reply reply);
+	public String getcommunityseq();
 }
