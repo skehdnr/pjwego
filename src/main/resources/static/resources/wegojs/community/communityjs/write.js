@@ -42,10 +42,13 @@ write = (()=>{
 			$(this).removeClass(`drag-over`);
 			let files = e.originalEvent.dataTransfer.files; //드래그&드랍 항목
 
-			for(let i = 0; i < files.length; i++) {
-			let file = files[i];
+			let file = files[0];
 			let size = uploadFiles.push(file); //업로드 목록에 추가
-				preview(file, size - 1); //미리보기 만들기
+
+			if (size < 2) {
+				preview(file, size - 1);
+			} else {
+				alert(`파일업로드실패`)
 			}
 
 
@@ -56,31 +59,30 @@ write = (()=>{
 					content: $(`#form_write textarea[name="content"]`).val(),
 					userid: sessionStorage.getItem(`userid`)
 				}
-				let formData = new FormData()
+			
+				$.ajax({
+					url: `/community/write`,
+					type: `POST`,
+					data: JSON.stringify(json),
+					dataType: `json`,
+					contentType: `application/json`,
+					success: d => {
+						
+						let formData = new FormData()
 
 						$.each(uploadFiles, function (i, file) {
 							if (file.upload != `disable`)  //삭제하지 않은 이미지만 업로드 항목으로 추가
 								formData.append(`uploadFile`, file, file.name)  //모든 첨부파일은 upload-file 이름으로 전달함
 						});
 
-			
-				$.ajax({
-					url: `/community/write`,
-					data: JSON.stringify(json),
-					type: `POST`,
-					dataType: `json`,
-					contentType: `application/json`,
-					success: d => {
-						console.log(d)
-						alert('ddddd'+d)
+						//formData.append(`uploadFile`,file)
 						$.ajax({
-							url: `/community/fileupload/`+d,
+							url: `/community/fileupload`,
 							data: formData,
-							type: `PUT`,
+							type: `POST`,
 							contentType: false,
 							processData: false,
 							success: d => {
-								alert("이미지업로드")
 							}
 						})
 						community.onCreate()

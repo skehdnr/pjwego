@@ -26,18 +26,7 @@ public class HotelProxy {
 		
 		return hotelname;
 	}
-	
 
-
-	/*
-	 * public List<Double> ratingList(){ List<Double> rating =
-	 * Arrays.asList(8.6,5.4,8.6,8.0,6.4,9.4,5.2,8.0,4.0,5.5,9.2,9.2,7.0,7.2,6.4,7.6
-	 * ,5.4,5.5);
-	 * 
-	 * return rating;
-	 * 
-	 * }
-	 */
 	 
 	public List<String> hotelimgList(){
 		List<String> hotelimg = Arrays.asList("https://image.goodchoice.kr/resize_1000X500x0/affiliate/2018/02/20/5a8bd16270015.jpg",
@@ -63,15 +52,6 @@ public class HotelProxy {
 		
 	}
 
-	/*
-	 * public List<Integer> priceList(){ List<Integer> price =
-	 * Arrays.asList(93397,47273,95000,52364,90909,36091,40909,53273,45455,63636,
-	 * 59091,160000,32728,41322,49587,36364,35455,36364);
-	 * 
-	 * return price;
-	 * 
-	 * }
-	 */
 	public List<String> haddrList(){
 		List<String> haddr = Arrays.asList("서울특별시 강남구 봉은사로 155", 
 				"서울 강남구 영동대로 736", 
@@ -145,17 +125,12 @@ public class HotelProxy {
 		 Hotel hotel = null;
 		 for(int i = 0 ; i<hotelnameList().size();i++) {
 
-			// double d = ratingList().get(i);
-			// int p = priceList().get(i);
-			// double d = ratingList().get(i);
 			 hotel = new Hotel(hotelnameList().get(i),
 					 hotelimgList().get(i), haddrList().get(i),areaList().get(i),hotelinfo().get(i), mapList().get(i));
 			 hotelList.add(hotel);
-			
-			 //hotel = new Hotel(hotelnameList().get(i),ratingList().get(i),hidList().get(i),commentsList().get(i),hotelimgList().get(i),priceList().get(i),haddrList().get(i));
-			 //hotelList.add(hotel);
+
 		 }
-		 System.out.println(hotelList);
+		
 	  return hotelList;
 	 }
 	 

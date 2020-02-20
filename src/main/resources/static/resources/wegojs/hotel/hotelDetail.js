@@ -211,7 +211,6 @@ $(`#detailmap`).click(e=>{
 											
 					$(`#hPaygo_`+i).click(e=>{
 	    			e.preventDefault()
-	    		alert($(`#hotel_seq_`+i).text())
 						 localStorage.setItem(`room_type`, $(`#room_type_`+i).text());
 						 localStorage.setItem(`room_seq`, $(`#room_seq_`+i).text());
 						 localStorage.setItem(`payment`, $(`#payment_`+i).text()*localStorage.getItem(`total`));

@@ -12,7 +12,6 @@ public class TourServiceImpl implements TourService{
 	@Autowired TourismMapper tourismMapper;
 	@Override
 	public List<Tourism> findTourismList(Tourism tourism) {
-		// TODO Auto-generated method stub
 		return tourismMapper.selectTourismList(tourism);
 	}
 	@Override
@@ -22,7 +21,6 @@ public class TourServiceImpl implements TourService{
 	}
 	@Override
 	public Tourism findMapTour(int tour_seq) {
-		// TODO Auto-generated method stub
 		return tourismMapper.selectMapTour(tour_seq);
 	}
 

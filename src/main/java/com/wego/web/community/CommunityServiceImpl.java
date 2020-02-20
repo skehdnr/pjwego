@@ -13,13 +13,11 @@ public class CommunityServiceImpl implements CommunityService{
 
 	@Override
 	public List<Reply> findReply(int art_seq) {
-		// TODO Auto-generated method stub
 		return communityMapper.selectReply(art_seq);
 	}
 
 	@Override
 	public List<Reply> findReplyList(Reply reply) {
-		// TODO Auto-generated method stub
 		return communityMapper.selectReplyList(reply);
 	}
 }

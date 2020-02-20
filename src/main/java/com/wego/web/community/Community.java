@@ -14,6 +14,6 @@ import lombok.NoArgsConstructor;
 @Lazy
 public class Community {
 		private int tour_seq,festival_seq;
-		private String art_seq,userid, art_img, title, content;
+		private String userid, art_img, title, content,art_seq;
 		
 }

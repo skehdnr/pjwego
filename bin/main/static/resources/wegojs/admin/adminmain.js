@@ -134,7 +134,6 @@ adminmain=(()=>{
 
 	let fchart=()=>{
 		$.getJSON(`/admin/chartlead/`, d=>{
-			alert(d)
 		$(`<canvas id="myChart" style="width:800px;"></canvas>`).appendTo(`#festivaladmin`)
 			let ctx = document.getElementById('myChart');
 			let myChart = new Chart(ctx, {
@@ -228,9 +227,6 @@ adminmain=(()=>{
 				dataType: `json`,
 				contentType: `application/json`,
 				success: d =>{
-					
-					console.log(d)
-					alert('ddddd'+d)
 					$.ajax({
 						url: '/admin/festivalImg/'+d,
 						data : formData,
@@ -238,7 +234,6 @@ adminmain=(()=>{
 						contentType : false,
 						processData: false,
 						success : d=> {
-							alert("이미지업로드 성공 ")
 						}
 					})
 					adminmain.onCreate()

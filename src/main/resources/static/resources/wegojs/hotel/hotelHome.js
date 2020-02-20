@@ -51,7 +51,7 @@ hotelHome = (()=>{
     let cYear = cMonth * 12; // 년 만듬
 	 if(sdd && edd){
 	localStorage.setItem(`total`, document.getElementById(`days`).value = parseInt(dif/cDay));
-	/* alert(document.getElementById(`days`).value = parseInt(dif/cDay)) */
+
  }
 
 			
@@ -185,52 +185,43 @@ hotelHome = (()=>{
 		})
 	}
     
+    let hotelSearch = () => {
+        $('#hotelsearchbtn').click(e => {
+			e.preventDefault()
+            $.getJSON('/hotel/search/' + $('#hotelsearchword').val(), d => {
+				
+				$('#hotelList').empty()
+			   $.each(d, (i,j)=>{
+		  			$(`<div class="col-lg-6 col-md-6">  
+		  						<div class="single_place"> 
+		  							<img src="${j.hotel_img}" alt="" style="min-inline-size:-webkit-fill-available">  
+		  							<div class="hover_Text d-flex align-items-end justify-content-between"> 
+		  								<div class="hover_text_iner"> 
+		  								 <a id="id${j.hotel_seq}" href="#" class="place_btn"><img src="${j.hotel_img}" alt=""></a> <h3>${j.hotel_name}</h3> 
+		  								 <p>${j.hotel_addr}</p>  
+		  								 <div class="place_review">   
+		  								 	<a href="#"><i class="fas fa-star"></i></a> 
+		  								 		<a href="#"><i class="fas fa-star"></i></a> 
+		  								 	<a href="#"><i class="fas fa-star"></i></a>  
+		  								 	<a href="#"><i class="fas fa-star"></i></a>   
+		  							 	 	<a href="#"><i class="fas fa-star"></i></a>  
+		  								 	</div></div> 
+		  								 	</div></div></div>`)
+		  					.appendTo(`#hotelList`)
+		  					$(`#id`+j.hotel_seq).click(e=>{
+		      		e.preventDefault()
+		      		hotelDetail.roomList({hotel_seq:j.hotel_seq})
+		      	})
+		  		})
+		  
+            })
+        })
+    }
 
-  
-  let hotelSearch = x => {
-      $(`#searchbtn`).click(e => {
-          e.preventDefault()
-
-          $.getJSON(`/hotel/search/` + $(`#hotel_area`).val(), d => {
-              $(`#hotelList`).empty()
-              $.each(d, (i, j) => {
-                  $(`<div class="col-lg-6 col-md-6">  
-  						<div class="single_place"> 
-							<img src="${j.hotel_img}" alt="" style="min-inline-size:-webkit-fill-available">  
-							<div class="hover_Text d-flex align-items-end justify-content-between"> 
-								<div class="hover_text_iner"> 
-								 <a id="id${j.hotel_seq}" href="#" class="place_btn"><img src="${j.hotel_img}" alt=""></a> <h3>${j.hotel_name}</h3> 
-								 <p>${j.hotel_addr}</p>  
-								 <div class="place_review">   
-								 	<a href="#"><i class="fas fa-star"></i></a> 
-								 		<a href="#"><i class="fas fa-star"></i></a> 
-								 	<a href="#"><i class="fas fa-star"></i></a>  
-								 	<a href="#"><i class="fas fa-star"></i></a>   
-							 	 	<a href="#"><i class="fas fa-star"></i></a>  
-								 	<span>${j.rating}</span></div></div> 
-								 	<div class="details_icon text-right"> <h3>${j.price}원</h3></div></div></div></div>`).appendTo(`#hotelList`)
-                	$(`#id`+j.hotel_seq).click(e=>{
-        		e.preventDefault()
-        		hotelDetail.roomList({hotel_seq:j.hotel_seq})
-        	})
-                  $(window).unbind(`scroll`)
-              })
-
-
-
-          })
-
-
-
-      })
-  }
   let selectLocation =x=>{
 
 	  let target = document.getElementById("location");
-		  //alert(`선택된 옵션 value 값=` + target.options[target.selectedIndex].value);
-
-		  $("#location").on("change", function(){
-		  	// value 값으로 선택
+		  $("#location").on("change", function(){	  
 			  $(`#hotelList`).empty()
 	  $.getJSON(`/hotel/location/`+$(`#location`).val(), d=>{
 		  let h = d.hotel
@@ -258,7 +249,6 @@ hotelHome = (()=>{
 		      		hotelDetail.roomList({hotel_seq:j.hotel_seq})
 		      	})
 		  		})
-		  	// OR option 순서값으로 선택
 		  	$(this).find("option:eq(0)").prop("selected", true);
 		  });
 

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.wego.web.mapper.CommunityMapper">
+
+	<select id="createCommunity" parameterType="hashmap">
+		${CREATE_COMMUNITY}
+	</select>
+	<select id="createLike" parameterType="hashmap">
+		${CREATE_LIKE}
+	</select>
+	<select id="createReply" parameterType="hashmap">
+		${CREATE_REPLY}
+	</select>
+	
+	<select id="dropCommunity" parameterType="map">
+		${DROP_TABLE}
+	</select>
+	
+	<select id="truncateCommunity" parameterType="hashmap">
+		${TRUNCATE}
+	</select>
+	
+		<select id="communitylist" parameterType="int" resultType="com.wego.web.community.Community"> 
+		select *
+		from board
+		order by art_seq;
+		
+	</select>
+	<select id="allcommunitylist"  resultType="com.wego.web.community.Community">
+		select * from board order by art_seq desc;
+	</select>
+    
+    <insert id="insertCommunity" parameterType="com.wego.web.community.Community">
+    	insert into board(userid, art_img, title, content) values
+			(#{userid}, #{art_img}, #{title}, #{content})
+    </insert>
+    <select id="countCommunity" resultType="int">
+    	select count(*) from board 
+    </select>
+    <insert id="insertReply" parameterType="com.wego.web.community.Reply">
+    	insert into reply 
+		(reply_seq,board_comment,userid,art_seq) values (#{reply_seq},#{board_comment},#{userid},#{art_seq}) 
+    </insert>
+    
+    <select id="selectbyuid" parameterType="com.wego.web.community.Community" resultType="string">
+		select max(art_seq) from board where userid like #{userid} 
+	</select>
+    
+	<update id="insertIMG" parameterType="com.wego.web.community.Community">
+       update board set art_img = #{art_img} where art_seq like #{art_seq}
+    </update>
+
+	<select id="selectReply" parameterType="int" resultType="com.wego.web.community.Reply">
+			select *
+			from reply r join board c
+			on r.art_seq  like c.art_seq 
+			where r.art_seq LIKE #{art_seq}
+			order by reply_seq desc
+			limit 1;
+		</select> 
+		<select id="selectReplyList" parameterType="com.wego.web.community.Reply" resultType="com.wego.web.community.Reply">
+			select * 
+			from reply r join board c
+			on r.art_seq  like c.art_seq 
+			where r.art_seq LIKE #{art_seq}
+		</select> 
+  <select  id="getcommunityseq" resultType="string">
+     SELECT art_seq
+   FROM board
+   ORDER BY art_seq DESC LIMIT 1
+  </select>
+</mapper>

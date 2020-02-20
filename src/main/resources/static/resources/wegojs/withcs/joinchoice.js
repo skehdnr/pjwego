@@ -44,6 +44,13 @@ joinchoice=(()=>{
                 adminjoin.onCreate()
             })
 	}
+/* <div><button id = "createuser" >유저테이블생성</button></div>
+		<div><button id = "createadmin" >어드민테이블생성</button></div>
+		<div><button id = "dumuser" >유저더미생성</button></div>
+		<div><button id = "createtour" >관광지 테이블생성</button></div> */
+
+
+
 	let maketable =()=>{
         $('#createuser').click(()=>{
              $.getJSON('/user/create/table',d=>{

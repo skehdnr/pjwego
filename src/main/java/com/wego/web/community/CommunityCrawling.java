@@ -28,7 +28,6 @@ public class CommunityCrawling extends Proxy{
 	
 	@Transactional
 	public ArrayList<HashMap<String,String>> communityCrawing(){
-		//
 		String url = "https://store.naver.com/attractions/detail?entry=plt&id=38345004&query=%EB%82%A8%EC%82%B0%EC%84%9C%EC%9A%B8%ED%83%80%EC%9B%8C&tab=fsasReview";
 		inventory.clear();
 		

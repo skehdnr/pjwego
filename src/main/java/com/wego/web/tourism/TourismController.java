@@ -23,9 +23,7 @@ public class TourismController {
 	private static final Logger logger = LoggerFactory.getLogger(TourismController.class);
 	@Autowired TourismMapper tourismMapper;
 	@Autowired Printer printer;
-	@Autowired TourismProxy tourismProxy;
 	@Autowired Tourism tourism;
-	@Autowired TourismLike tourismLike;
 	@Autowired Inventory<Tourism[]> inventory;
 	@Autowired TourServiceImpl tourService;
 	
@@ -33,7 +31,6 @@ public class TourismController {
 	public HashMap<String, String> createtourism() {
 		HashMap<String, String> paramMap = new HashMap<>();
 		paramMap.put("CREATE_TOURISM", TourSQL.CREATE_TOURISM.toString());
-		System.out.println(TourSQL.CREATE_TOURISM.toString());
 		Consumer<HashMap<String, String>> c = t -> tourismMapper.createTourism(paramMap);
 		c.accept(paramMap);
 		paramMap.clear();
@@ -41,18 +38,10 @@ public class TourismController {
 		return paramMap;
 	}
 
-	@GetMapping("/insert/dummy")
-	public Map<?, ?> inserttourism() {
-		HashMap<String, String> paramMap = new HashMap<String, String>();
-		tourismProxy.insertTourism();
-		return paramMap;
-	}
 	@GetMapping("/list")
 	public Map<?, ?> tourList() {
-		System.out.println("투어 리스트 컨트롤러");
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("tour", tourService.findTourismList(tourism));
-		System.out.println("투어리스트=====" + map.get("tour"));
 
 		return map;
 	}
@@ -64,21 +53,9 @@ public class TourismController {
 		map.put("tourinfo", tourinfo);
 		Tourism tourism = tourService.findMapTour(tour_seq);
 		map.put("tourism", tourism);
-		System.out.println("투어맵"+tourism);
-		System.out.println("투어인포 컨트롤러"+tourinfo);
 		return map;
 		
 	}
 
-//	@GetMapping("/tourMap/{tour_seq}")
-//	public Map<String, Object> tourMap(@PathVariable int tour_seq) {
-//		Map<String, Object> map = new HashMap<>();		
-//		tourism.setTour_seq(String.valueOf(tour_seq));
-//		Tourism tourism = tourService.findMapTour(tour_seq);
-//		map.put("tourMap", tourism);
-//		System.out.println(tourism);
-//		return map;
-//	}
-	
 	
 }

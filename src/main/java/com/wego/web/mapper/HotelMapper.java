@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.wego.web.community.Community;
 import com.wego.web.hotel.Comments;
 import com.wego.web.hotel.Hotel;
 import com.wego.web.hotel.Reservation;
@@ -36,4 +37,5 @@ public interface HotelMapper {
 	public void insertHotelComment(Comments param);
 	public List<Comments> selectHotelcomment(int hotel_seq);
 	public Hotel selectMapHotel(int hotel_seq);
+	public List<Hotel> allhotellist();
 }

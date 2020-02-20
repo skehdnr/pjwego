@@ -34,8 +34,8 @@
 	</select>
     
     <insert id="insertCommunity" parameterType="com.wego.web.community.Community">
-    	insert into board(userid, art_img, title, content) values
-			(#{userid}, #{art_img}, #{title}, #{content})
+    	insert into board(art_img, title, content) values
+			(#{art_img}, #{title}, #{content})
     </insert>
     <select id="countCommunity" resultType="int">
     	select count(*) from board 

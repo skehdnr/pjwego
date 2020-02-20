@@ -4,7 +4,7 @@ detail_vue = {
                   <h2 class="text-uppercase">${j.title}</h2>
                   <div id = "writerid"></div>
                   
-              <div id ="imgspace"><img class="img-fluid d-block mx-auto" src=${j.img} alt=""></div>
+              <div id ="imgspace"><img class="img-fluid d-block mx-auto" src=z${j.img} alt=""></div>
               <p>${j.content}</p>   
               
               <div style=" padding-left: 10px; padding-top: 20px;">

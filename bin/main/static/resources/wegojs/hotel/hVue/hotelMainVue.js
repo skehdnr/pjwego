@@ -101,9 +101,9 @@ hotelMainVue = {
 		
 			                              <div class="form-group">
                                   <div class="input-group mb-3">  
-                                      <input id="searchword" type="text" class="form-control" placeholder="Search Keyword" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
+                                      <input id="hotelsearchword" type="text" class="form-control" placeholder="Search Keyword" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
                                       <div class="input-group-append">
-                                          <button id="searchbtn" class="btn" type="button"><i class="ti-search"></i></button>
+                                          <button id="hotelsearchbtn" class="btn" type="button"><i class="ti-search"></i></button>
                                       </div>                                    
                                   </div>
                               </div>

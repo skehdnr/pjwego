@@ -78,7 +78,7 @@ hotelPay = (()=>{
     	userinfo()
     	$(`#book`).click(e=>{
     		e.preventDefault()
-    		alert(`예약완료!!`)
+    		alert(`예약완료이 완료되었습니다.`)
 	
 
     		let data = {

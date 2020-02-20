@@ -40,6 +40,8 @@
 	<update id="insertFestivalImg" parameterType="com.wego.web.festival.Festival" >
     	update festival set festival_img = #{festival_img} where festival_seq like #{festival_seq}
     </update>
+    
+
 	
 	  
   </mapper>

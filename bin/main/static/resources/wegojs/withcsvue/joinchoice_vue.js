@@ -22,10 +22,6 @@ joinchoice_vue = {
 		<div align="center" style= "solid black;">
 		<div>
 		
-		<div><button id = "createuser" >유저테이블생성</button></div>
-		<div><button id = "createadmin" >어드민테이블생성</button></div>
-		<div><button id = "dumuser" >유저더미생성</button></div>
-		<div><button id = "createtour" >관광지 테이블생성</button></div>
 		<div>
 				<h2>개인회원</h2>
 			<div>wego 개인회원이 되시면 예약,커뮤니티등 다양한 혜택및 이벤트의 기회를 누릴수 있습니다</div>

@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.wego.web.community.Community;
 import com.wego.web.mapper.FestivalMapper;
 import com.wego.web.util.Printer;
 
@@ -41,29 +43,17 @@ public class FestivalController {
 	
 	@GetMapping("/flist")
 	public List<Festival> fastivallist() throws Exception{
+//		pager.paging();
 		return festivalservice.findFestivalList();
 	}
-//	@GetMapping("/flist")
-//	public Map<?,?>festivallist(@PathVariable String page){
-//		System.out.println("festival");
-//		ArrayList<HashMap<String, String>> list = festivalservice.findFestivalList();
-//		pager.setRowCount(list.size());
-//		pager.setPageSize(10);
-//		pager.setBlockSize(5);
-//		pager.setNowPage(pager.integer(page));
-//		pager.paging();
-//		ArrayList<HashMap<String, String>> temp = new ArrayList<>();
-//		for(int i=0;i< list.size(); i++) {
-//			if(i >= pager.getStartRow() && i <= pager.getEndRow() ) {
-//				temp.add(list.get(i));
-//			}
-//			if(i > pager.getEndRow()) {break;}
-//		}
-//		box.put("pager", pager);
-//		box.put("list", temp);
-//		
-//		return box.get();
+	
+//	@GetMapping("flist/{festival_seq}")
+//	public Map<?,?> list (@PathVariable int festival_seq) {
+//		HashMap<String, Object> map = new HashMap<>();
+//		map.put("pager", pager.paging());
+//		return map;
 //	}
+	
 	
 	@GetMapping("/finfo/{festival_seq}")
 	public Map<String,Object> festivalinfo(@PathVariable int festival_seq){
@@ -74,9 +64,11 @@ public class FestivalController {
 		return map;
 	}
 	
+	
 	@PostMapping("/festivalend")
 	public Map<?,?> insertbook(@RequestBody FestivalBook param){
-		festivalservice.insertFestivalBook(festivalbook);
+		Consumer<FestivalBook> c= t -> festivalmapper.insertFestivalBook(param);
+		c.accept(param);
 		map.clear();
 		map.put("msg","SUCCESS");
 		return map;

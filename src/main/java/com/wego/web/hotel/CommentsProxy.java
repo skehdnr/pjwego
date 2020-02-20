@@ -18,17 +18,6 @@ import lombok.Data;
 public class CommentsProxy {
 	@Autowired HotelMapper hotelMapper;
 	
-
-//	public String makeUserid() {
-//	      List<String> uidText = Arrays.asList("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "n", "m", "o",
-//	                 "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8", "9",
-//	                 "0");
-//	      Collections.shuffle(uidText);
-//	      String uid = uidText.get(0)+uidText.get(1)+uidText.get(2)+uidText.get(3)+uidText.get(4)+uidText.get(5);
-//	      System.out.println("==1==");
-//	      return uid;
-//		}
-	
 	public String ratingList(){
 		List<String> rating1 = Arrays.asList("1","2","3","4","5","6","7","8","9","10");
 		Collections.shuffle(rating1);
@@ -136,40 +125,7 @@ public class CommentsProxy {
 		return comment;
 		
 	}
-//	public String selectRseq() {
-//		String result = "";
-//		  List<Integer> arr = new ArrayList<>();
-//	       int ran=0;    
-//	       boolean check;    
-//	       Random r = new Random();   
-//	       System.out.println("==4==");
-//	       
-//	       for (int i=0; i< 100 ;) {  
-//	    	   
-//	    	   ran = (int) (Math.random()*100+1);
-//	    	   if( i < 100 ) {
-//		    	   if (!arr.contains(ran)) {
-//		    		   arr.add(ran);
-//		    		   System.out.println(ran + ">>>"+i);
-//		    		   i++;
-//		    	} 
-//	    	   }else {
-//	    		   arr.add(ran);
-//	    		   System.out.println(ran + ">>>"+i);
-//	    		   i++;
-//	    	   }
-//
-//	       }
-//
-//	        for(int i=0; i<arr.size(); i++)   
-//	        	  result=String.valueOf(arr.get(i));
-//	        System.out.println("==5==");
-//	     System.out.println(result+"--->   랜덤값 출력");
-//			return result;
-//		
-//
-//	}
-	  
+  
 	 public List<Comments> CommentsDB() {
 		 Comments Comments= null;
 		 List<Comments> CommentsList = new ArrayList<>();

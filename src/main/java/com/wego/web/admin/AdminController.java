@@ -78,7 +78,6 @@ public class AdminController {
 	
 	@GetMapping("/chartlead")
 	public List<Integer> festival_chart ()throws Exception{
-		System.out.println("페스트벌 컨트롤러 "+festivalservice.chartList());
 		return festivalservice.chartList();
 	}
 	@PostMapping("/festivalinsert")

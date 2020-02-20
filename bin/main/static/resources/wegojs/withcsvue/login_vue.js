@@ -27,10 +27,10 @@ login_vue = {
               <div class="row login-form">
               
                 <div class="input_form" style="width: 50%; margin-left: 25%;">
-                    <input name="loginId" id="uid" type="text" placeholder="아이디를 입력해주세요." value="test">
+                    <input name="loginId" id="uid" type="text" placeholder="아이디를 입력해주세요.">
                 </div>
                 <div class="input_form" style="width: 50%; margin-left: 25%; margin-top: -1px;">
-                    <input name="loginPw" id="pwd" type="password" placeholder="비밀번호를 입력해주세요." value="1">
+                    <input name="loginPw" id="pwd" type="password" placeholder="비밀번호를 입력해주세요.">
                 </div>
                 <div style="width: 50%; margin-left: 25%;">
                     <input id="userlogin_btn" type="button" value="로그인" style="height: 45px;">
@@ -67,10 +67,10 @@ login_vue = {
               <div class="row login-form">
               
                 <div class="input_form" style="width: 50%; margin-left: 25%;">
-                    <input name="hosiloginId" id="aid" type="text" placeholder="아이디를 입력해주세요." value="test">
+                    <input name="hosiloginId" id="aid" type="text" placeholder="아이디를 입력해주세요.">
                 </div>
                 <div class="input_form" style="width: 50%; margin-left: 25%; margin-top: -1px;">
-                    <input name="adminloginPw" id="apwd" type="password" placeholder="비밀번호를 입력해주세요." value="1" >
+                    <input name="adminloginPw" id="apwd" type="password" placeholder="비밀번호를 입력해주세요.">
                 </div>
                 <div style="width: 50%; margin-left: 25%;">
                     <input id="adminlogin_btn" type="button" value="로그인" style="height: 45px;">

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import com.wego.web.community.Community;
 import com.wego.web.community.CommunityProxy;
-import com.wego.web.community.Like;
 import com.wego.web.community.Reply;
 import com.wego.web.hotel.Comments;
 
@@ -19,21 +18,15 @@ public interface CommunityMapper {
 	public void dropCommunity(HashMap<String, String> paramMap);
 	public void truncateCommunity(HashMap<String, String> paramMap);
 	
-	public void insertCommunity(Community community);
+	public void insertCommunity(Community r);
 	public List<Community> communitylist(CommunityProxy pxy);
-	//public List<Community> selectCommunityList(Community community);
 	public List<Community> allcommunitylist();
 	public int countCommunity();
 
-	
-	//public int selectbyuid(Community r);
-	public void insertIMG(Community community);
-	public int likecount(String art_seq);
-	public String liked(Like l);
-	
-	
+	public void insertIMG(Community coummunity);
+
+	public String getcommunityseq();
 	public void insertReply(Reply param);
 	public List<Reply> selectReply(int art_seq);
 	public List<Reply> selectReplyList(Reply reply);
-	public String getcommunityseq();
 }

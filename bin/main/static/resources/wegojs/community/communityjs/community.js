@@ -1,7 +1,6 @@
 var community = community||{}
 community = (()=>{
 	const WHEN_ERR = `호출하는 커뮤니티 js가 없음`
-	const PATH = "/resources/wegoimg/community/"
 	let js;
     let mainVuejs, detail, writejs, searchjs, communitymainvue ;
 	let init = ()=>{
@@ -65,7 +64,7 @@ community = (()=>{
 				                <i class="fas fa-plus fa-3x"></i>
 				              </div>
 				            </div>
-				            <img style="width:100%;"class="img-fluid" src="${PATH}${j.art_img}" alt="">
+				            <img style="width:100%;"class="img-fluid" src="${j.art_img}" alt="">
 				          </a>
 				          <div class="portfolio-caption">
 				            <h4>${j.title}</h4>
@@ -100,7 +99,6 @@ community = (()=>{
     	    	contentType : `application/json`,
     	    	success : d=>{
     	    		if(d.msg === `SUCCESS`){
-								alert("등록되었습니다.")
 								
 								$.getJSON(`/community/newReply/`+x.art_seq, d=>{
 									
@@ -113,7 +111,6 @@ community = (()=>{
 								})
 								
 	    			}else
-	    				alert(`다시 시도해주세요`)
     	    	},
     	    	error : e=>{
     	    		alert(`ajax 실패....`)
@@ -172,13 +169,14 @@ community = (()=>{
 			write.onCreate()
 		})
 	}
-	
-	let movesearch = () => {
-        $(`#searchbtn`).click(e => {
-            e.preventDefault()
 
-            $.getJSON(`/community/search/` + $(`#searchword`).val(), d => {
-                $(`#communitybody`).empty()
+	     let movesearch = () => {
+        $('#searchbtn').click(e => {
+            e.preventDefault()
+            $.getJSON('/community/search/' + $('#searchword').val(), d => {
+                $('#personalbestspace').remove()
+                $('#bestspace').remove()
+                $('#communitybody').empty()
                 $.each(d, (i, j) => {
                     $(`<div class="col-md-4 col-sm-6 portfolio-item">
                     <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
@@ -187,38 +185,36 @@ community = (()=>{
                             <i class="fas fa-plus fa-3x"></i>
                         </div>
                         </div>
-                        <img style="width:100%;"class="img-fluid" src="${PATH}${j.art_img}" alt="">
+                        <img style="width:100%;height: 200px;"class="img-fluid" src=${j.img} alt="">
                     </a>
                     <div class="portfolio-caption">
                         <h4>${j.title}</h4>
                     </div>
-                    </div>`).appendTo(`#communitybody`)
-                    $(`#id` + i).click(e => {
+                    </div>`).appendTo('#communitybody')
+                    $('#id' + i).click(e => {
                         e.preventDefault()
-                        $(`#communitybody`).empty()
-
+                        $('#communitybody').empty()
                         $(`<div style="display: block; padding-right: 17px; width: 70%; text-align: center; border: solid #d4d4d4;">
                             <h2 class="text-uppercase">${j.title}</h2>
                         <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                        <img class="img-fluid d-block mx-auto" src="${PATH}${j.art_img}" alt="">
+                        <img class="img-fluid d-block mx-auto" src=${j.img} alt="">
                         <p>${j.content}</p>           
                         <div style=" padding-left: 10px;">
                             <input type="text" style="width:100%" />
                             <a href="#" class="genric-btn primary small" style="width:100%">댓글달기</a>
                         </div>
                         <div style="text-align: initial; padding-left: 15px; padding-top: 9px; padding-bottom: 10px;">
-                            <li>멋진곳입니다</li>
-                            <li>좋아요!</li>
+                            <li>a;lkdsjflakhgi;law</li>
+                            <li>ahgl;aksgk;lsadghlksadghs</li>
+                            <li>aldjghlaskdjhgljksadghsadkjgh</li>
                         </div>                
-                        </div>`).appendTo(`#communitybody`)
-
+                        </div>`).appendTo('#communitybody')
                     })
-                    $(window).unbind(`scroll`)
+                    $(window).unbind('scroll.one');
                 })
             })
         })
     }
-	
 	 let make = () => {
 	        $(`#create`).click(() => {
 	            $.getJSON(`/community/create/table`, d => {
