@@ -99,6 +99,7 @@ community = (()=>{
     	    	contentType : `application/json`,
     	    	success : d=>{
     	    		if(d.msg === `SUCCESS`){
+								alert("등록되었습니다.")
 								
 								$.getJSON(`/community/newReply/`+x.art_seq, d=>{
 									
@@ -111,6 +112,7 @@ community = (()=>{
 								})
 								
 	    			}else
+	    				alert(`다시 시도해주세요`)
     	    	},
     	    	error : e=>{
     	    		alert(`ajax 실패....`)

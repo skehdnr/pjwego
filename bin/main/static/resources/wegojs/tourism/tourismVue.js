@@ -251,9 +251,7 @@ li a:hover:not(.active) {
 			            </div>
 			        </div>
 			    </section>
-			<div><button id = "createtourism">생성</button></div>
-			<div><button id = "dummy">dummy</button></div>
-			<div><button id = "createlike">like생성</button></div>
+	
 			
 			
 

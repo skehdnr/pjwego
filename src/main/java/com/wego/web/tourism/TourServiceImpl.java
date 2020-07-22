@@ -16,7 +16,6 @@ public class TourServiceImpl implements TourService{
 	}
 	@Override
 	public Tourism findTourInfo(int tour_seq) {
-		System.out.println("투어서비스임플"+tourismMapper.selectTourInfo(tour_seq));
 		return tourismMapper.selectTourInfo(tour_seq);
 	}
 	@Override

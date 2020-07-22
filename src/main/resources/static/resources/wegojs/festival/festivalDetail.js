@@ -79,24 +79,20 @@ festivalDetail = (()=>{
 		 festivalend()
 	}
 	
-	let festivalend=()=>{
+	let festivalend=x=>{
 		$(`#fpass`).click(()=>{
 			let x = {css:$.css(),img:$.img(),userid:$(`#fuid`).val(), tel:$(`#ftel`).val(),
 				visit_date:$(`#fdate`).val(),person:$(`#fpersons`).val()}
-
 			let data = {userid:$(`#fuid`).val(), tel:$(`#ftel`).val(),
 				visit_date:$(`#fdate`).val(),person:$(`#fpersons`).val()}
-		console.log(data)
-		alert(data)
 			$.ajax({
 				url : `/festival/festivalend`,
 				type : `POST`,
 				dataType : `json`,
     	    	data : JSON.stringify(data),
-	    			contentType : 'application/json',
+    	    	contentType : `application/json`,
     	    	success : d=>{
     	    		if(d.msg === `SUCCESS`){
-								alert(data)
 						$(`#mainbody`).html(festivalEnd_vue.fEnd_body(x))
 						maingogogo()
 	    			}else

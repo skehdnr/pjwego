@@ -31,6 +31,7 @@ festival = (()=>{
 	let setContentView=()=>{
 		 let x = {css:$.css(),img:$.img()}	
 			$(`#mainbody`).html(festival_vue.fmain_body())
+			festivalList({nowPage: 1})
 	}
 	
 	let festivalcraw=()=>{
@@ -43,8 +44,8 @@ festival = (()=>{
 	}
 
 	let festivalList =x=>{
-		$.getJSON(`/festival/flist`,d=>{
-			$.each(d, (i,j)=>{
+		$.getJSON(`/festival/flist/`+x.nowPage,d=>{
+			$.each(d, (i,j)=>{ 
 				$(`<div class="col-lg-6 col-md-6">  
     						<div class="single_place"> 
     							<img src="${PATH}${j.festival_img}" alt="" style="min-inline-size:-webkit-fill-available">  
@@ -62,6 +63,8 @@ festival = (()=>{
     								 		festivalDetail.festival_list({festival_seq:j.festival_seq})
     								 	})
 			})
+
+		
 		})
 	}
 	

@@ -43,24 +43,7 @@ public class ExcelService {
 						if(cell==null){
 							continue;
 						}else{
-							//타입별로 내용 읽기
-//							switch (cell.getCellType()){
-//							case XSSFCell.CELL_TYPE_FORMULA:
-//								value=cell.getCellFormula();
-//								break;
-//							case XSSFCell.CELL_TYPE_NUMERIC:
-//								value=cell.getNumericCellValue()+"";
-//								break;
-//							case XSSFCell.CELL_TYPE_STRING:
-//								value=cell.getStringCellValue()+"";
-//								break;
-//							case XSSFCell.CELL_TYPE_BLANK:
-//								value=cell.getBooleanCellValue()+"";
-//								break;
-//							case XSSFCell.CELL_TYPE_ERROR:
-//								value=cell.getErrorCellValue()+"";
-//								break;
-//							}
+
 						}
 						System.out.println(rowindex+"번 행 : "+columnindex+"번 열 값은: "+value);
 						

@@ -49,14 +49,8 @@
 		select max(art_seq) from board where userid like #{userid} 
 	</select>
     
-     <select  id="getcommunityseq" resultType="string">
-  	SELECT art_seq
-	FROM board
-	ORDER BY art_seq DESC LIMIT 1
-  </select>
-    
 	<update id="insertIMG" parameterType="com.wego.web.community.Community">
-    	update board set art_img = #{art_img} where art_seq like #{art_seq}
+       update board set art_img = #{art_img} where art_seq like #{art_seq}
     </update>
 
 	<select id="selectReply" parameterType="int" resultType="com.wego.web.community.Reply">
@@ -73,4 +67,9 @@
 			on r.art_seq  like c.art_seq 
 			where r.art_seq LIKE #{art_seq}
 		</select> 
+  <select  id="getcommunityseq" resultType="string">
+     SELECT art_seq
+   FROM board
+   ORDER BY art_seq DESC LIMIT 1
+  </select>
 </mapper>

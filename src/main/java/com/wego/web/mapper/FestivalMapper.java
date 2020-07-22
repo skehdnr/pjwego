@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 
 import com.wego.web.festival.Festival;
 import com.wego.web.festival.FestivalBook;
-import com.wego.web.festival.FestivalPage;
 
 @Repository
 public interface FestivalMapper {
@@ -17,6 +16,5 @@ public interface FestivalMapper {
 	public void insertFestivalImg(Festival festival);
 	public String getfestivalseq();
 	public List<Integer> chartlead();
-	public String countFestival();
-	public Object selectBoardAllCount(String t);
+	public int countAll3();
 }

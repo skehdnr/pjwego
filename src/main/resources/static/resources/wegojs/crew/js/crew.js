@@ -1,12 +1,12 @@
 "use stric";
 var crew = crew || {}
 crew = (() => {
-	const WHEN_ERR = '호출하는 crew js를 찾을수 없습니다.'
+	const WHEN_ERR = `호출하는 crew js를 찾을수 없습니다.`
 	let js;
 	let crewVuejs;
 	let init = () => {
 		js = $.js()
-		crewVuejs = js + '/crew/vue/crewVue.js'
+		crewVuejs = js + `/crew/vue/crewVue.js`
 		
 	}
 	let onCreate = () => {
@@ -20,7 +20,7 @@ crew = (() => {
 		})
 	}
 	let setContentView = () => {
-		$('#mainbody').html(crewVue.crew_body())
+		$(`#mainbody`).html(crewVue.crew_body())
 	}
 	return { onCreate }
 })();

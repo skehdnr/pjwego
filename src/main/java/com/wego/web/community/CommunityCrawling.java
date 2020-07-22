@@ -28,6 +28,7 @@ public class CommunityCrawling extends Proxy{
 	
 	@Transactional
 	public ArrayList<HashMap<String,String>> communityCrawing(){
+		//
 		String url = "https://store.naver.com/attractions/detail?entry=plt&id=38345004&query=%EB%82%A8%EC%82%B0%EC%84%9C%EC%9A%B8%ED%83%80%EC%9B%8C&tab=fsasReview";
 		inventory.clear();
 		
@@ -35,25 +36,27 @@ public class CommunityCrawling extends Proxy{
 			Document rawData = Jsoup.connect(url).timeout(10 * 1000).get();
 			Elements title = rawData.select("div[class=tit] a");
 			Elements content = rawData.select("div[class=txt ellp2]");
-			Elements art_img = rawData.select("div[class=thumb]");
+			Elements img = rawData.select("div[class=thumb]");
 			
 			HashMap<String, String> map = null;
 			for(int i = 0; i<title.size();i++) {
 				map = new HashMap<String, String>();
 				map.put("title", title.get(i).text());
 				map.put("content", content.get(i).text());
-				map.put("art_img", art_img.get(i).select("img").attr("src"));
-				community.setArt_img(art_img.get(i).select("img").attr("src"));
+				map.put("img", img.get(i).select("img").attr("src"));
+				community.setArt_img(img.get(i).select("img").attr("src"));
 				community.setTitle(title.get(i).text());
 				community.setContent(content.get(i).text());
-				community.setUserid(communityProxy.makeUserid());
+				//community.setUserid(communityProxy.makeUserid());
 				communityMapper.insertCommunity(community);
+			//	printer.accept("커뮤니티 크롤링프록시"+communityProxy.makeUserid());
 				inventory.add(map);
 			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		System.out.println(inventory+"1111");
 		return inventory.get();
 	}
 	

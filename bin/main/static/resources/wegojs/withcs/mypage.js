@@ -1,16 +1,16 @@
 "use strict"
 var mypage = mypage ||{}
 mypage=(()=>{
-	const WHEN_ERR = '호출하는 mypage 페이지가 없음'
+	const WHEN_ERR = `호출하는 mypage 페이지가 없음`
 	let js;
     let mainVuejs,mypagevuejs,mainHomejs,routerjs;
 
 	let init = () => {
 		js = $.js()
-		mypagevuejs = js + '/withcsvue/mypage_vue.js'
-		mainVuejs = js +'/vue/mainVue.js'
-		mainHomejs = js + '/cmm/mainHome.js'
-		routerjs = js + '/cmm/router.js'
+		mypagevuejs = js + `/withcsvue/mypage_vue.js`
+		mainVuejs = js +`/vue/mainVue.js`
+		mainHomejs = js + `/cmm/mainHome.js`
+		routerjs = js + `/cmm/router.js`
 	}
 	let onCreate = ()=>{
 		init()
@@ -33,32 +33,32 @@ mypage=(()=>{
 		gomypage()
 	}
 	let godelete=()=>{
-		$('#delete_btn').click(()=>{
+		$(`#delete_btn`).click(()=>{
                 deleteinfo.onCreate()
             })
 	}
 	let gochange=()=>{
-		$('#change_btn').click(()=>{
+		$(`#change_btn`).click(()=>{
                 changeadmin.onCreate()
             })
 	}
 	let golist=()=>{
-		$('#listadmin_btn').click(()=>{
+		$(`#listadmin_btn`).click(()=>{
                 listadmin.onCreate()
             })
 	}
 	let gomypage =()=>{
 		let x = {
-			hotel_name: localStorage.getItem('hotel_name'),
-			checkin_date: localStorage.getItem('checkin_date'),
-			checkout_date:localStorage.getItem('checkout_date'),
-			room_type: localStorage.getItem('room_type'),
-			festival_title : localStorage.getItem('festival_title'),
-			userid : sessionStorage.getItem('userid'),
-			username : sessionStorage.getItem('username'),
-			nickname : sessionStorage.getItem('nickname'),
-			birth : sessionStorage.getItem('birth'),
-			tel : sessionStorage.getItem('tel')
+			hotel_name: localStorage.getItem(`hotel_name`),
+			checkin_date: localStorage.getItem(`checkin_date`),
+			checkout_date:localStorage.getItem(`checkout_date`),
+			room_type: localStorage.getItem(`room_type`),
+			festival_title : localStorage.getItem(`festival_title`),
+			userid : sessionStorage.getItem(`userid`),
+			username : sessionStorage.getItem(`username`),
+			nickname : sessionStorage.getItem(`nickname`),
+			birth : sessionStorage.getItem(`birth`),
+			tel : sessionStorage.getItem(`tel`)
 			} 
 		$.getJSON(`/user/mypagelist/`+ x.userid , d=>{
 			let mypagelists = d.festivalbook

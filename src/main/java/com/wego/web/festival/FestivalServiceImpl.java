@@ -7,13 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wego.web.mapper.FestivalMapper;
+import com.wego.web.proxy.PageProxy;
 
 @Service
 public class FestivalServiceImpl implements FestivalService{
 	@Autowired FestivalMapper festivalmapper;
 	
 	@Override
-	public List<Festival> findFestivalList() {
+	public List<Festival> findFestivalList(FestivalPage pager) {
 		return festivalmapper.selectFestivalList();
 	}
 
@@ -31,8 +32,12 @@ public class FestivalServiceImpl implements FestivalService{
 
 	@Override
 	public List<Integer> chartList() {
-		System.out.println("차트리스트"+festivalmapper.chartlead());
 		return festivalmapper.chartlead();
+	}
+
+	@Override
+	public int findCountAll() {
+		return Integer.parseInt("11");
 	}
 
 

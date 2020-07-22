@@ -22,6 +22,7 @@ joinchoice_vue = {
 		<div align="center" style= "solid black;">
 		<div>
 		
+
 		<div>
 				<h2>개인회원</h2>
 			<div>wego 개인회원이 되시면 예약,커뮤니티등 다양한 혜택및 이벤트의 기회를 누릴수 있습니다</div>

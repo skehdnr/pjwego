@@ -8,11 +8,7 @@ main_vue = {
     </head>`
    },
   community:()=>{
-	  return `<div  ><button id = "create" >커뮤테이블생성</button></div>
-	<div><button id = "createlike" >좋아요테이블생성</button></div>
-	<div><button id = "createcomment" >코멘트테이블생성</button></div>
-	<div><button id = "crawling" >crawling</button></div>
-	
+	  return `
 	  <section class="breadcrumb breadcrumb_bg">
 	        <div class="container">
 	            <div class="row">

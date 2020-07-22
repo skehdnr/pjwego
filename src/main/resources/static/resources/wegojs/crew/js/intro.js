@@ -1,12 +1,12 @@
 "use strict"
 var intro = intro || {}
 intro = (()=>{
-	const WHEN_ERR ='호출하는 intro js를 찾을수 없습니다.'
+	const WHEN_ERR =`호출하는 intro js를 찾을수 없습니다.`
 	let js;
 	let introVuejs;
 	let init=()=>{
 		js = $.js()
-		introVuejs = js+'/crew/vue/introVue.js'
+		introVuejs = js+`/crew/vue/introVue.js`
 	}
 	let onCreate=()=>{
 		init()
@@ -21,7 +21,7 @@ intro = (()=>{
 	}
 	let setContentView =()=>{
 		   let x = {css:$.css(),img:$.img()}
-	 	 $('#mainbody').html(introVue.intro_body(x))
+	 	 $(`#mainbody`).html(introVue.intro_body(x))
 	}
 	
 	return{onCreate}

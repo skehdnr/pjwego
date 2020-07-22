@@ -15,6 +15,13 @@ mainVue = {
       </div>
 
       <div class="item">
+        <img src="/resources/img/banner_bg4.png" alt="63 square seoul" style="width:100%; height:500px">
+        <div class="carousel-caption">
+        </div>
+      </div>
+
+
+      <div class="item">
         <img src="/resources/img/banner_bg2.png" alt="63 square seoul" style="width:100%; height:500px">
         <div class="carousel-caption">
         </div>

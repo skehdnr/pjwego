@@ -21,7 +21,6 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public User findFindPwd(User user) {
-		// TODO Auto-generated method stub
 		return userMapper.selectfindPwd(user);
 	}
 

@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
-import java.util.function.Supplier;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,8 +17,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.wego.web.community.Community;
 import com.wego.web.mapper.FestivalMapper;
+import com.wego.web.proxy.PageProxy;
 import com.wego.web.util.Printer;
 
 @Lazy
@@ -28,32 +27,27 @@ import com.wego.web.util.Printer;
 public class FestivalController {
 	private static final Logger logger = LoggerFactory.getLogger(FestivalController.class);
 	@Autowired FestivalCrawling fc;
+	@Autowired FestivalPage fp;
 	@Autowired Map<String, Object>map;
 	@Autowired Festival festival;
 	@Autowired Printer printer;
 	@Autowired FestivalServiceImpl festivalservice;
 	@Autowired FestivalBook festivalbook;
-	@Autowired FestivalPage pager;
 	@Autowired FestivalMapper festivalmapper;
+	@Autowired FestivalPage pager;
 	
 	@GetMapping("/crawling")
 	   public ArrayList<HashMap<String, String>> festival() throws Exception{
 	      return fc.crawling();
 	   }
 	
-	@GetMapping("/flist")
-	public List<Festival> fastivallist() throws Exception{
-//		pager.paging();
-		return festivalservice.findFestivalList();
+	@GetMapping("/flist/{nowPage}")
+	public List<Festival> fastivallist(@PathVariable int nowPage){
+		pager.setPageNum(nowPage);
+		pager.setTotalCount(festivalservice.findCountAll());
+		pager.paging();
+		return festivalservice.findFestivalList(pager);
 	}
-	
-//	@GetMapping("flist/{festival_seq}")
-//	public Map<?,?> list (@PathVariable int festival_seq) {
-//		HashMap<String, Object> map = new HashMap<>();
-//		map.put("pager", pager.paging());
-//		return map;
-//	}
-	
 	
 	@GetMapping("/finfo/{festival_seq}")
 	public Map<String,Object> festivalinfo(@PathVariable int festival_seq){
@@ -64,14 +58,13 @@ public class FestivalController {
 		return map;
 	}
 	
-	
 	@PostMapping("/festivalend")
-	public Map<?,?> insertbook(@RequestBody FestivalBook param){
-		Consumer<FestivalBook> c= t -> festivalmapper.insertFestivalBook(param);
-		c.accept(param);
-		map.clear();
-		map.put("msg","SUCCESS");
-		return map;
-	}
+	   public Map<?,?> insertbook(@RequestBody FestivalBook param){
+	      Consumer<FestivalBook> c= t -> festivalmapper.insertFestivalBook(param);
+	      c.accept(param);
+	      map.clear();
+	      map.put("msg","SUCCESS");
+	      return map;
+	   }
 	
 }

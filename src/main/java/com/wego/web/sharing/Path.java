@@ -9,7 +9,7 @@ public enum Path {
 		String result = "";
 		switch(this){
 		case UPLOAD_PATH :
-			 result = "C:\\Users\\user\\workspace\\vueworkspace\\web\\src\\main\\resources\\static\\resources\\wegoimg";
+			 result = "C:\\Users\\eunb9\\LECTURE\\NEW Spring\\workspace 200215\\web\\src\\main\\resources\\static\\resources\\wegoimg";
 //			 File.separator+"usr"+File.separator+"local"+File.separator+"tomcat9"+File.separator+
 //			 "webapps"+File.separator+"ROOT"+File.separator+"resources"+File.separator+"img"+File.separator;
 			   break;

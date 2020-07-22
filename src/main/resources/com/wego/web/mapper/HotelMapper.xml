@@ -143,5 +143,8 @@
 			order by price
 			LIMIT 10;
 	</select>
-
+	<select id="allhotellist" resultType="com.wego.web.hotel.Hotel">
+		 	select * from hotels order by hotel_seq desc;  
+	</select>
+    
 </mapper>

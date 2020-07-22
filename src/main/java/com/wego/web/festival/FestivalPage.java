@@ -1,44 +1,38 @@
 package com.wego.web.festival;
 
-import java.util.function.Supplier;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
-import com.wego.web.mapper.FestivalMapper;
-import com.wego.web.proxy.Proxy;
-
 import lombok.Data;
 
 @Data @Lazy
-@Component("pager")
-public class FestivalPage extends Proxy{
-	
-	private int cardCount,startCard,endCard,
-	pageSize,pageCount,nowPage,startPage,endPage,
-	blockSize,blockCount,nowBlock,prevBlock,nextBlock;
-	
-	private boolean existPrev,existNext;
+@Component
+public class FestivalPage {
+	private int totalCount,startRow,endRow ,
+	pageCount , pageNum , pageSize , startPage,endPage,
+	blockCount , blockNum , nextBlock , prevBlock ;
+	private boolean existPrev, existNext;
+	private String search;
 	private final int BLOCK_SIZE = 4;
-	
-	@Autowired FestivalMapper festivalmapper;
-	public void paging() {
-		Supplier<String> s = ()-> festivalmapper.countFestival();
-		cardCount = Integer.parseInt(s.get());
-		System.out.println("프록시 안에서 찍은 전체글 갯수: "+cardCount);
-		pageCount = (cardCount % pageSize != 0) ? (cardCount / pageSize)+1 : cardCount / pageSize;
-		startCard = (nowPage-1)*pageSize;
-		endCard = (nowPage==pageCount) ? cardCount -1 : startCard + pageSize -1;
-		blockCount = (pageCount % BLOCK_SIZE != 0) ? (pageCount / BLOCK_SIZE)+1 : pageCount / BLOCK_SIZE;
-		nowBlock = (nowPage - 1) / BLOCK_SIZE;
-		startPage = nowBlock * BLOCK_SIZE + 1;
-		endPage = ((nowBlock + 1) != blockCount) ? startPage + (BLOCK_SIZE -1) : pageCount;
-		existPrev = nowBlock != 0;
-		existNext = (nowBlock + 1) != blockCount;
-		nextBlock = startPage + BLOCK_SIZE;
-		prevBlock = startPage - BLOCK_SIZE;
-		
-	}
 
+	@Autowired FestivalCrawling fc;
+
+	public void paging() {
+		pageSize=4;
+		pageCount = (totalCount % pageSize !=0)?(totalCount /pageSize)+1 : totalCount / pageSize;
+		startRow = (pageNum < 1)? 0 : (pageNum-1)*pageSize;
+		endRow =(pageNum ==pageCount)?totalCount -1:startRow+pageSize-1;
+		blockCount = (pageCount % BLOCK_SIZE !=0)?(pageCount/BLOCK_SIZE)+1 : pageCount / BLOCK_SIZE;
+		blockNum = (pageNum-1)/BLOCK_SIZE;
+		startPage = blockNum *BLOCK_SIZE +1;
+		endPage= (blockCount-1 == blockNum ) ? pageCount: startPage+(BLOCK_SIZE-1);
+		existPrev = (blockNum !=0)  ;
+		existNext = (blockNum < blockCount-1);
+		nextBlock = startPage + BLOCK_SIZE ; 
+		prevBlock = startPage - BLOCK_SIZE;
+	}
 }

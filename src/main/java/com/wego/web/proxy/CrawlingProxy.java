@@ -40,6 +40,7 @@ public class CrawlingProxy extends Proxy{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		System.out.println("---------- 크롤링 결과 ------------");
 		inventory.get().forEach(System.out :: println);
 		return inventory.get();
 	}
@@ -70,6 +71,7 @@ public class CrawlingProxy extends Proxy{
 			e.printStackTrace();
 		}
 		
+		System.out.println("---------- 크롤링 결과 ------------");
 		inventory.get().forEach(System.out :: println);
 		return inventory.get();
 	}
@@ -96,6 +98,7 @@ public class CrawlingProxy extends Proxy{
 			}
 		} catch (Exception e) {
 		}
+		System.out.println("********************크롤링결과********************");
 		inventory.get().forEach(System.out :: println);
 		return inventory.get();
 	}

@@ -35,41 +35,34 @@ joinchoice=(()=>{
 		$(`#mainbody`).html(joinchoice_vue.joinchoice_body())
 	}
 	let gochoice = ()=>{
-		$('#userjoin').click(()=>{
+		$(`#userjoin`).click(()=>{
                
                 userjoin.onCreate()
 			})
-		$('#adminjoin').click(()=>{
+		$(`#adminjoin`).click(()=>{
              
                 adminjoin.onCreate()
             })
 	}
-/* <div><button id = "createuser" >유저테이블생성</button></div>
-		<div><button id = "createadmin" >어드민테이블생성</button></div>
-		<div><button id = "dumuser" >유저더미생성</button></div>
-		<div><button id = "createtour" >관광지 테이블생성</button></div> */
-
-
-
 	let maketable =()=>{
-        $('#createuser').click(()=>{
-             $.getJSON('/user/create/table',d=>{
+        $(`#createuser`).click(()=>{
+             $.getJSON(`/user/create/table`,d=>{
                
              })
 		})
-		$('#createadmin').click(()=>{
-             $.getJSON('/admin/create/table',d=>{
+		$(`#createadmin`).click(()=>{
+             $.getJSON(`/admin/create/table`,d=>{
                 
              })
 		})
-		$('#dumuser').click(()=>{
+		$(`#dumuser`).click(()=>{
 			
-			$.getJSON('/user/insert/dummy',d=>{
+			$.getJSON(`/user/insert/dummy`,d=>{
 				
 			})
 		})
-		$('#createtour').click(()=>{
-			$.getJSON('/admin/create/tourtable',d=>{
+		$(`#createtour`).click(()=>{
+			$.getJSON(`/admin/create/tourtable`,d=>{
 				
 			})
 		})

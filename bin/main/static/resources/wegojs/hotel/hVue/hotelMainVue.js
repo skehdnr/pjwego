@@ -76,12 +76,7 @@ hotelMainVue = {
 							<option value="영등포구"><a href="#" id="dongdaemungu">영등포구</a></option>
 							</form>
 						</select>
-						<select name="select" id="persons" >
-							<option value="option6">1명</option>
-							<option value="option7">2명</option>
-							<option value="option8">3명</option>
-							<option value="option9">4명</option>
-						</select>
+						
 						
 						
 					
@@ -94,14 +89,14 @@ hotelMainVue = {
 
 			
 			</section>
-					<div class="calendar-container" style="font-size: 20px;">
+					<div class="calendar-container" style="font-size: 20px;margin-top: 10px;">
 					<span class="time-tab"><label class="in"></label><input type="date" id="checkIn" placeholder="Check in"> <input type="text" id="days" size="6" style="text-align:center;">일 <input type="date" id="checkOut" placeholder="check-out">
 			<a href="#" id= "aa" class="genric-btn primary radius">Search</a></span></div>
-			 <button id = "tablebtn">값 넘기기 테스트중</button>
+		
 		
 			                              <div class="form-group">
                                   <div class="input-group mb-3">  
-                                      <input id="hotelsearchword" type="text" class="form-control" placeholder="Search Keyword" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
+                                      <input style="margin-top: 10px;" id="hotelsearchword" type="text" class="form-control" placeholder="Search Keyword" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
                                       <div class="input-group-append">
                                           <button id="hotelsearchbtn" class="btn" type="button"><i class="ti-search"></i></button>
                                       </div>                                    

@@ -69,7 +69,7 @@ public class AdminController {
 		map.put("msg", "SUCCESS");
 		map.put("admin", f.apply(param));
 		return map;
-	}
+	}	
 	
 	@PostMapping("/excel")
 	public void excel() {

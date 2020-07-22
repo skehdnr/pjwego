@@ -101,6 +101,7 @@ public class CommunityController {
 
 	  @GetMapping("/crawler")
 	   public ArrayList<HashMap<String,String>> db()  {
+		  System.out.println("크롤링......"+communityCrawler.communityCrawing());
 	      return communityCrawler.communityCrawing();
 
 	   }
